@@ -21,65 +21,65 @@ I am a Computer Engineering student focused on building practical software with 
 </div>
 
 ## Hackathons :computer:
-**<u>Ascent (TechFest 2026)</u>** 
+**<ins>Ascent - TechFest 2026</ins>**  
 AI-powered career development platform with multi-agent LLM reasoning, resume analysis, and personalized roadmap generation.
 - Stack: Python, FastAPI, LLM workflows, OCR, vector search
 - Repo: [TechFest-2026](https://github.com/Zerius7733/TechFest-2026)
 
-**<u>WhatsApp Business Chatbot</u>**  
+**<ins>WhatsApp Business Chatbot</ins>**  
 Modular WhatsApp chatbot using FastAPI, RAG, Postgres persistence, and deduplication for reliable customer support automation.
 - Stack: Python, FastAPI, OpenAI API, ChromaDB, Postgres
 - Repo: [whatsapp-business](https://github.com/simplyziannn/whatsapp-business)
 
-**<u>PSA Team Mediocre</u>**  
+**<ins>PSA Hackathon 2025 - CodeSprint</ins>**  
 PSA hackathon operations-automation project using LLM workflows to triage incidents and generate SOP/escalation recommendations from enterprise logs and documents.
 - Stack: Python, OpenAI API, document processing, React/Vite
 - Repo: [psa_team_mediocre](https://github.com/Zerius7733/psa_team_mediocre)
 
-**<u>Bio Hackathon 2025</u>**  
+**<ins>Bio Hackathon 2025</ins>**  
 Plant stress-memory research project investigating how prior stress exposure affects resilience using phenotypic, biochemical, microscopic, and transcriptomic analyses.
 - Stack: Python, data analysis, transcriptomics workflow
 - Repo: [Bio-Hackathon-2025](https://github.com/Zerius7733/Bio-Hackathon-2025)
 
 
 ## Academic Projects :mortar_board:
-**<u>Internship Placement Management System</u>**  
+**<ins>Internship Placement Management System</ins>**  
 Java OOP system for managing internship applications across students, companies, and career center staff.
 - Stack: Java, OOP architecture, MVC-style separation, SOLID framework
 - Repo: [internship-portal](https://github.com/Zerius7733/internship-portal)
 
-**<u>Algorithm Runtime Analysis</u>**  
+**<ins>Algorithm Runtime Analysis</ins>**  
 Algorithm analysis work covering hybrid sorting, Dijkstra variants, and knapsack runtime comparisons with experiment outputs and plots.
 - Stack: Python, algorithm analysis, plotting
 - Repo: [Algorithm-Runtime-Analysis](https://github.com/Zerius7733/Algorithm-Runtime-Analysis)
 
-**<u>Network Traffic Data Analysis</u>**  
+**<ins>Network Traffic Data Analysis</ins>**  
 Computer networks lab project analyzing sFlow packet samples to derive protocol/port insights, top communication pairs, and interactive network maps.
 - Stack: Python, pandas, matplotlib, NetworkX, PyVis
 - Repo: [Network-Traffic-Data-Analysis](https://github.com/Zerius7733/Network-Traffic-Data-Analysis)
 
-**<u>Group Division Data Analytics</u>**  
+**<ins>Group Division Data Analytics</ins>**  
 Data analytics project focused on group-division patterns, exploratory analysis, and insight generation from structured datasets.
 - Stack: Python, data analytics
 - Repo: [Group-Division-Data-Analytic](https://github.com/Zerius7733/Group-Division-Data-Analytic)
 
 ## Side-Quests :dart:
-**<u>NTU GPA Estimator</u>**  
+**<ins>NTU GPA Estimator</ins>**  
 Simple GPA estimation tool for NTU modules to help plan semester performance and expected cumulative outcome.
 - Stack: Python
 - Repo: [NTU-GPA-Estimator](https://github.com/Zerius7733/NTU-GPA-Estimator)
 
-**<u>Assets Visualisation</u>**  
+**<ins>Assets Visualisation</ins>**  
 Project focused on visualizing asset-related data for clearer trend and performance insights.
 - Stack: Python, data visualization
 - Repo: [Assets_Visualisation](https://github.com/Zerius7733/Assets_Visualisation)
 
-**<u>Lottery Analysis</u>**  
+**<ins>Lottery Analysis</ins>**  
 Utility project for lottery probability exploration and quick outcome analysis.
 - Stack: Python
 - Repo: [Lottery_Analysis](https://github.com/Zerius7733/Lottery_Analysis)
 
-**<u>Ledger</u>**  
+**<ins>Ledger</ins>**  
 Side project for recording and organizing transaction/ledger entries with a simple workflow.
 - Stack: Python
 - Repo: [Ledger](https://github.com/Zerius7733/Ledger)
@@ -120,6 +120,8 @@ Side project for recording and organizing transaction/ledger entries with a simp
 ---
 
 > Open to collaborations on AI, backend systems, and impactful student projects.
+
+
 
 
 
