@@ -67,7 +67,7 @@ Simple GPA estimation tool for NTU modules to help plan semester performance and
 
 </div>
 
-## Projects by Language :bar_chart:
+## Language Chart :bar_chart:
 
 ![Projects by Primary Language](img/language-project-chart.svg)
 

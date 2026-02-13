@@ -1,10 +1,19 @@
 {
   "owner": "Zerius7733",
-  "generated_at_utc": "2026-02-13T11:08:40.302901+00:00",
+  "generated_at_sgt": "2026-02-13T19:45:29.925853+08:00",
+  "counting_mode": "repo_presence",
   "project_counts_by_language": {
-    "HTML": 2,
-    "Python": 2,
-    "Jupyter Notebook": 1
+    "Python": 7,
+    "HTML": 4,
+    "Jupyter Notebook": 3,
+    "JavaScript": 2,
+    "C": 1,
+    "CSS": 1,
+    "Dockerfile": 1,
+    "Java": 1,
+    "PLpgSQL": 1,
+    "Shell": 1,
+    "TypeScript": 1
   },
-  "total_public_non_fork_repos": 5
+  "total_counted_repos": 23
 }
