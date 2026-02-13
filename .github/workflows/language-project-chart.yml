@@ -1,0 +1,33 @@
+name: Update Language Project Chart
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 2 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  generate-chart:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Generate chart
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}
+        run: python scripts/generate_language_project_chart.py
+
+      - name: Commit updated chart
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: update language project chart"
+          file_pattern: img/language-project-chart.svg img/language-project-counts.json

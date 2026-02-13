@@ -18,7 +18,7 @@ I am a Computer Engineering student focused on building practical software with 
 
 </div>
 
-## Hackathons :trophy:
+## Hackathons :computer:
 ### 1. Ascent (TechFest 2026)
 AI-powered career development platform with multi-agent LLM reasoning, resume analysis, and personalized roadmap generation.
 
@@ -30,6 +30,12 @@ Modular WhatsApp chatbot using FastAPI, RAG, Postgres persistence, and deduplica
 
 - Stack: Python, FastAPI, OpenAI API, ChromaDB, Postgres
 - Repo: [whatsapp-business](https://github.com/simplyziannn/whatsapp-business)
+### 3. Bio Hackathon 2025
+Plant stress-memory research project investigating how prior stress exposure affects resilience using phenotypic, biochemical, microscopic, and transcriptomic analyses.
+
+- Stack: Python, data analysis, transcriptomics workflow
+- Repo: [Bio-Hackathon-2025](https://github.com/Zerius7733/Bio-Hackathon-2025)
+
 
 ## Academic Projects :mortar_board:
 ### 1. Internship Placement Management System
@@ -61,6 +67,10 @@ Simple GPA estimation tool for NTU modules to help plan semester performance and
 
 </div>
 
+## Projects by Language :bar_chart:
+
+![Projects by Primary Language](img/language-project-chart.svg)
+
 ## Tech Toolbox
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
@@ -69,7 +79,7 @@ Simple GPA estimation tool for NTU modules to help plan semester performance and
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
 ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
 
-## Connect
+## Social Media
 
 - [Instagram](https://github.com/Zerius7733)
 - [LinkedIn](https://www.linkedin.com/in/guan-yibin/)
@@ -78,6 +88,9 @@ Simple GPA estimation tool for NTU modules to help plan semester performance and
 ---
 
 > Open to collaborations on AI, backend systems, and impactful student projects.
+
+
+
 
 
 
