@@ -56,7 +56,8 @@ Simple GPA estimation tool for NTU modules to help plan semester performance and
 
 <div align="center">
 
-<img src="img/language-project-chart.svg" width="110%" alt="Projects by Primary Language" />
+<img src="img/language-project-chart.svg" width="100%" alt="Projects by Primary Language" />
+<img src="img/coding-days-90d.svg" width="100%" alt="Coding consistency over last 90 days" />
 
 ![GitHub Stats](https://github-readme-stats-sigma-five.vercel.app/api?username=Zerius7733&show_icons=true&theme=chartreuse-dark&hide_border=false&border_color=238636&rank_icon=github&v=2)
 

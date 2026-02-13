@@ -16,6 +16,7 @@ def run(script_name: str) -> None:
 def main() -> None:
     run("fetch_language_counts.py")
     run("render_language_project_chart.py")
+    run("render_coding_days_chart.py")
 
 
 if __name__ == "__main__":
