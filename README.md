@@ -1,5 +1,6 @@
 ![Banner](img/banner.png)
-![Profile Views](https://komarev.com/ghpvc/?username=Zerius7733&label=Profile%20views&color=0e75b6&style=flat)
+![Profile Views](https://komarev.com/ghpvc/?username=Zerius7733&label=Profile%20Views&color=000000&style=flat)
+
 
 <div align="center">
 </div>
@@ -20,35 +21,31 @@ I am a Computer Engineering student focused on building practical software with 
 </div>
 
 ## Hackathons :computer:
-### Ascent (TechFest 2026)
+**<u>Ascent (TechFest 2026)</u>**  
 AI-powered career development platform with multi-agent LLM reasoning, resume analysis, and personalized roadmap generation.
-
 - Stack: Python, FastAPI, LLM workflows, OCR, vector search
 - Repo: [TechFest-2026](https://github.com/Zerius7733/TechFest-2026)
 
-### WhatsApp Business Chatbot
+**<u>WhatsApp Business Chatbot</u>**  
 Modular WhatsApp chatbot using FastAPI, RAG, Postgres persistence, and deduplication for reliable customer support automation.
-
 - Stack: Python, FastAPI, OpenAI API, ChromaDB, Postgres
 - Repo: [whatsapp-business](https://github.com/simplyziannn/whatsapp-business)
-### 3. Bio Hackathon 2025
-Plant stress-memory research project investigating how prior stress exposure affects resilience using phenotypic, biochemical, microscopic, and transcriptomic analyses.
 
+**<u>Bio Hackathon 2025</u>**  
+Plant stress-memory research project investigating how prior stress exposure affects resilience using phenotypic, biochemical, microscopic, and transcriptomic analyses.
 - Stack: Python, data analysis, transcriptomics workflow
 - Repo: [Bio-Hackathon-2025](https://github.com/Zerius7733/Bio-Hackathon-2025)
 
 
 ## Academic Projects :mortar_board:
-### 1. Internship Placement Management System
+**<u>Internship Placement Management System</u>**  
 Java OOP system for managing internship applications across students, companies, and career center staff.
-
 - Stack: Java, OOP architecture, MVC-style separation, SOLID framework
 - Repo: [internship-portal](https://github.com/Zerius7733/internship-portal)
 
 ## Side-Quests :dart:
-### 1. NTU GPA Estimator
+**<u>NTU GPA Estimator</u>**  
 Simple GPA estimation tool for NTU modules to help plan semester performance and expected cumulative outcome.
-
 - Stack: Python
 - Repo: [NTU-GPA-Estimator](https://github.com/Zerius7733/NTU-GPA-Estimator)
 
@@ -89,6 +86,7 @@ Simple GPA estimation tool for NTU modules to help plan semester performance and
 ---
 
 > Open to collaborations on AI, backend systems, and impactful student projects.
+
 
 
 
