@@ -32,8 +32,6 @@ TOKEN = os.environ.get("GH_TOKEN", "")
 OUTPUT_DIR = REPO_ROOT / "img"
 OUTPUT_CSV = OUTPUT_DIR / "language-project-counts.csv"
 OUTPUT_JSON = OUTPUT_DIR / "language-project-counts.json"
-CODING_CSV = OUTPUT_DIR / "coding-days-90d.csv"
-CODING_JSON = OUTPUT_DIR / "coding-days-90d.json"
 SGT = ZoneInfo("Asia/Singapore")
 _FORK_RATE_LIMIT_WARNED = False
 _LANG_RATE_LIMIT_WARNED = False
@@ -317,7 +315,9 @@ def write_outputs(owner: str, counts: Counter) -> None:
     print(f"Saved {OUTPUT_CSV} and {OUTPUT_JSON}")
 
 
-def write_coding_outputs(owner: str, daily_commit_counts: dict[str, int], days: int = 90) -> None:
+def write_coding_outputs(owner: str, daily_commit_counts: dict[str, int], days: int) -> None:
+    coding_csv = OUTPUT_DIR / f"coding-days-{days}d.csv"
+    coding_json = OUTPUT_DIR / f"coding-days-{days}d.json"
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     now_sgt = datetime.now(SGT)
     start_day = now_sgt.date() - timedelta(days=days - 1)
@@ -326,7 +326,7 @@ def write_coding_outputs(owner: str, daily_commit_counts: dict[str, int], days: 
         day = (start_day + timedelta(days=i)).isoformat()
         rows.append((day, daily_commit_counts.get(day, 0)))
 
-    with CODING_CSV.open("w", newline="", encoding="utf-8") as f:
+    with coding_csv.open("w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
         writer.writerow(["date", "commit_count"])
         writer.writerows(rows)
@@ -342,10 +342,10 @@ def write_coding_outputs(owner: str, daily_commit_counts: dict[str, int], days: 
         "coded_days": coded_days,
         "coded_days_percent": percent,
         "total_commits": total_commits,
-        "csv_file": CODING_CSV.name,
+        "csv_file": coding_csv.name,
     }
-    CODING_JSON.write_text(json.dumps(metadata, indent=2), encoding="utf-8")
-    print(f"Saved {CODING_CSV} and {CODING_JSON}")
+    coding_json.write_text(json.dumps(metadata, indent=2), encoding="utf-8")
+    print(f"Saved {coding_csv} and {coding_json}")
 
 
 def main() -> None:
@@ -353,7 +353,6 @@ def main() -> None:
         repos = fetch_repos(OWNER)
         counts = count_languages(repos, OWNER)
         commit_repos = fetch_repos_for_commit_activity(OWNER)
-        commit_counts = count_commits_by_day(commit_repos, OWNER, days=90)
     except RuntimeError as error:
         msg = str(error).lower()
         if "rate limit exceeded" in msg:
@@ -363,7 +362,9 @@ def main() -> None:
         raise
 
     write_outputs(OWNER, counts)
-    write_coding_outputs(OWNER, commit_counts, days=90)
+    for window_days in (90, 180, 365):
+        commit_counts = count_commits_by_day(commit_repos, OWNER, days=window_days)
+        write_coding_outputs(OWNER, commit_counts, days=window_days)
 
 
 if __name__ == "__main__":
