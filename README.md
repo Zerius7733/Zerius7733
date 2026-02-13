@@ -34,12 +34,12 @@ Modular WhatsApp chatbot using FastAPI, RAG, Postgres persistence, and deduplica
 **<ins>PSA Hackathon 2025 - CodeSprint</ins>**  
 PSA hackathon operations-automation project using LLM workflows to triage incidents and generate SOP/escalation recommendations from enterprise logs and documents.
 - Stack: Python, OpenAI API, document processing, React/Vite
-- Repo: [psa_team_mediocre](https://github.com/Zerius7733/psa_team_mediocre) (private)
+- Repo: [psa_team_mediocre](https://github.com/Zerius7733/psa_team_mediocre) **(private)**
 
 **<ins>Bio Hackathon 2025</ins>**  
 Plant stress-memory research project investigating how prior stress exposure affects resilience using phenotypic, biochemical, microscopic, and transcriptomic analyses.
 - Stack: Python, data analysis, transcriptomics workflow
-- Repo: [Bio-Hackathon-2025](https://github.com/Zerius7733/Bio-Hackathon-2025) (private)
+- Repo: [Bio-Hackathon-2025](https://github.com/Zerius7733/Bio-Hackathon-2025) **(private)**
 
 
 ## Academic Projects :mortar_board:
