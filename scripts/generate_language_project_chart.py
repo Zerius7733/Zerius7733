@@ -68,8 +68,6 @@ def build_svg(owner: str, counts: Counter) -> str:
     bottom_padding = 54
     height = top_padding + (row_h * max(1, len(top))) + bottom_padding
 
-    bg = "#0D1117"
-    card = "#161B22"
     fg = "#C9D1D9"
     muted = "#8B949E"
     bar = "#58A6FF"
@@ -77,8 +75,6 @@ def build_svg(owner: str, counts: Counter) -> str:
 
     lines = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" role="img" aria-label="Projects by language chart">',
-        f'<rect width="100%" height="100%" fill="{bg}" />',
-        f'<rect x="14" y="14" width="{width - 28}" height="{height - 28}" rx="14" fill="{card}" stroke="#30363D" />',
         f'<text x="34" y="54" fill="{fg}" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="28" font-weight="700">Projects by Primary Language</text>',
         f'<text x="34" y="79" fill="{muted}" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="14">Public non-fork repositories • {escape(owner)}</text>',
     ]

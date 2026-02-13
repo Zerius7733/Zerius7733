@@ -1,23 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="860" height="328" role="img" aria-label="Projects by language chart">
-<rect width="100%" height="100%" fill="#0D1117" />
-<rect x="14" y="14" width="832" height="300" rx="14" fill="#161B22" stroke="#30363D" />
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="284" role="img" aria-label="Projects by language chart">
 <text x="34" y="54" fill="#C9D1D9" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="28" font-weight="700">Projects by Primary Language</text>
 <text x="34" y="79" fill="#8B949E" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="14">Public non-fork repositories • Zerius7733</text>
 <text x="34" y="122" fill="#C9D1D9" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="16">HTML</text>
 <rect x="240" y="106" width="560" height="18" rx="9" fill="#30363D" />
 <rect x="240" y="106" width="560" height="18" rx="9" fill="#58A6FF" />
 <text x="812" y="121" fill="#C9D1D9" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="14">2</text>
-<text x="34" y="166" fill="#C9D1D9" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="16">Jupyter Notebook</text>
+<text x="34" y="166" fill="#C9D1D9" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="16">Python</text>
 <rect x="240" y="150" width="560" height="18" rx="9" fill="#30363D" />
-<rect x="240" y="150" width="280" height="18" rx="9" fill="#58A6FF" />
-<text x="812" y="165" fill="#C9D1D9" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="14">1</text>
-<text x="34" y="210" fill="#C9D1D9" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="16">Other</text>
+<rect x="240" y="150" width="560" height="18" rx="9" fill="#58A6FF" />
+<text x="812" y="165" fill="#C9D1D9" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="14">2</text>
+<text x="34" y="210" fill="#C9D1D9" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="16">Jupyter Notebook</text>
 <rect x="240" y="194" width="560" height="18" rx="9" fill="#30363D" />
 <rect x="240" y="194" width="280" height="18" rx="9" fill="#58A6FF" />
 <text x="812" y="209" fill="#C9D1D9" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="14">1</text>
-<text x="34" y="254" fill="#C9D1D9" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="16">Python</text>
-<rect x="240" y="238" width="560" height="18" rx="9" fill="#30363D" />
-<rect x="240" y="238" width="280" height="18" rx="9" fill="#58A6FF" />
-<text x="812" y="253" fill="#C9D1D9" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="14">1</text>
-<text x="34" y="306" fill="#8B949E" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12">Updated: 2026-02-13 11:03 UTC</text>
+<text x="34" y="262" fill="#8B949E" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12">Updated: 2026-02-13 11:08 UTC</text>
 </svg>
