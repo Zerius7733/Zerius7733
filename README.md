@@ -9,8 +9,8 @@
 
 I am a Computer Engineering student focused on building practical software with strong backend design and AI integration.
 
-- Interests: AI applications, backend engineering, and product-focused developmentS
-- Current focus: shipping projects that solve real user problems
+- Interests: AI applications, backend engineering, data analysing
+- Current focus: building up more experience of different varieties
 - Goal: become a strong full-stack engineer with deep systems understanding
 
 
@@ -21,7 +21,7 @@ I am a Computer Engineering student focused on building practical software with 
 </div>
 
 ## Hackathons :computer:
-**<u>Ascent (TechFest 2026)</u>**  
+**<u>Ascent (TechFest 2026)</u>** 
 AI-powered career development platform with multi-agent LLM reasoning, resume analysis, and personalized roadmap generation.
 - Stack: Python, FastAPI, LLM workflows, OCR, vector search
 - Repo: [TechFest-2026](https://github.com/Zerius7733/TechFest-2026)
@@ -69,10 +69,20 @@ Simple GPA estimation tool for NTU modules to help plan semester performance and
 - Stack: Python
 - Repo: [NTU-GPA-Estimator](https://github.com/Zerius7733/NTU-GPA-Estimator)
 
+**<u>Assets Visualisation</u>**  
+Project focused on visualizing asset-related data for clearer trend and performance insights.
+- Stack: Python, data visualization
+- Repo: [Assets_Visualisation](https://github.com/Zerius7733/Assets_Visualisation)
+
 **<u>Lottery Analysis</u>**  
 Utility project for lottery probability exploration and quick outcome analysis.
 - Stack: Python
 - Repo: [Lottery_Analysis](https://github.com/Zerius7733/Lottery_Analysis)
+
+**<u>Ledger</u>**  
+Side project for recording and organizing transaction/ledger entries with a simple workflow.
+- Stack: Python
+- Repo: [Ledger](https://github.com/Zerius7733/Ledger)
 
 ## GitHub Stats :bar_chart:
 
@@ -104,9 +114,8 @@ Utility project for lottery probability exploration and quick outcome analysis.
 
 ## Social Media
 
-- [Instagram](https://github.com/Zerius7733)
+- [Instagram](https://instagram.com/Zerius7733)
 - [LinkedIn](https://www.linkedin.com/in/guan-yibin/)
-- [Email](guan.yibin.ce@gmail.com)
 
 ---
 
