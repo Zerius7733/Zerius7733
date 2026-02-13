@@ -1,4 +1,5 @@
 ![Banner](img/banner.png)
+![Profile Views](https://komarev.com/ghpvc/?username=Zerius7733&label=Profile%20views&color=0e75b6&style=flat)
 
 <div align="center">
 </div>
@@ -7,7 +8,7 @@
 
 I am a Computer Engineering student focused on building practical software with strong backend design and AI integration.
 
-- Interests: AI applications, backend engineering, and product-focused development
+- Interests: AI applications, backend engineering, and product-focused developmentS
 - Current focus: shipping projects that solve real user problems
 - Goal: become a strong full-stack engineer with deep systems understanding
 
@@ -19,13 +20,13 @@ I am a Computer Engineering student focused on building practical software with 
 </div>
 
 ## Hackathons :computer:
-### 1. Ascent (TechFest 2026)
+### Ascent (TechFest 2026)
 AI-powered career development platform with multi-agent LLM reasoning, resume analysis, and personalized roadmap generation.
 
 - Stack: Python, FastAPI, LLM workflows, OCR, vector search
 - Repo: [TechFest-2026](https://github.com/Zerius7733/TechFest-2026)
 
-### 2. WhatsApp Business Chatbot
+### WhatsApp Business Chatbot
 Modular WhatsApp chatbot using FastAPI, RAG, Postgres persistence, and deduplication for reliable customer support automation.
 
 - Stack: Python, FastAPI, OpenAI API, ChromaDB, Postgres
@@ -51,25 +52,22 @@ Simple GPA estimation tool for NTU modules to help plan semester performance and
 - Stack: Python
 - Repo: [NTU-GPA-Estimator](https://github.com/Zerius7733/NTU-GPA-Estimator)
 
-<div align="center">
-  <img src="https://github-readme-stats-sigma-five.vercel.app/api/pin/?username=Zerius7733&repo=NTU-GPA-Estimator&theme=calm_pink&hide_border=true" />
-</div>
-
-## GitHub Stats
+## GitHub Stats :bar_chart:
 
 <div align="center">
 
-![GitHub Stats](https://github-readme-stats-sigma-five.vercel.app/api?username=Zerius7733&show_icons=true&theme=calm_pink&hide_border=true&rank_icon=github)
+<img src="img/language-project-chart.svg" width="110%" alt="Projects by Primary Language" />
 
-![Top Languages](https://github-readme-stats-sigma-five.vercel.app/api/top-langs/?username=Zerius7733&layout=compact&theme=calm_pink&hide_border=false)
+![GitHub Stats](https://github-readme-stats-sigma-five.vercel.app/api?username=Zerius7733&show_icons=true&theme=chartreuse-dark&hide_border=false&border_color=238636&rank_icon=github&v=2)
 
-![GitHub Streak](https://streak-stats.demolab.com?user=Zerius7733&theme=github_dark&hide_border=false)
+
+
+![GitHub Streak](https://streak-stats.demolab.com?user=Zerius7733&theme=github_dark&hide_border=false&border_color=30363d)
 
 </div>
 
-## Language Chart :bar_chart:
 
-![Projects by Primary Language](img/language-project-chart.svg)
+
 
 ## Tech Toolbox
 
@@ -88,6 +86,7 @@ Simple GPA estimation tool for NTU modules to help plan semester performance and
 ---
 
 > Open to collaborations on AI, backend systems, and impactful student projects.
+
 
 
 
