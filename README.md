@@ -31,6 +31,11 @@ Modular WhatsApp chatbot using FastAPI, RAG, Postgres persistence, and deduplica
 - Stack: Python, FastAPI, OpenAI API, ChromaDB, Postgres
 - Repo: [whatsapp-business](https://github.com/simplyziannn/whatsapp-business)
 
+**<u>PSA Team Mediocre</u>**  
+PSA hackathon operations-automation project using LLM workflows to triage incidents and generate SOP/escalation recommendations from enterprise logs and documents.
+- Stack: Python, OpenAI API, document processing, React/Vite
+- Repo: [psa_team_mediocre](https://github.com/Zerius7733/psa_team_mediocre)
+
 **<u>Bio Hackathon 2025</u>**  
 Plant stress-memory research project investigating how prior stress exposure affects resilience using phenotypic, biochemical, microscopic, and transcriptomic analyses.
 - Stack: Python, data analysis, transcriptomics workflow
@@ -43,11 +48,31 @@ Java OOP system for managing internship applications across students, companies,
 - Stack: Java, OOP architecture, MVC-style separation, SOLID framework
 - Repo: [internship-portal](https://github.com/Zerius7733/internship-portal)
 
+**<u>Algorithm Runtime Analysis</u>**  
+Algorithm analysis work covering hybrid sorting, Dijkstra variants, and knapsack runtime comparisons with experiment outputs and plots.
+- Stack: Python, algorithm analysis, plotting
+- Repo: [Algorithm-Runtime-Analysis](https://github.com/Zerius7733/Algorithm-Runtime-Analysis)
+
+**<u>Network Traffic Data Analysis</u>**  
+Computer networks lab project analyzing sFlow packet samples to derive protocol/port insights, top communication pairs, and interactive network maps.
+- Stack: Python, pandas, matplotlib, NetworkX, PyVis
+- Repo: [Network-Traffic-Data-Analysis](https://github.com/Zerius7733/Network-Traffic-Data-Analysis)
+
+**<u>Group Division Data Analytics</u>**  
+Data analytics project focused on group-division patterns, exploratory analysis, and insight generation from structured datasets.
+- Stack: Python, data analytics
+- Repo: [Group-Division-Data-Analytic](https://github.com/Zerius7733/Group-Division-Data-Analytic)
+
 ## Side-Quests :dart:
 **<u>NTU GPA Estimator</u>**  
 Simple GPA estimation tool for NTU modules to help plan semester performance and expected cumulative outcome.
 - Stack: Python
 - Repo: [NTU-GPA-Estimator](https://github.com/Zerius7733/NTU-GPA-Estimator)
+
+**<u>Lottery Analysis</u>**  
+Utility project for lottery probability exploration and quick outcome analysis.
+- Stack: Python
+- Repo: [Lottery_Analysis](https://github.com/Zerius7733/Lottery_Analysis)
 
 ## GitHub Stats :bar_chart:
 
