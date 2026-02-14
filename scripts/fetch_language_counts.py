@@ -64,6 +64,37 @@ def github_get(url: str) -> list[dict] | dict:
         raise RuntimeError(f"GitHub API request failed for {url}: {error}") from error
 
 
+def github_graphql(query: str, variables: dict) -> dict:
+    headers = {
+        "Accept": "application/vnd.github+json",
+        "User-Agent": "language-project-chart-bot",
+        "Content-Type": "application/json",
+    }
+    if TOKEN:
+        headers["Authorization"] = f"Bearer {TOKEN}"
+
+    request = Request(
+        "https://api.github.com/graphql",
+        headers=headers,
+        data=json.dumps({"query": query, "variables": variables}).encode("utf-8"),
+        method="POST",
+    )
+    try:
+        with urlopen(request, timeout=20) as response:
+            payload = json.loads(response.read().decode("utf-8"))
+    except HTTPError as error:
+        raise RuntimeError(f"GitHub GraphQL request failed: {error}") from error
+    except URLError as error:
+        raise RuntimeError(f"GitHub GraphQL request failed: {error}") from error
+
+    if "errors" in payload:
+        raise RuntimeError(f"GitHub GraphQL error: {payload['errors']}")
+    data = payload.get("data")
+    if not isinstance(data, dict):
+        raise RuntimeError("Unexpected GitHub GraphQL response format.")
+    return data
+
+
 def fetch_repos(owner: str) -> list[dict]:
     repos: list[dict] = []
     page = 1
@@ -97,54 +128,6 @@ def fetch_repos(owner: str) -> list[dict]:
         page += 1
 
     return repos
-
-
-def fetch_repos_for_commit_activity(owner: str) -> list[dict]:
-    repos: list[dict] = []
-    page = 1
-    use_authenticated_endpoint = bool(TOKEN)
-
-    while True:
-        if use_authenticated_endpoint:
-            url = (
-                "https://api.github.com/user/repos"
-                f"?visibility=all&affiliation=owner,collaborator,organization_member&per_page=100&page={page}&sort=updated"
-            )
-        else:
-            url = f"https://api.github.com/users/{owner}/repos?per_page=100&page={page}&sort=updated"
-        payload = github_get(url)
-
-        if not isinstance(payload, list):
-            raise RuntimeError("Unexpected GitHub API response format while fetching commit-activity repositories.")
-        if not payload:
-            break
-
-        repos.extend(payload)
-        page += 1
-
-    deduped: dict[str, dict] = {}
-    for repo in repos:
-        full_name = repo.get("full_name")
-        if isinstance(full_name, str):
-            deduped[full_name] = repo
-    return list(deduped.values())
-
-
-def canonical_project_key(repo: dict) -> str:
-    source = repo.get("source")
-    if isinstance(source, dict):
-        source_full_name = source.get("full_name")
-        if isinstance(source_full_name, str) and source_full_name:
-            return source_full_name
-
-    parent = repo.get("parent")
-    if isinstance(parent, dict):
-        parent_full_name = parent.get("full_name")
-        if isinstance(parent_full_name, str) and parent_full_name:
-            return parent_full_name
-
-    full_name = repo.get("full_name")
-    return full_name if isinstance(full_name, str) else ""
 
 
 def owner_is_contributor(full_name: str, owner: str) -> bool:
@@ -215,82 +198,63 @@ def count_languages(repos: list[dict], owner: str) -> Counter:
     return counts
 
 
-def count_commits_by_day(repos: list[dict], owner: str, days: int = 90) -> dict[str, int]:
+def count_contributions_by_day(owner: str, days: int = 90) -> dict[str, int]:
     global _COMMIT_RATE_LIMIT_WARNED
     now_sgt = datetime.now(SGT)
     start_day = now_sgt.date() - timedelta(days=days - 1)
     start_dt_sgt = datetime.combine(start_day, datetime.min.time(), tzinfo=SGT)
-    since_iso = start_dt_sgt.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
-    until_iso = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
+    from_iso = start_dt_sgt.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
+    to_iso = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
 
-    def fetch_repo_commit_counts(full_name: str) -> dict[str, int]:
-        repo_daily: dict[str, int] = {}
-        page = 1
-        while True:
-            url = (
-                f"https://api.github.com/repos/{full_name}/commits"
-                f"?author={owner}&since={since_iso}&until={until_iso}&per_page=100&page={page}"
-            )
-            try:
-                payload = github_get(url)
-            except RuntimeError as error:
-                msg = str(error).lower()
-                if "rate limit exceeded" in msg:
-                    if not _COMMIT_RATE_LIMIT_WARNED:
-                        print("Warning: rate limit exceeded while fetching commits; commit-day metric may be partial.")
-                        _COMMIT_RATE_LIMIT_WARNED = True
-                    return repo_daily
-                if "http error 409" in msg or "http error 404" in msg:
-                    break
-                raise
+    query = """
+    query($login: String!, $from: DateTime!, $to: DateTime!) {
+      user(login: $login) {
+        contributionsCollection(from: $from, to: $to) {
+          contributionCalendar {
+            weeks {
+              contributionDays {
+                date
+                contributionCount
+              }
+            }
+          }
+        }
+      }
+    }
+    """
+    try:
+        data = github_graphql(query, {"login": owner, "from": from_iso, "to": to_iso})
+    except RuntimeError as error:
+        msg = str(error).lower()
+        if "rate limit" in msg and not _COMMIT_RATE_LIMIT_WARNED:
+            print("Warning: rate limit exceeded while fetching contribution calendar; contribution metric may be partial.")
+            _COMMIT_RATE_LIMIT_WARNED = True
+        raise
 
-            if not isinstance(payload, list) or not payload:
-                break
-
-            for commit in payload:
-                raw_date = ((commit.get("commit") or {}).get("author") or {}).get("date")
-                if not isinstance(raw_date, str):
-                    continue
+    contribution_counts: dict[str, int] = {}
+    user = data.get("user") if isinstance(data, dict) else None
+    collection = (user or {}).get("contributionsCollection") if isinstance(user, dict) else None
+    calendar = (collection or {}).get("contributionCalendar") if isinstance(collection, dict) else None
+    weeks = (calendar or {}).get("weeks") if isinstance(calendar, dict) else []
+    if not isinstance(weeks, list):
+        weeks = []
+    for week in weeks:
+        days_payload = (week or {}).get("contributionDays")
+        if not isinstance(days_payload, list):
+            continue
+        for day_entry in days_payload:
+            day = (day_entry or {}).get("date")
+            count = (day_entry or {}).get("contributionCount", 0)
+            if isinstance(day, str):
                 try:
-                    dt = datetime.fromisoformat(raw_date.replace("Z", "+00:00"))
-                except ValueError:
-                    continue
-                day_sgt = dt.astimezone(SGT).date().isoformat()
-                repo_daily[day_sgt] = repo_daily.get(day_sgt, 0) + 1
-
-            page += 1
-        return repo_daily
-
-    grouped: dict[str, list[dict]] = {}
-    for repo in repos:
-        key = canonical_project_key(repo)
-        if key:
-            grouped.setdefault(key, []).append(repo)
-
-    commit_counts: dict[str, int] = {}
-    for _, group in grouped.items():
-        best_daily: dict[str, int] = {}
-        best_total = -1
-
-        for repo in group:
-            full_name = repo.get("full_name")
-            if not isinstance(full_name, str):
-                continue
-            repo_daily = fetch_repo_commit_counts(full_name)
-            repo_total = sum(repo_daily.values())
-            # For fork/upstream duplicates, keep only the higher-count source.
-            if repo_total > best_total:
-                best_total = repo_total
-                best_daily = repo_daily
-
-        for day, count in best_daily.items():
-            commit_counts[day] = commit_counts.get(day, 0) + count
+                    contribution_counts[day] = int(count)
+                except (TypeError, ValueError):
+                    contribution_counts[day] = 0
 
     filtered_counts: dict[str, int] = {}
     for i in range(days):
         day = (start_day + timedelta(days=i)).isoformat()
-        if day in commit_counts:
-            filtered_counts[day] = commit_counts[day]
+        filtered_counts[day] = contribution_counts.get(day, 0)
     return filtered_counts
 
 
@@ -315,7 +279,7 @@ def write_outputs(owner: str, counts: Counter) -> None:
     print(f"Saved {OUTPUT_CSV} and {OUTPUT_JSON}")
 
 
-def write_coding_outputs(owner: str, daily_commit_counts: dict[str, int], days: int) -> None:
+def write_coding_outputs(owner: str, daily_contribution_counts: dict[str, int], days: int) -> None:
     coding_csv = OUTPUT_DIR / f"coding-days-{days}d.csv"
     coding_json = OUTPUT_DIR / f"coding-days-{days}d.json"
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -324,15 +288,15 @@ def write_coding_outputs(owner: str, daily_commit_counts: dict[str, int], days: 
     rows: list[tuple[str, int]] = []
     for i in range(days):
         day = (start_day + timedelta(days=i)).isoformat()
-        rows.append((day, daily_commit_counts.get(day, 0)))
+        rows.append((day, daily_contribution_counts.get(day, 0)))
 
     with coding_csv.open("w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
-        writer.writerow(["date", "commit_count"])
+        writer.writerow(["date", "contribution_count"])
         writer.writerows(rows)
 
     coded_days = sum(1 for _, count in rows if count > 0)
-    total_commits = sum(count for _, count in rows)
+    total_contributions = sum(count for _, count in rows)
     percent = round((coded_days / days) * 100, 1) if days else 0.0
 
     metadata = {
@@ -341,7 +305,7 @@ def write_coding_outputs(owner: str, daily_commit_counts: dict[str, int], days: 
         "window_days": days,
         "coded_days": coded_days,
         "coded_days_percent": percent,
-        "total_commits": total_commits,
+        "total_contributions": total_contributions,
         "csv_file": coding_csv.name,
     }
     coding_json.write_text(json.dumps(metadata, indent=2), encoding="utf-8")
@@ -352,7 +316,6 @@ def main() -> None:
     try:
         repos = fetch_repos(OWNER)
         counts = count_languages(repos, OWNER)
-        commit_repos = fetch_repos_for_commit_activity(OWNER)
     except RuntimeError as error:
         msg = str(error).lower()
         if "rate limit exceeded" in msg:
@@ -363,8 +326,8 @@ def main() -> None:
 
     write_outputs(OWNER, counts)
     for window_days in (90, 180, 365):
-        commit_counts = count_commits_by_day(commit_repos, OWNER, days=window_days)
-        write_coding_outputs(OWNER, commit_counts, days=window_days)
+        contribution_counts = count_contributions_by_day(OWNER, days=window_days)
+        write_coding_outputs(OWNER, contribution_counts, days=window_days)
 
 
 if __name__ == "__main__":

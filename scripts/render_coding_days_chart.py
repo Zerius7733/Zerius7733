@@ -20,7 +20,7 @@ def read_daily_counts(path: Path) -> list[tuple[str, int]]:
         reader = csv.DictReader(f)
         for row in reader:
             day = (row.get("date") or "").strip()
-            count_raw = (row.get("commit_count") or "").strip()
+            count_raw = (row.get("contribution_count") or row.get("commit_count") or "").strip()
             if not day:
                 continue
             try:
@@ -44,7 +44,7 @@ def build_svg(owner: str, rows: list[tuple[str, int]], metadata: dict) -> str:
     total_days = int(metadata.get("window_days", len(rows) or 90))
     coded_days = int(metadata.get("coded_days", sum(1 for _, c in rows if c > 0)))
     percent = float(metadata.get("coded_days_percent", round((coded_days / total_days) * 100, 1) if total_days else 0))
-    total_commits = int(metadata.get("total_commits", sum(c for _, c in rows)))
+    total_contributions = int(metadata.get("total_contributions", metadata.get("total_commits", sum(c for _, c in rows))))
     generated_at = metadata.get("generated_at_sgt") or datetime.now(SGT).isoformat()
     try:
         generated_dt = datetime.fromisoformat(str(generated_at).replace("Z", "+00:00")).astimezone(SGT)
@@ -78,7 +78,7 @@ def build_svg(owner: str, rows: list[tuple[str, int]], metadata: dict) -> str:
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" role="img" aria-label="Coding consistency last 90 days">',
         f'<text x="0" y="46" fill="{fg}" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="30" font-weight="700">Coding Consistency (Last {total_days} Days)</text>',
         f'<text x="0" y="76" fill="{muted}" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="16">{escape(owner)} coded on {coded_days}/{total_days} days ({percent:.1f}%)</text>',
-        f'<text x="0" y="102" fill="{muted}" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="14">Total commits in window: {total_commits}</text>',
+        f'<text x="0" y="102" fill="{muted}" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="14">Total contributions in window: {total_contributions}</text>',
         f'<rect x="{progress_x}" y="{progress_y}" width="{progress_w}" height="{progress_h}" rx="10" fill="{bar_bg}" />',
         f'<rect x="{progress_x}" y="{progress_y}" width="{fill_w}" height="{progress_h}" rx="10" fill="{accent}" />',
         f'<text x="{progress_x + progress_w + 12}" y="{progress_y + 15}" fill="{fg}" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="14">{percent:.1f}%</text>',
