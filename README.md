@@ -70,7 +70,7 @@ Simple GPA estimation tool for NTU modules to help plan semester performance and
 - Stack: Python
 - Repo: [NTU-GPA-Estimator](https://github.com/Zerius7733/NTU-GPA-Estimator)
 
-**<ins>Assets Visualisation</ins>**  
+**<ins>Compoud Interest Assets Visualisation</ins>**  
 Project focused on visualizing asset-related data for clearer trend and performance insights.
 - Stack: Python, data visualization
 - Repo: [Assets_Visualisation](https://github.com/Zerius7733/Assets_Visualisation)
