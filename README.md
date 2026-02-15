@@ -3,6 +3,7 @@
 
 
 <div align="center">
+
 </div>
 
 ## About Me
@@ -20,7 +21,7 @@ I am a Computer Engineering student focused on building practical software with 
 
 </div>
 
-## Hackathons :computer:
+# Hackathons :computer:
 **<ins>Ascent - TechFest 2026</ins>**  
 AI-powered career development platform with multi-agent LLM reasoning, resume analysis, and personalized roadmap generation.
 - Stack: Python, FastAPI, LLM workflows, OCR, vector search
@@ -42,7 +43,7 @@ Plant stress-memory research project investigating how prior stress exposure aff
 - Repo: [Bio-Hackathon-2025](https://github.com/Zerius7733/Bio-Hackathon-2025) **(private)**
 
 
-## Academic Projects :mortar_board:
+# Academic Projects :mortar_board:
 **<ins>Internship Placement Management System</ins>**  
 Java OOP system for managing internship applications across students, companies, and career center staff.
 - Stack: Java, OOP architecture, MVC-style separation, SOLID framework
@@ -63,7 +64,7 @@ Data analytics project focused on group-division patterns, exploratory analysis,
 - Stack: Python, data analytics
 - Repo: [Group-Division-Data-Analytic](https://github.com/Zerius7733/Group-Division-Data-Analytic)
 
-## Side-Quests :dart:
+# Side-Quests :dart:
 **<ins>NTU GPA Estimator</ins>**  
 Simple GPA estimation tool for NTU modules to help plan semester performance and expected cumulative outcome.
 - Stack: Python
@@ -84,7 +85,7 @@ Side project for recording and organizing transaction/ledger entries with a simp
 - Stack: Python
 - Repo: [Ledger](https://github.com/Zerius7733/Ledger)
 
-## GitHub Stats :bar_chart:
+# GitHub Stats :bar_chart:
 
 <div align="center">
 
