@@ -255,6 +255,12 @@ def count_contributions_by_day(owner: str, days: int = 90) -> dict[str, int]:
     for i in range(days):
         day = (start_day + timedelta(days=i)).isoformat()
         filtered_counts[day] = contribution_counts.get(day, 0)
+
+    today_sgt = now_sgt.date().isoformat()
+    latest_graphql_day = max(contribution_counts.keys()) if contribution_counts else "N/A"
+    latest_graphql_count = contribution_counts.get(latest_graphql_day, 0) if contribution_counts else 0
+    print(f"[debug] GraphQL contributions for {today_sgt} SGT (window={days}d): {filtered_counts.get(today_sgt, 0)}")
+    print(f"[debug] Latest GraphQL day/count (window={days}d): {latest_graphql_day} -> {latest_graphql_count}")
     return filtered_counts
 
 
