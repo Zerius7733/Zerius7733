@@ -27,11 +27,6 @@ AI-powered career development platform with multi-agent LLM reasoning, resume an
 - Stack: Python, FastAPI, LLM workflows, OCR, vector search
 - Repo: [TechFest-2026](https://github.com/Zerius7733/TechFest-2026)
 
-**<ins>WhatsApp Business Chatbot</ins>**  
-Modular WhatsApp chatbot using FastAPI, RAG, Postgres persistence, and deduplication for reliable customer support automation.
-- Stack: Python, FastAPI, OpenAI API, ChromaDB, Postgres
-- Repo: [whatsapp-business](https://github.com/simplyziannn/whatsapp-business)
-
 **<ins>PSA Hackathon 2025 - CodeSprint</ins>**  
 PSA hackathon operations-automation project using LLM workflows to triage incidents and generate SOP/escalation recommendations from enterprise logs and documents.
 - Stack: Python, OpenAI API, document processing, React/Vite
@@ -65,6 +60,11 @@ Data analytics project focused on group-division patterns, exploratory analysis,
 - Repo: [Group-Division-Data-Analytic](https://github.com/Zerius7733/Group-Division-Data-Analytic)
 
 # Side-Quests :dart:
+**<ins>WhatsApp Business Chatbot</ins>**  
+Modular WhatsApp chatbot using FastAPI, RAG, Postgres persistence, and deduplication for reliable customer support automation.
+- Stack: Python, FastAPI, OpenAI API, ChromaDB, Postgres
+- Repo: [whatsapp-business](https://github.com/simplyziannn/whatsapp-business)
+ 
 **<ins>NTU GPA Estimator</ins>**  
 Simple GPA estimation tool for NTU modules to help plan semester performance and expected cumulative outcome.
 - Stack: Python
