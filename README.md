@@ -22,7 +22,7 @@ I am a Computer Engineering student focused on building practical software with 
 </div>
 
 # Hackathons :computer:
-**<ins>Ascent - TechFest 2026</ins>**  
+**<ins>TechFest 2026</ins>**  
 AI-powered career development platform with multi-agent LLM reasoning, resume analysis, and personalized roadmap generation.
 - Stack: Python, FastAPI, LLM workflows, OCR, vector search
 - Repo: [TechFest-2026](https://github.com/Zerius7733/TechFest-2026)
