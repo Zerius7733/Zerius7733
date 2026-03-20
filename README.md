@@ -22,6 +22,11 @@ I am a Computer Engineering student focused on building practical software with 
 </div>
 
 # Hackathons :computer:
+**<ins>FinTech 2026 (Finalist)</ins>**  
+AI-powered wealth aggregated platform development platform with market news insight, portfolio analysis. 
+- Stack: Python, FastAPI, LLM workflows, News Scraping
+- Repo: [TechFest-2026](https://github.com/Zerius7733/FinTech)
+  
 **<ins>TechFest 2026</ins>**  
 AI-powered career development platform with multi-agent LLM reasoning, resume analysis, and personalized roadmap generation.
 - Stack: Python, FastAPI, LLM workflows, OCR, vector search
@@ -32,7 +37,7 @@ PSA hackathon operations-automation project using LLM workflows to triage incide
 - Stack: Python, OpenAI API, document processing, React/Vite
 - Repo: [psa_team_mediocre](https://github.com/Zerius7733/psa_team_mediocre) **(private)**
 
-**<ins>Bio Hackathon 2025</ins>**  
+**<ins>Bio Hackathon 2025 (First Place)</ins>**  
 Plant stress-memory research project investigating how prior stress exposure affects resilience using phenotypic, biochemical, microscopic, and transcriptomic analyses.
 - Stack: Python, data analysis, transcriptomics workflow
 - Repo: [Bio-Hackathon-2025](https://github.com/Zerius7733/Bio-Hackathon-2025) **(private)**
