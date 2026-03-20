@@ -70,20 +70,6 @@ Simple GPA estimation tool for NTU modules to help plan semester performance and
 - Stack: Python
 - Repo: [NTU-GPA-Estimator](https://github.com/Zerius7733/NTU-GPA-Estimator)
 
-**<ins>Compoud Interest Assets Visualisation</ins>**  
-Project focused on visualizing compound interest growth rate on assest.
-- Stack: Python, data visualization
-- Repo: [Assets_Visualisation](https://github.com/Zerius7733/Assets_Visualisation)
-
-**<ins>Lottery Analysis</ins>**  
-Utility project for lottery probability exploration and quick outcome analysis.
-- Stack: Python
-- Repo: [Lottery_Analysis](https://github.com/Zerius7733/Lottery_Analysis)
-
-**<ins>Ledger</ins>**  
-Side project for recording and organizing transaction/ledger entries with a simple workflow.
-- Stack: Python
-- Repo: [Ledger](https://github.com/Zerius7733/Ledger)
 
 # GitHub Stats :bar_chart:
 
