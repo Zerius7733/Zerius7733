@@ -65,6 +65,10 @@ Data analytics project focused on group-division patterns, exploratory analysis,
 - Repo: [Group-Division-Data-Analytic](https://github.com/Zerius7733/Group-Division-Data-Analytic)
 
 # Side-Quests :dart:
+**<ins>Email Generator Extension</ins>**  
+Builds a Chrome extension plus a local backend that captures job-posting details, uses resume-aware retrieval to generate tailored application emails with OpenAI or Ollama, and logs applications to CSV.
+- Stack: Chrome Extension (MV3), JavaScript, Node.js, OpenAI/Ollama, pdf-parse, mammoth, CSV-based logging
+- Repo: [Email-Generator-Extension](https://github.com/Zerius7733/email-generator-extension)
 **<ins>WhatsApp Business Chatbot</ins>**  
 Modular WhatsApp chatbot using FastAPI, RAG, Postgres persistence, and deduplication for reliable customer support automation.
 - Stack: Python, FastAPI, OpenAI API, ChromaDB, Postgres
