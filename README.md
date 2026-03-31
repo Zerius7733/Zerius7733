@@ -22,10 +22,10 @@ I am a Computer Engineering student focused on building practical software with 
 </div>
 
 # Hackathons :computer:
-**<ins>FinTech 2026 (Finalist, 4th Place)</ins>**  
+**<ins>FinTech Innovators' Hackathon 2026 (Finalist, 4th Place)</ins>**  
 AI-powered wealth aggregated platform development platform with market news insight, portfolio analysis. 
 - Stack: Python, FastAPI, LLM workflows, News Scraping
-- Repo: [TechFest-2026](https://github.com/Zerius7733/FinTech)
+- Repo: [FinTech-2026](https://github.com/Zerius7733/FinTech)
   
 **<ins>TechFest 2026</ins>**  
 AI-powered career development platform with multi-agent LLM reasoning, resume analysis, and personalized roadmap generation.
