@@ -1,13 +1,14 @@
 language,count
 Python,13
 HTML,7
-JavaScript,5
-CSS,4
+JavaScript,6
+CSS,5
 Jupyter Notebook,3
+TypeScript,3
 Dockerfile,2
-TypeScript,2
 C,1
 Java,1
+Other,1
 PLpgSQL,1
 Procfile,1
 Shell,1
