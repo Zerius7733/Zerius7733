@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="692" role="img" aria-label="Projects by detected languages chart">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="780" role="img" aria-label="Projects by detected languages chart">
 <text x="0" y="54" fill="#C9D1D9" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="28" font-weight="700">Projects by Detected Languages</text>
 <text x="0" y="79" fill="#8B949E" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="14">Each detected repo language counts once - Zerius7733</text>
 <text x="0" y="98" fill="#8B949E" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="14">Contributing repositories for both public and private included</text>
@@ -34,21 +34,29 @@
 <rect x="150" y="426" width="1000" height="18" rx="9" fill="#30363D" />
 <rect x="150" y="426" width="142" height="18" rx="9" fill="#58A6FF" />
 <text x="1162" y="441" fill="#C9D1D9" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="14">2</text>
-<text x="0" y="486" fill="#C9D1D9" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="16">C</text>
+<text x="0" y="486" fill="#C9D1D9" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="16">Shell</text>
 <rect x="150" y="470" width="1000" height="18" rx="9" fill="#30363D" />
-<rect x="150" y="470" width="71" height="18" rx="9" fill="#58A6FF" />
-<text x="1162" y="485" fill="#C9D1D9" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="14">1</text>
-<text x="0" y="530" fill="#C9D1D9" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="16">Java</text>
+<rect x="150" y="470" width="142" height="18" rx="9" fill="#58A6FF" />
+<text x="1162" y="485" fill="#C9D1D9" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="14">2</text>
+<text x="0" y="530" fill="#C9D1D9" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="16">C</text>
 <rect x="150" y="514" width="1000" height="18" rx="9" fill="#30363D" />
 <rect x="150" y="514" width="71" height="18" rx="9" fill="#58A6FF" />
 <text x="1162" y="529" fill="#C9D1D9" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="14">1</text>
-<text x="0" y="574" fill="#C9D1D9" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="16">Procfile</text>
+<text x="0" y="574" fill="#C9D1D9" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="16">Java</text>
 <rect x="150" y="558" width="1000" height="18" rx="9" fill="#30363D" />
 <rect x="150" y="558" width="71" height="18" rx="9" fill="#58A6FF" />
 <text x="1162" y="573" fill="#C9D1D9" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="14">1</text>
-<text x="0" y="618" fill="#C9D1D9" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="16">Shell</text>
+<text x="0" y="618" fill="#C9D1D9" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="16">Makefile</text>
 <rect x="150" y="602" width="1000" height="18" rx="9" fill="#30363D" />
 <rect x="150" y="602" width="71" height="18" rx="9" fill="#58A6FF" />
 <text x="1162" y="617" fill="#C9D1D9" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="14">1</text>
-<text x="0" y="670" fill="#8B949E" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12">Updated: 2026-07-17 11:27:30.963094 SGT</text>
+<text x="0" y="662" fill="#C9D1D9" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="16">PowerShell</text>
+<rect x="150" y="646" width="1000" height="18" rx="9" fill="#30363D" />
+<rect x="150" y="646" width="71" height="18" rx="9" fill="#58A6FF" />
+<text x="1162" y="661" fill="#C9D1D9" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="14">1</text>
+<text x="0" y="706" fill="#C9D1D9" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="16">Procfile</text>
+<rect x="150" y="690" width="1000" height="18" rx="9" fill="#30363D" />
+<rect x="150" y="690" width="71" height="18" rx="9" fill="#58A6FF" />
+<text x="1162" y="705" fill="#C9D1D9" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="14">1</text>
+<text x="0" y="758" fill="#8B949E" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12">Updated: 2026-07-18 11:16:46.446027 SGT</text>
 </svg>
