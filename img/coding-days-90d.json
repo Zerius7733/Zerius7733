@@ -1,9 +1,9 @@
 {
   "owner": "Zerius7733",
-  "generated_at_sgt": "2026-08-05T11:21:24.829079+08:00",
+  "generated_at_sgt": "2026-08-06T11:24:52.968012+08:00",
   "window_days": 90,
-  "coded_days": 90,
-  "coded_days_percent": 100.0,
+  "coded_days": 89,
+  "coded_days_percent": 98.9,
   "total_contributions": 824,
   "csv_file": "coding-days-90d.csv"
 }
