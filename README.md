@@ -22,6 +22,11 @@ I am a Computer Engineering student focused on building practical software with 
 </div>
 
 # Hackathons :computer:
+**<ins>AWS & CockroachDB Hackathon 2026</ins>**  
+Evidence-backed career agent that turns resume experience into durable, inspectable memory, ranks live job openings, and learns from user feedback while keeping account data isolated.
+- Stack: React, Node.js, Express, CockroachDB Cloud, vector search, OpenAI Responses and Embeddings APIs, AWS Lambda/ECS, Docker
+- Repo: [AWS-CockroachDB-Hackathon](https://github.com/Zerius7733/AWS-CockroachDB-Hackathon)
+
 **<ins>FinTech Innovators' Hackathon 2026 (Finalist, 4th Place)</ins>**  
 AI-powered wealth aggregated platform development platform with market news insight, portfolio analysis. 
 - Stack: Python, FastAPI, LLM workflows, News Scraping
