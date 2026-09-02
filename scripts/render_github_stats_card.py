@@ -1,5 +1,7 @@
 import csv
 import json
+import math
+import sys
 from datetime import date, timedelta
 from pathlib import Path
 from xml.sax.saxutils import escape
@@ -7,9 +9,7 @@ from xml.sax.saxutils import escape
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 REPO_ROOT = SCRIPT_DIR.parent
-INPUT_CSV = REPO_ROOT / "img" / "coding-days-365d.csv"
-META_JSON = REPO_ROOT / "img" / "coding-days-365d.json"
-OUTPUT_SVG = REPO_ROOT / "img" / "github-stats.svg"
+SUPPORTED_WINDOWS = (90, 180, 365)
 
 
 def read_rows(path: Path) -> list[tuple[str, int]]:
@@ -41,14 +41,28 @@ def read_metadata(path: Path) -> dict:
         return {}
 
 
-def build_calendar(rows: list[tuple[str, int]]) -> tuple[list[list[tuple[date, int]]], int]:
-    counts: dict[date, int] = {}
+def daily_counts(rows: list[tuple[str, int]]) -> list[tuple[date, int]]:
+    parsed: dict[date, int] = {}
     for day_text, count in rows:
         try:
-            counts[date.fromisoformat(day_text)] = count
+            parsed[date.fromisoformat(day_text)] = count
         except ValueError:
             continue
 
+    if not parsed:
+        return []
+
+    first_day = min(parsed)
+    last_day = max(parsed)
+    return [
+        (day_value, parsed.get(day_value, 0))
+        for day_offset in range((last_day - first_day).days + 1)
+        for day_value in [first_day + timedelta(days=day_offset)]
+    ]
+
+
+def build_calendar(rows: list[tuple[str, int]]) -> tuple[list[list[tuple[date, int]]], int]:
+    counts = dict(daily_counts(rows))
     if not counts:
         return [], 0
 
@@ -70,7 +84,7 @@ def build_calendar(rows: list[tuple[str, int]]) -> tuple[list[list[tuple[date, i
 
 def color_for_count(count: int, maximum: int) -> str:
     if count <= 0:
-        return "#161B22"
+        return "#21262D"
     ratio = count / maximum if maximum else 0
     if ratio <= 0.25:
         return "#0E4429"
@@ -81,44 +95,100 @@ def color_for_count(count: int, maximum: int) -> str:
     return "#39D353"
 
 
-def build_svg(owner: str, rows: list[tuple[str, int]], metadata: dict) -> str:
+def calculate_metrics(rows: list[tuple[str, int]]) -> tuple[int, int, int, int, int, date | None]:
+    days = daily_counts(rows)
+    if not days:
+        return 0, 0, 0, 0, 0, None
+
+    active_days = sum(1 for _, count in days if count > 0)
+    longest_streak = 0
+    longest_gap = 0
+    active_run = 0
+    gap_run = 0
+    for _, count in days:
+        if count > 0:
+            active_run += 1
+            gap_run = 0
+        else:
+            gap_run += 1
+            active_run = 0
+        longest_streak = max(longest_streak, active_run)
+        longest_gap = max(longest_gap, gap_run)
+
+    total_contributions = sum(count for _, count in days)
+    weekend_contributions = sum(count for day_value, count in days if day_value.weekday() >= 5)
+    weekend_activity = round((weekend_contributions / total_contributions) * 100) if total_contributions else 0
+    busiest_day, busiest_count = max(days, key=lambda item: (item[1], item[0]))
+    return active_days, longest_streak, longest_gap, weekend_activity, busiest_count, busiest_day
+
+
+def ring_lines(
+    center_x: int,
+    center_y: int,
+    value: str,
+    progress: float,
+    color: str,
+    label: str,
+    foreground: str,
+    muted: str,
+    font_family: str,
+    radius: int = 31,
+) -> list[str]:
+    circumference = 2 * math.pi * radius
+    bounded_progress = max(0.0, min(1.0, progress))
+    active_length = circumference * bounded_progress
+    remaining_length = circumference - active_length
+    return [
+        f'<circle cx="{center_x}" cy="{center_y}" r="{radius}" fill="none" stroke="#30363D" stroke-width="9" />',
+        f'<circle cx="{center_x}" cy="{center_y}" r="{radius}" fill="none" stroke="{color}" stroke-width="9" stroke-linecap="round" stroke-dasharray="{active_length:.2f} {remaining_length:.2f}" transform="rotate(-90 {center_x} {center_y})" />',
+        f'<text x="{center_x}" y="{center_y + 7}" text-anchor="middle" fill="{foreground}" font-family="{font_family}" font-size="20" font-weight="700">{escape(value)}</text>',
+        f'<text x="{center_x}" y="{center_y + 61}" text-anchor="middle" fill="{muted}" font-family="{font_family}" font-size="15">{escape(label)}</text>',
+    ]
+
+
+def build_svg(owner: str, rows: list[tuple[str, int]], metadata: dict, window_days: int) -> str:
     total_contributions = sum(count for _, count in rows)
+    active_days, longest_streak, longest_gap, weekend_activity, busiest_count, busiest_date = calculate_metrics(rows)
     generated_at = str(metadata.get("generated_at_sgt", "")).replace("T", " ").replace("+08:00", " SGT")
     if not generated_at:
         generated_at = "latest generated data"
 
     weeks, maximum = build_calendar(rows)
-
+    period_label = "last year" if window_days == 365 else f"last {window_days} days"
     width = 1200
-    height = 292
-    card_x = 0
-    card_y = 42
-    card_w = width
-    card_h = height - card_y - 8
-    card_bg = "#0D1117"
-    border = "#30363D"
+    height = 440
     foreground = "#F0F6FC"
     muted = "#8B949E"
-    link = "#58A6FF"
-    grid_x = 82
-    grid_y = 80
-    cell_size = 16
-    gap = 4
+    panel = "#161B22"
+    panel_border = "#30363D"
+    green = "#2EA043"
     font_family = "Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif"
-    footer_y = grid_y + 7 * (cell_size + gap) + 30
+
+    calendar_x = 40
+    calendar_y = 55
+    calendar_w = 920
+    calendar_h = 215
+    grid_x = 92
+    grid_y = 134
+    cell_size = 13
+    gap = 3
+    footer_y = height - 12
 
     lines = [
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" role="img" aria-label="GitHub contributions for {escape(owner)} in the last year">',
-        f'<text x="0" y="28" fill="{foreground}" font-family="{font_family}" font-size="25">{escape(f"{total_contributions:,} contributions in the last year")}</text>',
-        f'<rect x="{card_x}" y="{card_y}" width="{card_w}" height="{card_h}" rx="8" fill="{card_bg}" stroke="{border}" stroke-width="1" />',
-        f'<text x="1035" y="27" fill="{muted}" font-family="{font_family}" font-size="15">Contribution settings</text>',
-        f'<path d="M1174 20 l7 0 l-3.5 5 z" fill="{muted}" />',
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" role="img" aria-label="GitHub contribution calendar for {escape(owner)} for the {period_label}">',
+        f'<rect width="{width}" height="{height}" rx="8" fill="#0D1117" />',
+        f'<text x="40" y="32" fill="{foreground}" font-family="{font_family}" font-size="26">Contribution Calendar</text>',
+        f'<text x="1160" y="32" text-anchor="end" fill="{muted}" font-family="{font_family}" font-size="15">{escape(period_label.title())}</text>',
+        f'<rect x="{calendar_x}" y="{calendar_y}" width="{calendar_w}" height="{calendar_h}" rx="6" fill="{panel}" stroke="{panel_border}" stroke-width="1" />',
+        f'<rect x="980" y="{calendar_y}" width="180" height="{calendar_h}" rx="6" fill="{panel}" stroke="{panel_border}" stroke-width="1" />',
+        f'<text x="58" y="82" fill="{foreground}" font-family="{font_family}" font-size="18" font-weight="700">Contribution Calendar</text>',
+        f'<text x="58" y="104" fill="{muted}" font-family="{font_family}" font-size="15">{total_contributions:,} Contributions</text>',
     ]
 
     for row_index, label in ((1, "Mon"), (3, "Wed"), (5, "Fri")):
-        y = grid_y + row_index * (cell_size + gap) + cell_size - 2
+        y = grid_y + row_index * (cell_size + gap) + cell_size - 1
         lines.append(
-            f'<text x="63" y="{y}" text-anchor="end" fill="{foreground}" font-family="{font_family}" font-size="15">{label}</text>'
+            f'<text x="78" y="{y}" text-anchor="end" fill="{foreground}" font-family="{font_family}" font-size="13">{label}</text>'
         )
 
     previous_month = ""
@@ -130,7 +200,7 @@ def build_svg(owner: str, rows: list[tuple[str, int]], metadata: dict) -> str:
         previous_month = month_key
         x = grid_x + week_index * (cell_size + gap)
         lines.append(
-            f'<text x="{x}" y="{grid_y - 12}" fill="{foreground}" font-family="{font_family}" font-size="15">{month_day.strftime("%b")}</text>'
+            f'<text x="{x}" y="{grid_y - 13}" fill="{foreground}" font-family="{font_family}" font-size="13">{month_day.strftime("%b")}</text>'
         )
 
     if weeks:
@@ -140,33 +210,43 @@ def build_svg(owner: str, rows: list[tuple[str, int]], metadata: dict) -> str:
                 y = grid_y + row_index * (cell_size + gap)
                 tooltip = f"{day_value.isoformat()}: {count} contributions"
                 lines.append(
-                    f'<rect x="{x}" y="{y}" width="{cell_size}" height="{cell_size}" rx="3" fill="{color_for_count(count, maximum)}"><title>{escape(tooltip)}</title></rect>'
+                    f'<rect x="{x}" y="{y}" width="{cell_size}" height="{cell_size}" rx="2" fill="{color_for_count(count, maximum)}"><title>{escape(tooltip)}</title></rect>'
                 )
     else:
         lines.append(
-            f'<text x="{grid_x}" y="{grid_y + 50}" fill="{muted}" font-family="{font_family}" font-size="15">No contribution data available.</text>'
+            f'<text x="{grid_x}" y="{grid_y + 44}" fill="{muted}" font-family="{font_family}" font-size="14">No contribution data available.</text>'
         )
 
+    active_progress = active_days / max(1, len(daily_counts(rows)))
     lines.extend(
         [
-            f'<text x="{grid_x}" y="{footer_y}" fill="{link}" font-family="{font_family}" font-size="15">Learn how we count contributions</text>',
-            f'<text x="930" y="{footer_y}" fill="{muted}" font-family="{font_family}" font-size="15">Less</text>',
-            f'<text x="1135" y="{footer_y}" fill="{muted}" font-family="{font_family}" font-size="15">More</text>',
+            *ring_lines(1070, 145, str(active_days), active_progress, green, "Active Days", foreground, muted, font_family, radius=34),
         ]
     )
 
-    legend_x = 966
-    legend_y = footer_y - 13
-    legend_colors = ["#161B22", "#0E4429", "#006D32", "#26A641", "#39D353"]
-    for index, color in enumerate(legend_colors):
-        x = legend_x + index * (cell_size + 4)
+    card_y = 288
+    card_w = 270
+    card_h = 120
+    card_gap = 10
+    card_centers = [40 + index * (card_w + card_gap) + card_w // 2 for index in range(4)]
+    for index in range(4):
+        card_x = 40 + index * (card_w + card_gap)
         lines.append(
-            f'<rect x="{x}" y="{legend_y}" width="{cell_size}" height="{cell_size}" rx="3" fill="{color}" />'
+            f'<rect x="{card_x}" y="{card_y}" width="{card_w}" height="{card_h}" rx="6" fill="{panel}" stroke="{panel_border}" stroke-width="1" />'
         )
 
+    total_days = max(1, len(daily_counts(rows)))
+    lines.extend(ring_lines(card_centers[0], 329, str(longest_streak), longest_streak / total_days, green, "Longest Streak", foreground, muted, font_family))
+    lines.extend(ring_lines(card_centers[1], 329, str(longest_gap), longest_gap / total_days, "#F85149", "Longest Gap", foreground, muted, font_family))
+    lines.extend(ring_lines(card_centers[2], 329, f"{weekend_activity}%", weekend_activity / 100, "#58A6FF", "Weekend Activity", foreground, muted, font_family))
+
+    busiest_date_text = busiest_date.strftime("%m/%d/%Y") if busiest_date else "No data"
     lines.extend(
         [
-            f'<text x="0" y="{height - 4}" fill="{muted}" font-family="{font_family}" font-size="11">Updated: {escape(generated_at)}</text>',
+            f'<text x="{card_centers[3]}" y="324" text-anchor="middle" fill="{green}" font-family="{font_family}" font-size="19" font-weight="700">{busiest_count} Contributions</text>',
+            f'<text x="{card_centers[3]}" y="348" text-anchor="middle" fill="{foreground}" font-family="{font_family}" font-size="16" font-weight="600">on {busiest_date_text}</text>',
+            f'<text x="{card_centers[3]}" y="382" text-anchor="middle" fill="{muted}" font-family="{font_family}" font-size="15">Busiest Day</text>',
+            f'<text x="40" y="{footer_y}" fill="{muted}" font-family="{font_family}" font-size="11">Updated: {escape(generated_at)}</text>',
             "</svg>",
         ]
     )
@@ -174,12 +254,22 @@ def build_svg(owner: str, rows: list[tuple[str, int]], metadata: dict) -> str:
 
 
 def main() -> None:
-    rows = read_rows(INPUT_CSV)
-    metadata = read_metadata(META_JSON)
+    try:
+        window_days = int(sys.argv[1]) if len(sys.argv) > 1 else 365
+    except ValueError:
+        raise SystemExit(f"Window must be one of: {', '.join(map(str, SUPPORTED_WINDOWS))}")
+    if window_days not in SUPPORTED_WINDOWS:
+        raise SystemExit(f"Window must be one of: {', '.join(map(str, SUPPORTED_WINDOWS))}")
+
+    input_csv = REPO_ROOT / "img" / f"coding-days-{window_days}d.csv"
+    metadata_json = REPO_ROOT / "img" / f"coding-days-{window_days}d.json"
+    output_svg = REPO_ROOT / "img" / f"github-stats-{window_days}d.svg"
+    rows = read_rows(input_csv)
+    metadata = read_metadata(metadata_json)
     owner = str(metadata.get("owner", "Zerius7733"))
-    OUTPUT_SVG.parent.mkdir(parents=True, exist_ok=True)
-    OUTPUT_SVG.write_text(build_svg(owner, rows, metadata), encoding="utf-8")
-    print(f"Saved {OUTPUT_SVG}")
+    output_svg.parent.mkdir(parents=True, exist_ok=True)
+    output_svg.write_text(build_svg(owner, rows, metadata, window_days), encoding="utf-8")
+    print(f"Saved {output_svg}")
 
 
 if __name__ == "__main__":

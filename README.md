@@ -99,17 +99,16 @@ Simple GPA estimation tool for NTU modules to help plan semester performance and
 # GitHub Stats :bar_chart:
 
 <div align="center">
-
+<!--
 <img src="img/language-project-chart.svg" width="100%" alt="Projects by Primary Language" />
 <img src="img/coding-days-90d.svg" width="100%" alt="Coding consistency over last 90 days" />
 <img src="img/coding-days-180d.svg" width="100%" alt="Coding consistency over last 180 days" />
 <img src="img/coding-days-365d.svg" width="100%" alt="Coding consistency over last 365 days" />
+-->
 
-<img src="img/github-stats.svg" width="100%" alt="GitHub contribution statistics" />
-
-![GitHub Stats](https://github-stats-extended.vercel.app/api?username=Zerius7733&show_icons=true&theme=chartreuse-dark&hide_border=false&border_color=238636&rank_icon=github&v=2)
-
-![GitHub Streak](https://streak-stats.demolab.com?user=Zerius7733&theme=github_dark&hide_border=false&border_color=30363d)
+<img src="img/github-stats-90d.svg" width="100%" alt="GitHub contributions over the last 90 days" />
+<img src="img/github-stats-180d.svg" width="100%" alt="GitHub contributions over the last 180 days" />
+<img src="img/github-stats-365d.svg" width="100%" alt="GitHub contributions over the last year" />
 
 </div>
 
@@ -142,7 +141,6 @@ Simple GPA estimation tool for NTU modules to help plan semester performance and
 ---
 
 > Open to collaborations on AI, backend systems, and impactful student projects.
-
 
 
 
