@@ -1,4 +1,4 @@
-![Banner](img/banner.png)
+![Animated banner](img/banner.gif)
 ![Profile Views](https://komarev.com/ghpvc/?username=Zerius7733&label=Profile%20Views&color=000000&style=flat)
 
 
