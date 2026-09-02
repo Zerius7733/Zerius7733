@@ -6,10 +6,7 @@ from datetime import date, timedelta
 from pathlib import Path
 from xml.sax.saxutils import escape
 
-
-SCRIPT_DIR = Path(__file__).resolve().parent
-REPO_ROOT = SCRIPT_DIR.parent
-SUPPORTED_WINDOWS = (90, 180, 365)
+from config import SUPPORTED_WINDOWS, coding_days_csv_path, coding_days_json_path, github_stats_svg_path
 
 
 def read_rows(path: Path) -> list[tuple[str, int]]:
@@ -263,9 +260,9 @@ def main() -> None:
     if window_days not in SUPPORTED_WINDOWS:
         raise SystemExit(f"Window must be one of: {', '.join(map(str, SUPPORTED_WINDOWS))}")
 
-    input_csv = REPO_ROOT / "img" / f"coding-days-{window_days}d.csv"
-    metadata_json = REPO_ROOT / "img" / f"coding-days-{window_days}d.json"
-    output_svg = REPO_ROOT / "img" / f"github-stats-{window_days}d.svg"
+    input_csv = coding_days_csv_path(window_days)
+    metadata_json = coding_days_json_path(window_days)
+    output_svg = github_stats_svg_path(window_days)
     rows = read_rows(input_csv)
     metadata = read_metadata(metadata_json)
     owner = str(metadata.get("owner", "Zerius7733"))

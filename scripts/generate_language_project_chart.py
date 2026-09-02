@@ -2,6 +2,8 @@ import subprocess
 import sys
 from pathlib import Path
 
+from config import SUPPORTED_WINDOWS
+
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 
@@ -16,12 +18,9 @@ def run(script_name: str, *args: str) -> None:
 def main() -> None:
     run("fetch_language_counts.py")
     run("render_language_project_chart.py")
-    run("render_coding_days_chart.py", "90")
-    run("render_coding_days_chart.py", "180")
-    run("render_coding_days_chart.py", "365")
-    run("render_github_stats_card.py", "90")
-    run("render_github_stats_card.py", "180")
-    run("render_github_stats_card.py", "365")
+    for window_days in SUPPORTED_WINDOWS:
+        run("render_coding_days_chart.py", str(window_days))
+        run("render_github_stats_card.py", str(window_days))
     run("render_loc_analysis.py")
 
 

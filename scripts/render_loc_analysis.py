@@ -7,12 +7,18 @@ from statistics import median
 from urllib.parse import urlencode
 from xml.sax.saxutils import escape
 
-from fetch_language_counts import OWNER, REPO_ROOT, SGT, TOKEN, fetch_repos, github_get, user_is_contributor
-
-
-WINDOWS = (90, 180, 365)
-OUTPUT_DIR = REPO_ROOT / "img"
-DATA_JSON = OUTPUT_DIR / "loc-analysis.json"
+from config import (
+    COMMIT_PAGE_SIZE,
+    GITHUB_API_BASE_URL,
+    LOC_ANALYSIS_JSON,
+    OUTPUT_DIR,
+    OWNER,
+    SGT,
+    SUPPORTED_WINDOWS,
+    TOKEN,
+    loc_analysis_svg_path,
+)
+from fetch_language_counts import fetch_repos, github_get, user_is_contributor
 LANGUAGE_COLORS = ["#2F81F7", "#F78166", "#2EA043", "#F85149", "#A371F7", "#8B949E"]
 LANGUAGE_BY_EXTENSION = {
     ".c": "C",
@@ -89,11 +95,11 @@ def fetch_repo_commits(full_name: str, owner: str, start_day: date, end_day: dat
                 "author": owner,
                 "since": since,
                 "until": until,
-                "per_page": 100,
+                "per_page": COMMIT_PAGE_SIZE,
                 "page": page,
             }
         )
-        payload = github_get(f"https://api.github.com/repos/{full_name}/commits?{params}")
+        payload = github_get(f"{GITHUB_API_BASE_URL}/repos/{full_name}/commits?{params}")
         if not isinstance(payload, list) or not payload:
             break
 
@@ -111,7 +117,7 @@ def fetch_repo_commits(full_name: str, owner: str, start_day: date, end_day: dat
             details = commit
             if not has_commit_details(details):
                 try:
-                    fetched = github_get(f"https://api.github.com/repos/{full_name}/commits/{sha}")
+                    fetched = github_get(f"{GITHUB_API_BASE_URL}/repos/{full_name}/commits/{sha}")
                 except RuntimeError as error:
                     message = str(error).lower()
                     if "401" in message or "bad credentials" in message or "rate limit" in message:
@@ -141,7 +147,7 @@ def fetch_repo_commits(full_name: str, owner: str, start_day: date, end_day: dat
                 }
             )
 
-        if len(payload) < 100:
+        if len(payload) < COMMIT_PAGE_SIZE:
             break
         page += 1
 
@@ -233,6 +239,10 @@ def aggregate(records: list[dict], window_days: int, today: date) -> dict:
 
 
 def format_name(name: str, maximum: int = 18) -> str:
+    if name == "Private repositories":
+        return "Private repos"
+    if "/" in name:
+        name = name.rsplit("/", 1)[-1]
     if len(name) <= maximum:
         return name
     return f"{name[: maximum - 1]}..."
@@ -257,6 +267,10 @@ def donut_lines(
     start_angle = -math.pi / 2
     middle_radius = (outer_radius + inner_radius) / 2
     stroke_width = outer_radius - inner_radius
+    label_min_y = center_y - outer_radius + 17
+    label_max_y = center_y + outer_radius + 15
+    label_gap = 16
+    placed_labels: list[tuple[float, float, float, float]] = []
     for index, item in enumerate(items):
         value = as_int(item.get("lines"))
         if value <= 0:
@@ -284,16 +298,32 @@ def donut_lines(
 
         mid_angle = start_angle + (fraction * math.pi)
         label_radius = outer_radius + 20
-        label_x = center_x + label_radius * math.cos(mid_angle)
+        cosine = math.cos(mid_angle)
+        label_x = center_x + label_radius * cosine
         label_y = center_y + label_radius * math.sin(mid_angle)
         anchor = "middle"
-        if math.cos(mid_angle) > 0.35:
+        if cosine > 0.35:
             anchor = "start"
-        elif math.cos(mid_angle) < -0.35:
+            label_x = center_x + outer_radius + 4
+        elif cosine < -0.35:
             anchor = "end"
-        label = format_name(str(item.get("name", "Other")))
+            label_x = center_x - outer_radius - 4
+        label = format_name(str(item.get("name", "Other")), maximum=14)
+        label_width = len(label) * 6.5
+        label_left = label_x - label_width / 2 if anchor == "middle" else label_x if anchor == "start" else label_x - label_width
+        label_right = label_x + label_width / 2 if anchor == "middle" else label_x + label_width if anchor == "start" else label_x
+        label_y = max(label_min_y, min(label_max_y, label_y))
+
+        # Keep labels away from the headings and from one another when small
+        # slices land near the same angle.
+        while any(
+            label_left < previous_right and label_right > previous_left and abs(label_y - previous_y) < label_gap
+            for previous_left, previous_right, previous_y, _ in placed_labels
+        ) and label_y < label_max_y:
+            label_y += label_gap
+        placed_labels.append((label_left, label_right, label_y, label_x))
         lines.append(
-            f'<text x="{label_x:.1f}" y="{label_y:.1f}" text-anchor="{anchor}" fill="#8B949E" font-family="{font_family}" font-size="11">{escape(label)}</text>'
+            f'<text x="{label_x:.1f}" y="{label_y:.1f}" text-anchor="{anchor}" fill="#C9D1D9" font-family="{font_family}" font-size="12">{escape(label)}</text>'
         )
         start_angle = end_angle
 
@@ -357,7 +387,7 @@ def build_svg(summary: dict, owner: str) -> str:
 
 
 def collect_records(owner: str, today: date) -> list[dict]:
-    start_day = today - timedelta(days=max(WINDOWS) - 1)
+    start_day = today - timedelta(days=max(SUPPORTED_WINDOWS) - 1)
     repos = scoped_repositories(fetch_repos(owner), owner)
     print(f"Collecting LOC statistics from {len(repos)} accessible repositories")
     records: list[dict] = []
@@ -377,7 +407,7 @@ def collect_records(owner: str, today: date) -> list[dict]:
 def main() -> None:
     today = datetime.now(SGT).date()
     records = collect_records(OWNER, today)
-    summaries = {str(window_days): aggregate(records, window_days, today) for window_days in WINDOWS}
+    summaries = {str(window_days): aggregate(records, window_days, today) for window_days in SUPPORTED_WINDOWS}
     metadata = {
         "owner": OWNER,
         "generated_at_sgt": datetime.now(SGT).isoformat(),
@@ -386,12 +416,12 @@ def main() -> None:
         "windows": summaries,
     }
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    DATA_JSON.write_text(json.dumps(metadata, indent=2), encoding="utf-8")
-    for window_days in WINDOWS:
-        output_svg = OUTPUT_DIR / f"loc-analysis-{window_days}d.svg"
+    LOC_ANALYSIS_JSON.write_text(json.dumps(metadata, indent=2), encoding="utf-8")
+    for window_days in SUPPORTED_WINDOWS:
+        output_svg = loc_analysis_svg_path(window_days)
         output_svg.write_text(build_svg(summaries[str(window_days)], OWNER), encoding="utf-8")
         print(f"Saved {output_svg}")
-    print(f"Saved {DATA_JSON}")
+    print(f"Saved {LOC_ANALYSIS_JSON}")
 
 
 if __name__ == "__main__":

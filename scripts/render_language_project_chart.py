@@ -3,15 +3,13 @@ import json
 from datetime import datetime
 from pathlib import Path
 from xml.sax.saxutils import escape
-from zoneinfo import ZoneInfo
 
-
-SCRIPT_DIR = Path(__file__).resolve().parent
-REPO_ROOT = SCRIPT_DIR.parent
-INPUT_CSV = REPO_ROOT / "img" / "language-project-counts.csv"
-META_JSON = REPO_ROOT / "img" / "language-project-counts.json"
-OUTPUT_SVG = REPO_ROOT / "img" / "language-project-chart.svg"
-SGT = ZoneInfo("Asia/Singapore")
+from config import (
+    LANGUAGE_PROJECT_CHART_SVG,
+    LANGUAGE_PROJECT_COUNTS_CSV,
+    LANGUAGE_PROJECT_COUNTS_JSON,
+    SGT,
+)
 
 
 def read_counts(path: Path) -> list[tuple[str, int]]:
@@ -101,17 +99,17 @@ def build_svg(
 
 
 def main() -> None:
-    counts = read_counts(INPUT_CSV)
-    metadata = read_metadata(META_JSON)
+    counts = read_counts(LANGUAGE_PROJECT_COUNTS_CSV)
+    metadata = read_metadata(LANGUAGE_PROJECT_COUNTS_JSON)
     owner = metadata.get("owner", "Zerius7733")
     generated_at = metadata.get("generated_at_sgt") or datetime.now(SGT).strftime("%Y-%m-%d %H:%M:%S+08:00")
     generated_label = generated_at.replace("T", " ").replace("+08:00", " SGT")
     repository_scope = metadata.get("repository_scope", "public_owner_only")
 
-    OUTPUT_SVG.parent.mkdir(parents=True, exist_ok=True)
+    LANGUAGE_PROJECT_CHART_SVG.parent.mkdir(parents=True, exist_ok=True)
     svg = build_svg(owner, counts, generated_label, repository_scope)
-    OUTPUT_SVG.write_text(svg, encoding="utf-8")
-    print(f"Saved {OUTPUT_SVG}")
+    LANGUAGE_PROJECT_CHART_SVG.write_text(svg, encoding="utf-8")
+    print(f"Saved {LANGUAGE_PROJECT_CHART_SVG}")
 
 
 if __name__ == "__main__":

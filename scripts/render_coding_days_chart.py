@@ -4,12 +4,8 @@ import sys
 from datetime import datetime
 from pathlib import Path
 from xml.sax.saxutils import escape
-from zoneinfo import ZoneInfo
 
-
-SCRIPT_DIR = Path(__file__).resolve().parent
-REPO_ROOT = SCRIPT_DIR.parent
-SGT = ZoneInfo("Asia/Singapore")
+from config import SGT, SUPPORTED_WINDOWS, coding_days_csv_path, coding_days_json_path, coding_days_svg_path
 
 
 def read_daily_counts(path: Path) -> list[tuple[str, int]]:
@@ -109,9 +105,12 @@ def main() -> None:
         except ValueError:
             raise SystemExit("Usage: python render_coding_days_chart.py [90|180|365]")
 
-    input_csv = REPO_ROOT / "img" / f"coding-days-{days}d.csv"
-    meta_json = REPO_ROOT / "img" / f"coding-days-{days}d.json"
-    output_svg = REPO_ROOT / "img" / f"coding-days-{days}d.svg"
+    if days not in SUPPORTED_WINDOWS:
+        raise SystemExit(f"Window must be one of: {', '.join(map(str, SUPPORTED_WINDOWS))}")
+
+    input_csv = coding_days_csv_path(days)
+    meta_json = coding_days_json_path(days)
+    output_svg = coding_days_svg_path(days)
 
     rows = read_daily_counts(input_csv)
     metadata = read_metadata(meta_json)

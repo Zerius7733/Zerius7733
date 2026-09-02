@@ -1,38 +1,30 @@
 import csv
 import json
-import os
 from collections import Counter
 from datetime import datetime, timedelta, timezone
-from pathlib import Path
+from http.client import IncompleteRead
+from time import sleep
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
-from zoneinfo import ZoneInfo
 
-
-def load_dotenv(path: Path) -> None:
-    if not path.exists():
-        return
-    for line in path.read_text(encoding="utf-8").splitlines():
-        raw = line.strip()
-        if not raw or raw.startswith("#") or "=" not in raw:
-            continue
-        key, value = raw.split("=", 1)
-        key = key.strip()
-        value = value.strip().strip('"').strip("'")
-        if key and key not in os.environ:
-            os.environ[key] = value
-
-
-SCRIPT_DIR = Path(__file__).resolve().parent
-REPO_ROOT = SCRIPT_DIR.parent
-load_dotenv(REPO_ROOT / ".env")
-
-OWNER = os.environ.get("GITHUB_REPOSITORY_OWNER", "Zerius7733")
-TOKEN = os.environ.get("GH_TOKEN", "")
-OUTPUT_DIR = REPO_ROOT / "img"
-OUTPUT_CSV = OUTPUT_DIR / "language-project-counts.csv"
-OUTPUT_JSON = OUTPUT_DIR / "language-project-counts.json"
-SGT = ZoneInfo("Asia/Singapore")
+from config import (
+    API_TIMEOUT_SECONDS,
+    CONTRIBUTOR_PAGE_SIZE,
+    GITHUB_API_ACCEPT,
+    GITHUB_API_BASE_URL,
+    GITHUB_USER_AGENT,
+    GRAPHQL_TIMEOUT_SECONDS,
+    LANGUAGE_PROJECT_COUNTS_CSV,
+    LANGUAGE_PROJECT_COUNTS_JSON,
+    OUTPUT_DIR,
+    OWNER,
+    REPOSITORY_PAGE_SIZE,
+    SGT,
+    SUPPORTED_WINDOWS,
+    TOKEN,
+    coding_days_csv_path,
+    coding_days_json_path,
+)
 _CONTRIBUTOR_RATE_LIMIT_WARNED = False
 _LANG_RATE_LIMIT_WARNED = False
 _COMMIT_RATE_LIMIT_WARNED = False
@@ -40,47 +32,54 @@ _COMMIT_RATE_LIMIT_WARNED = False
 
 def github_get(url: str) -> list[dict] | dict:
     headers = {
-        "Accept": "application/vnd.github+json",
-        "User-Agent": "language-project-chart-bot",
+        "Accept": GITHUB_API_ACCEPT,
+        "User-Agent": GITHUB_USER_AGENT,
     }
     if TOKEN:
         headers["Authorization"] = f"Bearer {TOKEN}"
 
-    request = Request(url, headers=headers)
-    try:
-        with urlopen(request, timeout=20) as response:
-            return json.loads(response.read().decode("utf-8"))
-    except HTTPError as error:
-        if error.code == 403:
-            body = ""
-            try:
-                body = error.read().decode("utf-8", errors="ignore")
-            except Exception:
+    for attempt in range(4):
+        request = Request(url, headers=headers)
+        try:
+            with urlopen(request, timeout=API_TIMEOUT_SECONDS) as response:
+                return json.loads(response.read().decode("utf-8"))
+        except HTTPError as error:
+            if error.code == 403:
                 body = ""
-            if "rate limit exceeded" in body.lower():
-                raise RuntimeError(f"GitHub API rate limit exceeded for {url}") from error
-        raise RuntimeError(f"GitHub API request failed for {url}: {error}") from error
-    except (HTTPError, URLError) as error:
-        raise RuntimeError(f"GitHub API request failed for {url}: {error}") from error
+                try:
+                    body = error.read().decode("utf-8", errors="ignore")
+                except Exception:
+                    body = ""
+                if "rate limit exceeded" in body.lower():
+                    raise RuntimeError(f"GitHub API rate limit exceeded for {url}") from error
+            raise RuntimeError(f"GitHub API request failed for {url}: {error}") from error
+        except (IncompleteRead, URLError, TimeoutError, OSError) as error:
+            if attempt == 3:
+                raise RuntimeError(f"GitHub API response was incomplete after retries for {url}: {error}") from error
+            delay = 2**attempt
+            print(f"Warning: interrupted GitHub API response; retrying in {delay}s ({attempt + 1}/4)")
+            sleep(delay)
+
+    raise RuntimeError(f"GitHub API request failed for {url}")
 
 
 def github_graphql(query: str, variables: dict) -> dict:
     headers = {
-        "Accept": "application/vnd.github+json",
-        "User-Agent": "language-project-chart-bot",
+        "Accept": GITHUB_API_ACCEPT,
+        "User-Agent": GITHUB_USER_AGENT,
         "Content-Type": "application/json",
     }
     if TOKEN:
         headers["Authorization"] = f"Bearer {TOKEN}"
 
     request = Request(
-        "https://api.github.com/graphql",
+        f"{GITHUB_API_BASE_URL}/graphql",
         headers=headers,
         data=json.dumps({"query": query, "variables": variables}).encode("utf-8"),
         method="POST",
     )
     try:
-        with urlopen(request, timeout=20) as response:
+        with urlopen(request, timeout=GRAPHQL_TIMEOUT_SECONDS) as response:
             payload = json.loads(response.read().decode("utf-8"))
     except HTTPError as error:
         raise RuntimeError(f"GitHub GraphQL request failed: {error}") from error
@@ -103,11 +102,11 @@ def fetch_repos(owner: str) -> list[dict]:
     while True:
         if use_authenticated_endpoint:
             url = (
-                "https://api.github.com/user/repos"
-                f"?visibility=all&affiliation=owner,collaborator,organization_member&per_page=100&page={page}&sort=updated"
+                f"{GITHUB_API_BASE_URL}/user/repos"
+                f"?visibility=all&affiliation=owner,collaborator,organization_member&per_page={REPOSITORY_PAGE_SIZE}&page={page}&sort=updated"
             )
         else:
-            url = f"https://api.github.com/users/{owner}/repos?per_page=100&page={page}&sort=updated"
+            url = f"{GITHUB_API_BASE_URL}/users/{owner}/repos?per_page={REPOSITORY_PAGE_SIZE}&page={page}&sort=updated"
         payload = github_get(url)
 
         if not isinstance(payload, list):
@@ -127,7 +126,7 @@ def user_is_contributor(full_name: str, username: str) -> bool:
     username_lc = username.lower()
 
     while True:
-        url = f"https://api.github.com/repos/{full_name}/contributors?per_page=100&page={page}"
+        url = f"{GITHUB_API_BASE_URL}/repos/{full_name}/contributors?per_page={CONTRIBUTOR_PAGE_SIZE}&page={page}"
         try:
             payload = github_get(url)
         except RuntimeError as error:
@@ -174,7 +173,7 @@ def count_languages(repos: list[dict], owner: str) -> Counter:
 
         if isinstance(full_name, str):
             try:
-                payload = github_get(f"https://api.github.com/repos/{full_name}/languages")
+                payload = github_get(f"{GITHUB_API_BASE_URL}/repos/{full_name}/languages")
                 if isinstance(payload, dict):
                     detected_languages = {
                         lang for lang, byte_count in payload.items() if isinstance(lang, str) and byte_count
@@ -267,7 +266,7 @@ def write_outputs(owner: str, counts: Counter) -> None:
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     sorted_counts = sorted(counts.items(), key=lambda item: (-item[1], item[0].lower()))
 
-    with OUTPUT_CSV.open("w", newline="", encoding="utf-8") as f:
+    with LANGUAGE_PROJECT_COUNTS_CSV.open("w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
         writer.writerow(["language", "count"])
         writer.writerows(sorted_counts)
@@ -282,16 +281,16 @@ def write_outputs(owner: str, counts: Counter) -> None:
             else "public_owner_only"
         ),
         "total_counted_repos": sum(counts.values()),
-        "csv_file": OUTPUT_CSV.name,
+        "csv_file": LANGUAGE_PROJECT_COUNTS_CSV.name,
     }
-    OUTPUT_JSON.write_text(json.dumps(metadata, indent=2), encoding="utf-8")
+    LANGUAGE_PROJECT_COUNTS_JSON.write_text(json.dumps(metadata, indent=2), encoding="utf-8")
 
-    print(f"Saved {OUTPUT_CSV} and {OUTPUT_JSON}")
+    print(f"Saved {LANGUAGE_PROJECT_COUNTS_CSV} and {LANGUAGE_PROJECT_COUNTS_JSON}")
 
 
 def write_coding_outputs(owner: str, daily_contribution_counts: dict[str, int], days: int) -> None:
-    coding_csv = OUTPUT_DIR / f"coding-days-{days}d.csv"
-    coding_json = OUTPUT_DIR / f"coding-days-{days}d.json"
+    coding_csv = coding_days_csv_path(days)
+    coding_json = coding_days_json_path(days)
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     now_sgt = datetime.now(SGT)
     start_day = now_sgt.date() - timedelta(days=days - 1)
@@ -335,7 +334,7 @@ def main() -> None:
         raise
 
     write_outputs(OWNER, counts)
-    for window_days in (90, 180, 365):
+    for window_days in SUPPORTED_WINDOWS:
         contribution_counts = count_contributions_by_day(OWNER, days=window_days)
         write_coding_outputs(OWNER, contribution_counts, days=window_days)
 
