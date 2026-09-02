@@ -110,6 +110,15 @@ Simple GPA estimation tool for NTU modules to help plan semester performance and
 <img src="img/github-stats-180d.svg" width="100%" alt="GitHub contributions over the last 180 days" />
 <img src="img/github-stats-365d.svg" width="100%" alt="GitHub contributions over the last year" />
 
+<img src="img/loc-analysis-365d.svg" width="100%" alt="Lines of Code analysis over the last year" />
+
+<details>
+<summary>View 90-day and 180-day LOC analysis</summary>
+
+<img src="img/loc-analysis-90d.svg" width="100%" alt="Lines of Code analysis over the last 90 days" />
+<img src="img/loc-analysis-180d.svg" width="100%" alt="Lines of Code analysis over the last 180 days" />
+</details>
+
 </div>
 
 

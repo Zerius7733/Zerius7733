@@ -22,6 +22,7 @@ def main() -> None:
     run("render_github_stats_card.py", "90")
     run("render_github_stats_card.py", "180")
     run("render_github_stats_card.py", "365")
+    run("render_loc_analysis.py")
 
 
 if __name__ == "__main__":
