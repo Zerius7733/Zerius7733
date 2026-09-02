@@ -42,7 +42,12 @@ def read_metadata(path: Path) -> dict:
         return {}
 
 
-def build_svg(owner: str, counts: list[tuple[str, int]], generated_at: str) -> str:
+def build_svg(
+    owner: str,
+    counts: list[tuple[str, int]],
+    generated_at: str,
+    repository_scope: str,
+) -> str:
     rows = sorted(counts, key=lambda item: (-item[1], item[0].lower()))
     max_count = max((count for _, count in rows), default=1)
 
@@ -58,12 +63,17 @@ def build_svg(owner: str, counts: list[tuple[str, int]], generated_at: str) -> s
     muted = "#8B949E"
     bar = "#58A6FF"
     bar_bg = "#30363D"
+    scope_label = (
+        "Owner repos plus accessible repos with your commits"
+        if repository_scope == "owner,collaborator,organization_member"
+        else "Public repositories owned by the profile"
+    )
 
     lines = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" role="img" aria-label="Projects by detected languages chart">',
         f'<text x="0" y="54" fill="{fg}" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="28" font-weight="700">Projects by Detected Languages</text>',
         f'<text x="0" y="79" fill="{muted}" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="14">Each detected repo language counts once - {escape(owner)}</text>',
-        f'<text x="0" y="98" fill="{muted}" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="14">Contributing repositories for both public and private included</text>',
+        f'<text x="0" y="98" fill="{muted}" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="14">{escape(scope_label)}</text>',
     ]
 
     if not rows:
@@ -96,13 +106,13 @@ def main() -> None:
     owner = metadata.get("owner", "Zerius7733")
     generated_at = metadata.get("generated_at_sgt") or datetime.now(SGT).strftime("%Y-%m-%d %H:%M:%S+08:00")
     generated_label = generated_at.replace("T", " ").replace("+08:00", " SGT")
+    repository_scope = metadata.get("repository_scope", "public_owner_only")
 
     OUTPUT_SVG.parent.mkdir(parents=True, exist_ok=True)
-    svg = build_svg(owner, counts, generated_label)
+    svg = build_svg(owner, counts, generated_label, repository_scope)
     OUTPUT_SVG.write_text(svg, encoding="utf-8")
     print(f"Saved {OUTPUT_SVG}")
 
 
 if __name__ == "__main__":
     main()
-

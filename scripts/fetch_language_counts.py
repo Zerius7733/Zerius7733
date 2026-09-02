@@ -33,7 +33,7 @@ OUTPUT_DIR = REPO_ROOT / "img"
 OUTPUT_CSV = OUTPUT_DIR / "language-project-counts.csv"
 OUTPUT_JSON = OUTPUT_DIR / "language-project-counts.json"
 SGT = ZoneInfo("Asia/Singapore")
-_FORK_RATE_LIMIT_WARNED = False
+_CONTRIBUTOR_RATE_LIMIT_WARNED = False
 _LANG_RATE_LIMIT_WARNED = False
 _COMMIT_RATE_LIMIT_WARNED = False
 
@@ -104,7 +104,7 @@ def fetch_repos(owner: str) -> list[dict]:
         if use_authenticated_endpoint:
             url = (
                 "https://api.github.com/user/repos"
-                f"?visibility=all&affiliation=owner&per_page=100&page={page}&sort=updated"
+                f"?visibility=all&affiliation=owner,collaborator,organization_member&per_page=100&page={page}&sort=updated"
             )
         else:
             url = f"https://api.github.com/users/{owner}/repos?per_page=100&page={page}&sort=updated"
@@ -115,25 +115,16 @@ def fetch_repos(owner: str) -> list[dict]:
         if not payload:
             break
 
-        if use_authenticated_endpoint:
-            repos.extend(
-                [
-                    repo
-                    for repo in payload
-                    if (repo.get("owner") or {}).get("login", "").lower() == owner.lower()
-                ]
-            )
-        else:
-            repos.extend(payload)
+        repos.extend(payload)
         page += 1
 
     return repos
 
 
-def owner_is_contributor(full_name: str, owner: str) -> bool:
-    global _FORK_RATE_LIMIT_WARNED
+def user_is_contributor(full_name: str, username: str) -> bool:
+    global _CONTRIBUTOR_RATE_LIMIT_WARNED
     page = 1
-    owner_lc = owner.lower()
+    username_lc = username.lower()
 
     while True:
         url = f"https://api.github.com/repos/{full_name}/contributors?per_page=100&page={page}"
@@ -141,9 +132,9 @@ def owner_is_contributor(full_name: str, owner: str) -> bool:
             payload = github_get(url)
         except RuntimeError as error:
             if "rate limit exceeded" in str(error).lower():
-                if not _FORK_RATE_LIMIT_WARNED:
-                    print("Warning: rate limit exceeded while checking fork contributors; skipping remaining fork checks.")
-                    _FORK_RATE_LIMIT_WARNED = True
+                if not _CONTRIBUTOR_RATE_LIMIT_WARNED:
+                    print("Warning: rate limit exceeded while checking repository contributors; skipping remaining contributor checks.")
+                    _CONTRIBUTOR_RATE_LIMIT_WARNED = True
                 return False
             raise
 
@@ -153,7 +144,7 @@ def owner_is_contributor(full_name: str, owner: str) -> bool:
         for contributor in payload:
             login = (contributor or {}).get("login")
             contributions = (contributor or {}).get("contributions", 0)
-            if isinstance(login, str) and login.lower() == owner_lc and contributions > 0:
+            if isinstance(login, str) and login.lower() == username_lc and contributions > 0:
                 return True
         page += 1
 
@@ -161,13 +152,21 @@ def owner_is_contributor(full_name: str, owner: str) -> bool:
 def count_languages(repos: list[dict], owner: str) -> Counter:
     global _LANG_RATE_LIMIT_WARNED
     counts: Counter = Counter()
+    owner_lc = owner.lower()
 
     for repo in repos:
-        if repo.get("fork"):
+        repo_owner = (repo.get("owner") or {}).get("login")
+        owned_by_user = isinstance(repo_owner, str) and repo_owner.lower() == owner_lc
+
+        # Keep all repositories owned by the profile owner, but only include
+        # collaborator- or organization-owned repositories when the profile
+        # owner has actually contributed commits to them. This prevents every
+        # accessible team repository from inflating the language chart.
+        if repo.get("fork") or not owned_by_user:
             if not TOKEN:
                 continue
             full_name = repo.get("full_name")
-            if not isinstance(full_name, str) or not owner_is_contributor(full_name, owner):
+            if not isinstance(full_name, str) or not user_is_contributor(full_name, owner):
                 continue
 
         full_name = repo.get("full_name")
@@ -276,7 +275,12 @@ def write_outputs(owner: str, counts: Counter) -> None:
     metadata = {
         "owner": owner,
         "generated_at_sgt": datetime.now(SGT).isoformat(),
-        "counting_mode": "repo_presence",
+        "counting_mode": "repo_presence_owner_plus_contributor_repos",
+        "repository_scope": (
+            "owner,collaborator,organization_member"
+            if TOKEN
+            else "public_owner_only"
+        ),
         "total_counted_repos": sum(counts.values()),
         "csv_file": OUTPUT_CSV.name,
     }
