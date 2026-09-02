@@ -156,7 +156,7 @@ def build_svg(owner: str, rows: list[tuple[str, int]], metadata: dict, window_da
     weeks, maximum = build_calendar(rows)
     period_label = "last year" if window_days == 365 else f"last {window_days} days"
     width = 1200
-    height = 440
+    height = 400
     foreground = "#F0F6FC"
     muted = "#8B949E"
     panel = "#161B22"
@@ -167,11 +167,12 @@ def build_svg(owner: str, rows: list[tuple[str, int]], metadata: dict, window_da
     calendar_x = 40
     calendar_y = 55
     calendar_w = 920
-    calendar_h = 215
-    grid_x = 92
-    grid_y = 134
+    calendar_h = 185
+    grid_y = 115
     cell_size = 13
     gap = 3
+    calendar_grid_width = len(weeks) * (cell_size + gap) - gap if weeks else 0
+    grid_x = calendar_x+10 + (calendar_w - calendar_grid_width) / 2 if calendar_grid_width else calendar_x + 52
     footer_y = height - 12
 
     lines = [
@@ -181,14 +182,13 @@ def build_svg(owner: str, rows: list[tuple[str, int]], metadata: dict, window_da
         f'<text x="1160" y="32" text-anchor="end" fill="{muted}" font-family="{font_family}" font-size="15">{escape(period_label.title())}</text>',
         f'<rect x="{calendar_x}" y="{calendar_y}" width="{calendar_w}" height="{calendar_h}" rx="6" fill="{panel}" stroke="{panel_border}" stroke-width="1" />',
         f'<rect x="980" y="{calendar_y}" width="180" height="{calendar_h}" rx="6" fill="{panel}" stroke="{panel_border}" stroke-width="1" />',
-        f'<text x="58" y="82" fill="{foreground}" font-family="{font_family}" font-size="18" font-weight="700">Contribution Calendar</text>',
-        f'<text x="58" y="104" fill="{muted}" font-family="{font_family}" font-size="15">{total_contributions:,} Contributions</text>',
+        f'<text x="58" y="80" fill="{muted}" font-family="{font_family}" font-size="15">{total_contributions:,} Contributions</text>',
     ]
 
     for row_index, label in ((1, "Mon"), (3, "Wed"), (5, "Fri")):
         y = grid_y + row_index * (cell_size + gap) + cell_size - 1
         lines.append(
-            f'<text x="78" y="{y}" text-anchor="end" fill="{foreground}" font-family="{font_family}" font-size="13">{label}</text>'
+            f'<text x="{grid_x - 10:.1f}" y="{y}" text-anchor="end" fill="{foreground}" font-family="{font_family}" font-size="13">{label}</text>'
         )
 
     previous_month = ""
@@ -220,32 +220,34 @@ def build_svg(owner: str, rows: list[tuple[str, int]], metadata: dict, window_da
     active_progress = active_days / max(1, len(daily_counts(rows)))
     lines.extend(
         [
-            *ring_lines(1070, 145, str(active_days), active_progress, green, "Active Days", foreground, muted, font_family, radius=34),
+            *ring_lines(1070, 132, str(active_days), active_progress, green, "Active Days", foreground, muted, font_family, radius=34),
         ]
     )
 
-    card_y = 288
+    card_y = 255
     card_w = 270
     card_h = 120
-    card_gap = 10
-    card_centers = [40 + index * (card_w + card_gap) + card_w // 2 for index in range(4)]
+    content_left = 40
+    content_right = 1160
+    card_gap = (content_right - content_left - card_w * 4) / 3
+    card_centers = [content_left + index * (card_w + card_gap) + card_w / 2 for index in range(4)]
     for index in range(4):
-        card_x = 40 + index * (card_w + card_gap)
+        card_x = content_left + index * (card_w + card_gap)
         lines.append(
-            f'<rect x="{card_x}" y="{card_y}" width="{card_w}" height="{card_h}" rx="6" fill="{panel}" stroke="{panel_border}" stroke-width="1" />'
+            f'<rect x="{card_x:.1f}" y="{card_y}" width="{card_w}" height="{card_h}" rx="6" fill="{panel}" stroke="{panel_border}" stroke-width="1" />'
         )
 
     total_days = max(1, len(daily_counts(rows)))
-    lines.extend(ring_lines(card_centers[0], 329, str(longest_streak), longest_streak / total_days, green, "Longest Streak", foreground, muted, font_family))
-    lines.extend(ring_lines(card_centers[1], 329, str(longest_gap), longest_gap / total_days, "#F85149", "Longest Gap", foreground, muted, font_family))
-    lines.extend(ring_lines(card_centers[2], 329, f"{weekend_activity}%", weekend_activity / 100, "#58A6FF", "Weekend Activity", foreground, muted, font_family))
+    lines.extend(ring_lines(card_centers[0], 296, str(longest_streak), longest_streak / total_days, green, "Longest Streak", foreground, muted, font_family))
+    lines.extend(ring_lines(card_centers[1], 296, str(longest_gap), longest_gap / total_days, "#F85149", "Longest Gap", foreground, muted, font_family))
+    lines.extend(ring_lines(card_centers[2], 296, f"{weekend_activity}%", weekend_activity / 100, "#58A6FF", "Weekend Activity", foreground, muted, font_family))
 
     busiest_date_text = busiest_date.strftime("%m/%d/%Y") if busiest_date else "No data"
     lines.extend(
         [
-            f'<text x="{card_centers[3]}" y="324" text-anchor="middle" fill="{green}" font-family="{font_family}" font-size="19" font-weight="700">{busiest_count} Contributions</text>',
-            f'<text x="{card_centers[3]}" y="348" text-anchor="middle" fill="{foreground}" font-family="{font_family}" font-size="16" font-weight="600">on {busiest_date_text}</text>',
-            f'<text x="{card_centers[3]}" y="382" text-anchor="middle" fill="{muted}" font-family="{font_family}" font-size="15">Busiest Day</text>',
+            f'<text x="{card_centers[3]}" y="294" text-anchor="middle" fill="{green}" font-family="{font_family}" font-size="19" font-weight="700">{busiest_count} Contributions</text>',
+            f'<text x="{card_centers[3]}" y="318" text-anchor="middle" fill="{foreground}" font-family="{font_family}" font-size="16" font-weight="600">on {busiest_date_text}</text>',
+            f'<text x="{card_centers[3]}" y="357" text-anchor="middle" fill="{muted}" font-family="{font_family}" font-size="15">Busiest Day</text>',
             f'<text x="40" y="{footer_y}" fill="{muted}" font-family="{font_family}" font-size="11">Updated: {escape(generated_at)}</text>',
             "</svg>",
         ]
