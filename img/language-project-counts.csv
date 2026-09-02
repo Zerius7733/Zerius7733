@@ -1,18 +1,19 @@
 language,count
-Python,14
-HTML,10
-JavaScript,8
-CSS,7
-Dockerfile,6
-TypeScript,5
-Jupyter Notebook,4
+Python,18
+HTML,15
+JavaScript,12
+CSS,9
+Dockerfile,7
+TypeScript,7
+Jupyter Notebook,6
 Shell,4
 PLpgSQL,3
 C,2
+Java,2
 Other,2
 Assembly,1
 HCL,1
-Java,1
 Makefile,1
+Mako,1
 PowerShell,1
 Procfile,1

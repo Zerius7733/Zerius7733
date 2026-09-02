@@ -1,0 +1,173 @@
+{
+  "owner": "Zerius7733",
+  "generated_at_sgt": "2026-09-02T21:26:43.432288+08:00",
+  "repository_scope": "owner,collaborator,organization_member",
+  "source": "GitHub REST commit file statistics",
+  "windows": {
+    "90": {
+      "window_days": 90,
+      "commit_count": 677,
+      "active_days": 57,
+      "additions": 556084,
+      "deletions": 145611,
+      "lines_changed": 701695,
+      "lines_changed_per_day": 7797,
+      "typical_commit_additions": 98,
+      "typical_commit_deletions": 14,
+      "languages": [
+        {
+          "name": "TypeScript",
+          "lines": 260498
+        },
+        {
+          "name": "C",
+          "lines": 103631
+        },
+        {
+          "name": "C/C++",
+          "lines": 99157
+        },
+        {
+          "name": "Python",
+          "lines": 80554
+        },
+        {
+          "name": "SQL",
+          "lines": 69879
+        }
+      ],
+      "repositories": [
+        {
+          "name": "Private repositories",
+          "lines": 641320
+        },
+        {
+          "name": "Zerius7733/tictac-techjam",
+          "lines": 35545
+        },
+        {
+          "name": "Zerius7733/AWS-CockroachDB-Hackathon",
+          "lines": 16702
+        },
+        {
+          "name": "jeanetteong/dietbet",
+          "lines": 4711
+        },
+        {
+          "name": "Zerius7733/Zerius7733",
+          "lines": 2490
+        }
+      ]
+    },
+    "180": {
+      "window_days": 180,
+      "commit_count": 980,
+      "active_days": 98,
+      "additions": 806105,
+      "deletions": 364440,
+      "lines_changed": 1170545,
+      "lines_changed_per_day": 6503,
+      "typical_commit_additions": 97,
+      "typical_commit_deletions": 17,
+      "languages": [
+        {
+          "name": "TypeScript",
+          "lines": 312422
+        },
+        {
+          "name": "JSON",
+          "lines": 237237
+        },
+        {
+          "name": "JavaScript",
+          "lines": 126173
+        },
+        {
+          "name": "Python",
+          "lines": 117794
+        },
+        {
+          "name": "C",
+          "lines": 103631
+        }
+      ],
+      "repositories": [
+        {
+          "name": "Private repositories",
+          "lines": 758926
+        },
+        {
+          "name": "Zerius7733/FinTech",
+          "lines": 346387
+        },
+        {
+          "name": "Zerius7733/tictac-techjam",
+          "lines": 35545
+        },
+        {
+          "name": "Zerius7733/AWS-CockroachDB-Hackathon",
+          "lines": 16702
+        },
+        {
+          "name": "jeanetteong/dietbet",
+          "lines": 4711
+        }
+      ]
+    },
+    "365": {
+      "window_days": 365,
+      "commit_count": 1309,
+      "active_days": 152,
+      "additions": 2220054,
+      "deletions": 427735,
+      "lines_changed": 2647789,
+      "lines_changed_per_day": 7254,
+      "typical_commit_additions": 77,
+      "typical_commit_deletions": 14,
+      "languages": [
+        {
+          "name": "HTML",
+          "lines": 623200
+        },
+        {
+          "name": "JSON",
+          "lines": 363101
+        },
+        {
+          "name": "TypeScript",
+          "lines": 326754
+        },
+        {
+          "name": "Python",
+          "lines": 177088
+        },
+        {
+          "name": "JavaScript",
+          "lines": 161041
+        }
+      ],
+      "repositories": [
+        {
+          "name": "Private repositories",
+          "lines": 1459139
+        },
+        {
+          "name": "Zerius7733/FinTech",
+          "lines": 467144
+        },
+        {
+          "name": "Zerius7733/Network-Traffic-Data-Analysis",
+          "lines": 390383
+        },
+        {
+          "name": "Zerius7733/TechFest-2026",
+          "lines": 236140
+        },
+        {
+          "name": "Zerius7733/tictac-techjam",
+          "lines": 35545
+        }
+      ]
+    }
+  }
+}
