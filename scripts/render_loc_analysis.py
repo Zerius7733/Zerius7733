@@ -1,3 +1,4 @@
+import hashlib
 import json
 import math
 from collections import Counter
@@ -10,6 +11,9 @@ from xml.sax.saxutils import escape
 from config import (
     COMMIT_PAGE_SIZE,
     GITHUB_API_BASE_URL,
+    LOC_CACHE_DIR,
+    LOC_CACHE_JSON,
+    LOC_CACHE_VERSION,
     LOC_ANALYSIS_JSON,
     OUTPUT_DIR,
     OWNER,
@@ -82,7 +86,17 @@ def has_commit_details(commit: dict) -> bool:
     return isinstance(commit.get("stats"), dict) and isinstance(commit.get("files"), list)
 
 
-def fetch_repo_commits(full_name: str, owner: str, start_day: date, end_day: date) -> list[dict]:
+def cache_id(full_name: str, sha: str) -> str:
+    return hashlib.sha256(f"{full_name}:{sha}".encode("utf-8")).hexdigest()
+
+
+def fetch_repo_commits(
+    full_name: str,
+    owner: str,
+    start_day: date,
+    end_day: date,
+    fallback_language: str = "Other",
+) -> list[dict]:
     since = datetime.combine(start_day, time.min, tzinfo=SGT).astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
     until = datetime.combine(end_day, time.max, tzinfo=SGT).astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
     records: list[dict] = []
@@ -129,21 +143,27 @@ def fetch_repo_commits(full_name: str, owner: str, start_day: date, end_day: dat
 
             stats = details.get("stats") if isinstance(details, dict) else None
             files = details.get("files") if isinstance(details, dict) else None
+            additions = as_int((stats or {}).get("additions"))
+            deletions = as_int((stats or {}).get("deletions"))
+            changed = additions + deletions
+            language_lines: Counter[str] = Counter()
+            for file in (files or []):
+                if not isinstance(file, dict) or not isinstance(file.get("filename"), str):
+                    continue
+                file_changed = as_int(file.get("additions")) + as_int(file.get("deletions"))
+                language = language_for_filename(file["filename"], fallback_language)
+                language_lines[language] += file_changed
+            if not language_lines or sum(language_lines.values()) == 0:
+                language_lines[fallback_language or "Other"] += changed
+
             records.append(
                 {
+                    "commit_id": cache_id(full_name, sha),
                     "date": day_value.isoformat(),
                     "repository": full_name,
-                    "additions": as_int((stats or {}).get("additions")),
-                    "deletions": as_int((stats or {}).get("deletions")),
-                    "files": [
-                        {
-                            "filename": file.get("filename"),
-                            "additions": as_int(file.get("additions")),
-                            "deletions": as_int(file.get("deletions")),
-                        }
-                        for file in (files or [])
-                        if isinstance(file, dict) and isinstance(file.get("filename"), str)
-                    ],
+                    "additions": additions,
+                    "deletions": deletions,
+                    "language_lines": dict(language_lines),
                 }
             )
 
@@ -203,17 +223,23 @@ def aggregate(records: list[dict], window_days: int, today: date) -> dict:
         changed = record_additions + record_deletions
         repository_totals[repository] += changed
 
-        files = record.get("files") if isinstance(record.get("files"), list) else []
-        file_lines = 0
-        for file in files:
-            if not isinstance(file, dict):
-                continue
-            file_changed = as_int(file.get("additions")) + as_int(file.get("deletions"))
-            file_lines += file_changed
-            language = language_for_filename(str(file.get("filename", "")), primary_language)
-            language_totals[language] += file_changed
-        if not files or file_lines == 0:
-            language_totals[primary_language] += changed
+        cached_language_lines = record.get("language_lines")
+        if isinstance(cached_language_lines, dict):
+            for language, lines in cached_language_lines.items():
+                if isinstance(language, str):
+                    language_totals[language] += as_int(lines)
+        else:
+            files = record.get("files") if isinstance(record.get("files"), list) else []
+            file_lines = 0
+            for file in files:
+                if not isinstance(file, dict):
+                    continue
+                file_changed = as_int(file.get("additions")) + as_int(file.get("deletions"))
+                file_lines += file_changed
+                language = language_for_filename(str(file.get("filename", "")), primary_language)
+                language_totals[language] += file_changed
+            if not files or file_lines == 0:
+                language_totals[primary_language] += changed
 
     total_changed = additions + deletions
     active_days = len({record["date"] for record in window_records})
@@ -236,6 +262,91 @@ def aggregate(records: list[dict], window_days: int, today: date) -> dict:
         "languages": top_items(language_totals),
         "repositories": top_items(repository_totals),
     }
+
+
+def read_loc_cache(owner: str) -> tuple[list[dict], date | None]:
+    if not LOC_CACHE_JSON.exists():
+        return [], None
+
+    try:
+        payload = json.loads(LOC_CACHE_JSON.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as error:
+        print(f"Warning: unable to read LOC cache; rebuilding it: {error}")
+        return [], None
+
+    if not isinstance(payload, dict):
+        print("Warning: LOC cache has an unexpected format; rebuilding it.")
+        return [], None
+
+    if payload.get("version") != LOC_CACHE_VERSION or payload.get("owner") != owner:
+        print("Warning: LOC cache version or owner changed; rebuilding it.")
+        return [], None
+
+    cached_records: list[dict] = []
+    for record in payload.get("records", []):
+        if not isinstance(record, dict):
+            continue
+        commit_id = record.get("commit_id")
+        record_date = record.get("date")
+        repository = record.get("repository")
+        language_lines = record.get("language_lines")
+        if not all(isinstance(value, str) for value in (commit_id, record_date, repository)):
+            continue
+        if not isinstance(language_lines, dict):
+            continue
+        try:
+            date.fromisoformat(record_date)
+        except ValueError:
+            continue
+        cached_records.append(
+            {
+                "commit_id": commit_id,
+                "date": record_date,
+                "repository": repository,
+                "additions": as_int(record.get("additions")),
+                "deletions": as_int(record.get("deletions")),
+                "language_lines": {
+                    language: as_int(lines)
+                    for language, lines in language_lines.items()
+                    if isinstance(language, str)
+                },
+            }
+        )
+
+    last_collected_text = payload.get("last_collected_day")
+    try:
+        last_collected_day = date.fromisoformat(last_collected_text)
+    except (TypeError, ValueError):
+        last_collected_day = None
+    return cached_records, last_collected_day
+
+
+def write_loc_cache(owner: str, last_collected_day: date, records: list[dict]) -> None:
+    cache_records = []
+    for record in records:
+        cache_records.append(
+            {
+                "commit_id": record["commit_id"],
+                "date": record["date"],
+                "repository": record["repository"],
+                "additions": as_int(record.get("additions")),
+                "deletions": as_int(record.get("deletions")),
+                "language_lines": record.get("language_lines", {}),
+            }
+        )
+    LOC_CACHE_DIR.mkdir(parents=True, exist_ok=True)
+    LOC_CACHE_JSON.write_text(
+        json.dumps(
+            {
+                "version": LOC_CACHE_VERSION,
+                "owner": owner,
+                "last_collected_day": last_collected_day.isoformat(),
+                "records": cache_records,
+            },
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
 
 
 def format_name(name: str, maximum: int = 18) -> str:
@@ -401,18 +512,42 @@ def build_svg(summary: dict, owner: str) -> str:
 def collect_records(owner: str, today: date) -> list[dict]:
     start_day = today - timedelta(days=max(SUPPORTED_WINDOWS) - 1)
     repos = scoped_repositories(fetch_repos(owner), owner)
-    print(f"Collecting LOC statistics from {len(repos)} accessible repositories")
-    records: list[dict] = []
+    cached_records, last_collected_day = read_loc_cache(owner)
+    if last_collected_day is None:
+        fetch_start_day = start_day
+        records: list[dict] = []
+        print(f"No usable LOC cache found; building the initial {max(SUPPORTED_WINDOWS)}-day cache")
+    else:
+        fetch_start_day = max(start_day, min(today, last_collected_day) - timedelta(days=1))
+        records = [
+            record
+            for record in cached_records
+            if start_day <= date.fromisoformat(record["date"]) <= today
+        ]
+        print(
+            f"Using LOC cache from {last_collected_day}; fetching commits from {fetch_start_day} "
+            f"across {len(repos)} accessible repositories"
+        )
+
+    new_records: list[dict] = []
     for index, repo in enumerate(repos, start=1):
         full_name = str(repo.get("full_name"))
         primary_language = str(repo.get("language") or "Other")
-        print(f"[{index}/{len(repos)}] Reading commits from {full_name}")
-        repo_records = fetch_repo_commits(full_name, owner, start_day, today)
+        print(f"[{index}/{len(repos)}] Reading commits since {fetch_start_day} from {full_name}")
+        repo_records = fetch_repo_commits(full_name, owner, fetch_start_day, today, primary_language)
         display_repository = "Private repositories" if repo.get("private") else full_name
         for record in repo_records:
             record["repository"] = display_repository
             record["primary_language"] = primary_language
-        records.extend(repo_records)
+        new_records.extend(repo_records)
+
+    merged_records = {
+        record["commit_id"]: record
+        for record in [*records, *new_records]
+        if isinstance(record.get("commit_id"), str)
+    }
+    records = sorted(merged_records.values(), key=lambda record: (record["date"], record["commit_id"]))
+    write_loc_cache(owner, today, records)
     return records
 
 

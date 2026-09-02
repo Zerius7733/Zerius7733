@@ -45,6 +45,9 @@ LANGUAGE_PROJECT_COUNTS_CSV = OUTPUT_DIR / "language-project-counts.csv"
 LANGUAGE_PROJECT_COUNTS_JSON = OUTPUT_DIR / "language-project-counts.json"
 LANGUAGE_PROJECT_CHART_SVG = OUTPUT_DIR / "language-project-chart.svg"
 LOC_ANALYSIS_JSON = OUTPUT_DIR / "loc-analysis.json"
+LOC_CACHE_DIR = REPO_ROOT / ".cache" / "loc-analysis"
+LOC_CACHE_JSON = LOC_CACHE_DIR / "records.json"
+LOC_CACHE_VERSION = 1
 
 
 def coding_days_csv_path(days: int) -> Path:

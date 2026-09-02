@@ -21,6 +21,15 @@ jobs:
         with:
           python-version: "3.x"
 
+      - name: Restore LOC analysis cache
+        uses: actions/cache/restore@v5
+        with:
+          path: .cache/loc-analysis
+          key: loc-analysis-${{ github.ref_name }}-${{ github.run_id }}
+          restore-keys: |
+            loc-analysis-${{ github.ref_name }}-
+            loc-analysis-
+
       - name: Generate chart
         env:
           GH_TOKEN: ${{ secrets.GH_STATS_TOKEN }}
@@ -32,3 +41,10 @@ jobs:
         with:
           commit_message: "chore: update language project chart"
           file_pattern: img/language-project-chart.svg img/language-project-counts.json img/language-project-counts.csv img/coding-days-*.svg img/coding-days-*.json img/coding-days-*.csv img/github-stats-*.svg img/loc-analysis-*.svg img/loc-analysis.json
+
+      - name: Save LOC analysis cache
+        if: success()
+        uses: actions/cache/save@v5
+        with:
+          path: .cache/loc-analysis
+          key: loc-analysis-${{ github.ref_name }}-${{ github.run_id }}
