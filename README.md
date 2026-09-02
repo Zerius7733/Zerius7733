@@ -22,13 +22,23 @@ I am a Computer Engineering student focused on building practical software with 
 </div>
 
 # Hackathons :computer:
+**<ins>TicTac TechJam - Volc Agent Launchpad</ins>**<br>
+Hackathon proof of concept for building and running AI agents, with a browser playground, persistent workspaces, multi-agent collaboration, and policy-scoped access to protected resources.
+- Stack: TypeScript, React, Vite, Fastify, SQLite, Docker/Podman, Volcengine Ark Responses API, Codex CLI
+- Repo: [tictac-techjam](https://github.com/Zerius7733/tictac-techjam)
+
+**<ins>PSA Code Sprint 2.0 2026 - Sprinternship</ins>**<br>
+Interactive port-resilience simulator for human-governed incident response: simulates disruption alerts, uses an AI agent to investigate and classify them, and requires human approval before recovery actions run.
+- Stack: React, Vite, Express, OpenAI Responses API, Docker, Server-Sent Events
+- Repo: [PSA_SPRINTERNSHIP](https://github.com/simplyziannn/PSA_SPRINTERNSHIP)
+
 **<ins>AWS & CockroachDB Hackathon 2026</ins>**  
 Evidence-backed career agent that turns resume experience into durable, inspectable memory, ranks live job openings, and learns from user feedback while keeping account data isolated.
 - Stack: React, Node.js, Express, CockroachDB Cloud, vector search, OpenAI Responses and Embeddings APIs, AWS Lambda/ECS, Docker
 - Repo: [AWS-CockroachDB-Hackathon](https://github.com/Zerius7733/AWS-CockroachDB-Hackathon)
 
 **<ins>FinTech Innovators' Hackathon 2026 (Finalist, 4th Place)</ins>**  
-AI-powered wealth aggregated platform development platform with market news insight, portfolio analysis. 
+AI-powered wealth wellness platform that consolidates portfolio data, analyzes financial health, and delivers personalized market and retirement insights.
 - Stack: Python, FastAPI, LLM workflows, News Scraping
 - Repo: [FinTech-2026](https://github.com/Zerius7733/FinTech)
   
@@ -95,7 +105,7 @@ Simple GPA estimation tool for NTU modules to help plan semester performance and
 <img src="img/coding-days-180d.svg" width="100%" alt="Coding consistency over last 180 days" />
 <img src="img/coding-days-365d.svg" width="100%" alt="Coding consistency over last 365 days" />
 
-<!-- ![GitHub Stats](https://github-readme-stats-sigma-five.vercel.app/api?username=Zerius7733&show_icons=true&theme=chartreuse-dark&hide_border=false&border_color=238636&rank_icon=github&v=2) -->
+![GitHub Stats](https://github-readme-stats.vercel.app/api?username=Zerius7733&show_icons=true&theme=chartreuse-dark&hide_border=false&border_color=238636&rank_icon=github&v=2)
 
 
 
