@@ -107,7 +107,7 @@ Simple GPA estimation tool for NTU modules to help plan semester performance and
 
 <img src="img/github-stats.svg" width="100%" alt="GitHub contribution statistics" />
 
-
+![GitHub Stats](https://github-stats-extended.vercel.app/api?username=Zerius7733&show_icons=true&theme=chartreuse-dark&hide_border=false&border_color=238636&rank_icon=github&v=2)
 
 ![GitHub Streak](https://streak-stats.demolab.com?user=Zerius7733&theme=github_dark&hide_border=false&border_color=30363d)
 
