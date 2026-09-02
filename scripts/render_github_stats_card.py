@@ -161,9 +161,16 @@ def build_svg(owner: str, rows: list[tuple[str, int]], metadata: dict, window_da
     green = "#2EA043"
     font_family = "Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif"
 
-    calendar_x = 40
+    content_left = 40
+    content_right = 1160
+    bottom_card_w = 270
+    card_gap = (content_right - content_left - bottom_card_w * 4) / 3
+    active_card_w = 180
+    active_card_x = content_right - active_card_w
+
+    calendar_x = content_left
     calendar_y = 55
-    calendar_w = 920
+    calendar_w = active_card_x - calendar_x - card_gap
     calendar_h = 185
     grid_y = 115
     cell_size = 13
@@ -178,7 +185,7 @@ def build_svg(owner: str, rows: list[tuple[str, int]], metadata: dict, window_da
         f'<text x="40" y="32" fill="{foreground}" font-family="{font_family}" font-size="26">Contribution Calendar</text>',
         f'<text x="1160" y="32" text-anchor="end" fill="{muted}" font-family="{font_family}" font-size="15">{escape(period_label.title())}</text>',
         f'<rect x="{calendar_x}" y="{calendar_y}" width="{calendar_w}" height="{calendar_h}" rx="6" fill="{panel}" stroke="{panel_border}" stroke-width="1" />',
-        f'<rect x="980" y="{calendar_y}" width="180" height="{calendar_h}" rx="6" fill="{panel}" stroke="{panel_border}" stroke-width="1" />',
+        f'<rect x="{active_card_x:.1f}" y="{calendar_y}" width="{active_card_w}" height="{calendar_h}" rx="6" fill="{panel}" stroke="{panel_border}" stroke-width="1" />',
         f'<text x="58" y="80" fill="{muted}" font-family="{font_family}" font-size="15">{total_contributions:,} Contributions</text>',
     ]
 
@@ -217,16 +224,13 @@ def build_svg(owner: str, rows: list[tuple[str, int]], metadata: dict, window_da
     active_progress = active_days / max(1, len(daily_counts(rows)))
     lines.extend(
         [
-            *ring_lines(1070, 132, str(active_days), active_progress, green, "Active Days", foreground, muted, font_family, radius=34),
+            *ring_lines(active_card_x + active_card_w / 2, 132, str(active_days), active_progress, green, "Active Days", foreground, muted, font_family, radius=34),
         ]
     )
 
     card_y = 255
-    card_w = 270
+    card_w = bottom_card_w
     card_h = 120
-    content_left = 40
-    content_right = 1160
-    card_gap = (content_right - content_left - card_w * 4) / 3
     card_centers = [content_left + index * (card_w + card_gap) + card_w / 2 for index in range(4)]
     for index in range(4):
         card_x = content_left + index * (card_w + card_gap)
