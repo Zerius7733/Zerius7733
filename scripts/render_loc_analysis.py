@@ -248,6 +248,10 @@ def format_name(name: str, maximum: int = 18) -> str:
     return f"{name[: maximum - 1]}..."
 
 
+def item_color(index: int) -> str:
+    return LANGUAGE_COLORS[index % len(LANGUAGE_COLORS)]
+
+
 def donut_lines(
     items: list[dict],
     center_x: int,
@@ -267,17 +271,13 @@ def donut_lines(
     start_angle = -math.pi / 2
     middle_radius = (outer_radius + inner_radius) / 2
     stroke_width = outer_radius - inner_radius
-    label_min_y = center_y - outer_radius + 17
-    label_max_y = center_y + outer_radius + 15
-    label_gap = 16
-    placed_labels: list[tuple[float, float, float, float]] = []
     for index, item in enumerate(items):
         value = as_int(item.get("lines"))
         if value <= 0:
             continue
         fraction = value / total
         end_angle = start_angle + fraction * 2 * math.pi
-        color = LANGUAGE_COLORS[index % len(LANGUAGE_COLORS)]
+        color = item_color(index)
         if fraction >= 0.999999:
             lines.append(
                 f'<circle cx="{center_x}" cy="{center_y}" r="{middle_radius:.2f}" fill="none" stroke="{color}" stroke-width="{stroke_width}" />'
@@ -296,38 +296,48 @@ def donut_lines(
             )
             lines.append(f'<path d="{path}" fill="{color}" stroke="{panel}" stroke-width="2" />')
 
-        mid_angle = start_angle + (fraction * math.pi)
-        label_radius = outer_radius + 20
-        cosine = math.cos(mid_angle)
-        label_x = center_x + label_radius * cosine
-        label_y = center_y + label_radius * math.sin(mid_angle)
-        anchor = "middle"
-        if cosine > 0.35:
-            anchor = "start"
-            label_x = center_x + outer_radius + 4
-        elif cosine < -0.35:
-            anchor = "end"
-            label_x = center_x - outer_radius - 4
-        label = format_name(str(item.get("name", "Other")), maximum=14)
-        label_width = len(label) * 6.5
-        label_left = label_x - label_width / 2 if anchor == "middle" else label_x if anchor == "start" else label_x - label_width
-        label_right = label_x + label_width / 2 if anchor == "middle" else label_x + label_width if anchor == "start" else label_x
-        label_y = max(label_min_y, min(label_max_y, label_y))
-
-        # Keep labels away from the headings and from one another when small
-        # slices land near the same angle.
-        while any(
-            label_left < previous_right and label_right > previous_left and abs(label_y - previous_y) < label_gap
-            for previous_left, previous_right, previous_y, _ in placed_labels
-        ) and label_y < label_max_y:
-            label_y += label_gap
-        placed_labels.append((label_left, label_right, label_y, label_x))
-        lines.append(
-            f'<text x="{label_x:.1f}" y="{label_y:.1f}" text-anchor="{anchor}" fill="#C9D1D9" font-family="{font_family}" font-size="12">{escape(label)}</text>'
-        )
         start_angle = end_angle
 
     lines.append(f'<circle cx="{center_x}" cy="{center_y}" r="{inner_radius}" fill="{panel}" />')
+    return lines
+
+
+def legend_lines(
+    items: list[dict],
+    panel_x: int,
+    panel_y: int,
+    panel_width: int,
+    font_family: str,
+) -> list[str]:
+    valid_items = [
+        (index, item)
+        for index, item in enumerate(items)
+        if as_int(item.get("lines")) > 0
+    ]
+    if not valid_items:
+        return []
+
+    total = sum(as_int(item.get("lines")) for _, item in valid_items)
+    columns = 2
+    column_width = (panel_width - 32) / columns
+    first_baseline = panel_y + 245
+    row_gap = 15
+    lines: list[str] = []
+    for legend_index, (item_index, item) in enumerate(valid_items):
+        column = legend_index % columns
+        row = legend_index // columns
+        x = panel_x + 16 + column * column_width
+        baseline = first_baseline + row * row_gap
+        percentage = round((as_int(item.get("lines")) / total) * 100) if total else 0
+        label = f"{format_name(str(item.get('name', 'Other')), maximum=14)} - {percentage}%"
+        color = item_color(item_index)
+        tooltip = f"{item.get('name', 'Other')}: {as_int(item.get('lines')):,} lines changed"
+        lines.extend(
+            [
+                f'<rect x="{x:.1f}" y="{baseline - 10:.1f}" width="10" height="10" rx="2" fill="{color}"><title>{escape(tooltip)}</title></rect>',
+                f'<text x="{x + 16:.1f}" y="{baseline:.1f}" fill="#C9D1D9" font-family="{font_family}" font-size="11">{escape(label)}</text>',
+            ]
+        )
     return lines
 
 
@@ -365,8 +375,10 @@ def build_svg(summary: dict, owner: str) -> str:
         f'<text x="436" y="84" fill="{foreground}" font-family="{font_family}" font-size="18" font-weight="700">Most Active Repositories</text>',
         f'<text x="436" y="105" fill="{muted}" font-family="{font_family}" font-size="14">By LOC Changed</text>',
     ]
-    lines.extend(donut_lines(language_items, 215, 205, 99, 52, panel, font_family))
-    lines.extend(donut_lines(repository_items, 615, 205, 99, 52, panel, font_family))
+    lines.extend(donut_lines(language_items, 215, 190, 84, 45, panel, font_family))
+    lines.extend(donut_lines(repository_items, 615, 190, 84, 45, panel, font_family))
+    lines.extend(legend_lines(language_items, 20, 55, 390, font_family))
+    lines.extend(legend_lines(repository_items, 420, 55, 390, font_family))
 
     lines.extend(
         [

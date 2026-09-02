@@ -1,23 +1,23 @@
 {
   "owner": "Zerius7733",
-  "generated_at_sgt": "2026-09-02T23:04:04.305122+08:00",
+  "generated_at_sgt": "2026-09-03T00:59:39.166797+08:00",
   "repository_scope": "owner,collaborator,organization_member",
   "source": "GitHub REST commit file statistics",
   "windows": {
     "90": {
       "window_days": 90,
-      "commit_count": 679,
-      "active_days": 57,
-      "additions": 557284,
-      "deletions": 146490,
-      "lines_changed": 703774,
-      "lines_changed_per_day": 7820,
+      "commit_count": 669,
+      "active_days": 56,
+      "additions": 554757,
+      "deletions": 145468,
+      "lines_changed": 700225,
+      "lines_changed_per_day": 7780,
       "typical_commit_additions": 99,
       "typical_commit_deletions": 14,
       "languages": [
         {
           "name": "TypeScript",
-          "lines": 260498
+          "lines": 257000
         },
         {
           "name": "C",
@@ -29,7 +29,7 @@
         },
         {
           "name": "Python",
-          "lines": 82421
+          "lines": 82370
         },
         {
           "name": "SQL",
@@ -39,7 +39,7 @@
       "repositories": [
         {
           "name": "Private repositories",
-          "lines": 641320
+          "lines": 637771
         },
         {
           "name": "Zerius7733/tictac-techjam",
@@ -61,11 +61,11 @@
     },
     "180": {
       "window_days": 180,
-      "commit_count": 982,
-      "active_days": 98,
-      "additions": 807305,
-      "deletions": 365319,
-      "lines_changed": 1172624,
+      "commit_count": 981,
+      "active_days": 97,
+      "additions": 807304,
+      "deletions": 365318,
+      "lines_changed": 1172622,
       "lines_changed_per_day": 6515,
       "typical_commit_additions": 97,
       "typical_commit_deletions": 17,
@@ -116,8 +116,8 @@
     },
     "365": {
       "window_days": 365,
-      "commit_count": 1311,
-      "active_days": 152,
+      "commit_count": 1309,
+      "active_days": 151,
       "additions": 2221254,
       "deletions": 428614,
       "lines_changed": 2649868,

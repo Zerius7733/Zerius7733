@@ -6,7 +6,7 @@ from datetime import date, timedelta
 from pathlib import Path
 from xml.sax.saxutils import escape
 
-from config import SUPPORTED_WINDOWS, coding_days_csv_path, coding_days_json_path, github_stats_svg_path
+from config import OWNER, SUPPORTED_WINDOWS, coding_days_csv_path, coding_days_json_path, github_stats_svg_path
 
 
 def read_rows(path: Path) -> list[tuple[str, int]]:
@@ -265,7 +265,7 @@ def main() -> None:
     output_svg = github_stats_svg_path(window_days)
     rows = read_rows(input_csv)
     metadata = read_metadata(metadata_json)
-    owner = str(metadata.get("owner", "Zerius7733"))
+    owner = str(metadata.get("owner") or OWNER)
     output_svg.parent.mkdir(parents=True, exist_ok=True)
     output_svg.write_text(build_svg(owner, rows, metadata, window_days), encoding="utf-8")
     print(f"Saved {output_svg}")
