@@ -161,8 +161,8 @@ def build_svg(owner: str, rows: list[tuple[str, int]], metadata: dict, window_da
     green = "#2EA043"
     font_family = "Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif"
 
-    content_left = 40
-    content_right = 1160
+    content_left = 20
+    content_right = 1180
     bottom_card_w = 270
     card_gap = (content_right - content_left - bottom_card_w * 4) / 3
     active_card_w = 180

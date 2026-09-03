@@ -50,8 +50,9 @@ def build_svg(
     max_count = max((count for _, count in rows), default=1)
 
     width = 1200
-    chart_x = 150
-    chart_w = 1000
+    content_left = 20
+    chart_x = 170
+    chart_w = 980
     row_h = 44
     top_padding = 110
     bottom_padding = 54
@@ -69,14 +70,15 @@ def build_svg(
 
     lines = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" role="img" aria-label="Projects by detected languages chart">',
-        f'<text x="0" y="54" fill="{fg}" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="28" font-weight="700">Projects by Detected Languages</text>',
-        f'<text x="0" y="79" fill="{muted}" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="14">Each detected repo language counts once - {escape(owner)}</text>',
-        f'<text x="0" y="98" fill="{muted}" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="14">{escape(scope_label)}</text>',
+        f'<rect width="{width}" height="{height}" rx="8" fill="#0D1117" />',
+        f'<text x="{content_left}" y="54" fill="{fg}" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="28" font-weight="700">Projects by Detected Languages</text>',
+        f'<text x="{content_left}" y="79" fill="{muted}" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="14">Each detected repo language counts once - {escape(owner)}</text>',
+        f'<text x="{content_left}" y="98" fill="{muted}" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="14">{escape(scope_label)}</text>',
     ]
 
     if not rows:
         lines.append(
-            f'<text x="0" y="{top_padding + 18}" fill="{muted}" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="16">No language data found. Run fetch_language_counts.py first.</text>'
+            f'<text x="{content_left}" y="{top_padding + 18}" fill="{muted}" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="16">No language data found. Run fetch_language_counts.py first.</text>'
         )
     else:
         for idx, (language, count) in enumerate(rows):
@@ -84,7 +86,7 @@ def build_svg(
             bar_width = int((count / max_count) * chart_w)
             lines.extend(
                 [
-                    f'<text x="0" y="{y + 24}" fill="{fg}" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="16">{escape(language)}</text>',
+                    f'<text x="{content_left}" y="{y + 24}" fill="{fg}" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="16">{escape(language)}</text>',
                     f'<rect x="{chart_x}" y="{y + 8}" width="{chart_w}" height="18" rx="9" fill="{bar_bg}" />',
                     f'<rect x="{chart_x}" y="{y + 8}" width="{bar_width}" height="18" rx="9" fill="{bar}" />',
                     f'<text x="{chart_x + chart_w + 12}" y="{y + 23}" fill="{fg}" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="14">{count}</text>',
@@ -92,7 +94,7 @@ def build_svg(
             )
 
     lines.append(
-        f'<text x="0" y="{height - 22}" fill="{muted}" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12">Updated: {escape(generated_at)}</text>'
+        f'<text x="{content_left}" y="{height - 22}" fill="{muted}" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12">Updated: {escape(generated_at)}</text>'
     )
     lines.append("</svg>")
     return "\n".join(lines)
