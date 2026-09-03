@@ -22,6 +22,7 @@ def main() -> None:
         run("render_coding_days_chart.py", str(window_days))
         run("render_github_stats_card.py", str(window_days))
     run("render_loc_analysis.py")
+    run("render_commit_times.py")
 
 
 if __name__ == "__main__":

@@ -40,7 +40,7 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: update language project chart"
-          file_pattern: img/language-project-chart.svg img/language-project-counts.json img/language-project-counts.csv img/coding-days-*.svg img/coding-days-*.json img/coding-days-*.csv img/github-stats-*.svg img/loc-analysis-*.svg img/loc-analysis.json
+          file_pattern: img/language-project-chart.svg img/language-project-counts.json img/language-project-counts.csv img/coding-days-*.svg img/coding-days-*.json img/coding-days-*.csv img/github-stats-*.svg img/loc-analysis-*.svg img/loc-analysis.json img/commit-times-*.svg
 
       - name: Save LOC analysis cache
         if: success()

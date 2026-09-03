@@ -98,27 +98,38 @@ Simple GPA estimation tool for NTU modules to help plan semester performance and
 
 # GitHub Stats :bar_chart:
 
-<div align="center">
 <!--
-<img src="img/language-project-chart.svg" width="100%" alt="Projects by Primary Language" />
 <img src="img/coding-days-90d.svg" width="100%" alt="Coding consistency over last 90 days" />
 <img src="img/coding-days-180d.svg" width="100%" alt="Coding consistency over last 180 days" />
 <img src="img/coding-days-365d.svg" width="100%" alt="Coding consistency over last 365 days" />
 -->
 
+<img src="img/language-project-chart.svg" width="100%" alt="Projects by Primary Language" />
 
-<img src="img/github-stats-90d.svg" width="100%" alt="GitHub contributions over the last 90 days" />
-<img src="img/github-stats-180d.svg" width="100%" alt="GitHub contributions over the last 180 days" />
+<div align="left">
+<details>
+<summary><strong>Commit Times</strong></summary>
+<img src="img/commit-times-90d.svg" width="100%" alt="Commit times over the last 90 days" />
+<img src="img/commit-times-180d.svg" width="100%" alt="Commit times over the last 180 days" />
+</details>
+
+<img src="img/commit-times-365d.svg" width="100%" alt="Commit times over the last year" />
+
+<details>
+<summary><strong>GitHub Stats</strong></summary>
+<img src="img/github-stats-90d.svg" width="100%" alt="GitHub contributions over 90 days" />
+<img src="img/github-stats-180d.svg" width="100%" alt="GitHub contributions over 180 days" />
+</details>
+
 <img src="img/github-stats-365d.svg" width="100%" alt="GitHub contributions over the last year" />
 
+<details>
+<summary><strong>Lines of Code Analysis</strong></summary>
+<img src="img/loc-analysis-90d.svg" width="100%" alt="LOC analysis over 90 days" />
+<img src="img/loc-analysis-180d.svg" width="100%" alt="LOC analysis over 180 days" />
+</details>
 
-
-
-
-
-<img src="img/loc-analysis-90d.svg" width="100%" alt="Lines of Code analysis over the last 90 days" />
-<img src="img/loc-analysis-180d.svg" width="100%" alt="Lines of Code analysis over the last 180 days" />
-<img src="img/loc-analysis-365d.svg" width="100%" alt="Lines of Code analysis over the last 180 days" />
+<img src="img/loc-analysis-365d.svg" width="100%" alt="LOC analysis over the last year" />
 
 </div>
 
@@ -178,7 +189,7 @@ Simple GPA estimation tool for NTU modules to help plan semester performance and
 
 > Open to collaborations on AI, backend systems, and impactful student projects.
 
-
+</div>
 
 
 

@@ -47,7 +47,7 @@ LANGUAGE_PROJECT_CHART_SVG = OUTPUT_DIR / "language-project-chart.svg"
 LOC_ANALYSIS_JSON = OUTPUT_DIR / "loc-analysis.json"
 LOC_CACHE_DIR = REPO_ROOT / ".cache" / "loc-analysis"
 LOC_CACHE_JSON = LOC_CACHE_DIR / "records.json"
-LOC_CACHE_VERSION = 1
+LOC_CACHE_VERSION = 2
 
 
 def coding_days_csv_path(days: int) -> Path:
@@ -68,3 +68,7 @@ def github_stats_svg_path(days: int) -> Path:
 
 def loc_analysis_svg_path(days: int) -> Path:
     return OUTPUT_DIR / f"loc-analysis-{days}d.svg"
+
+
+def commit_times_svg_path(days: int) -> Path:
+    return OUTPUT_DIR / f"commit-times-{days}d.svg"

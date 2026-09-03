@@ -160,6 +160,11 @@ def fetch_repo_commits(
                 {
                     "commit_id": cache_id(full_name, sha),
                     "date": day_value.isoformat(),
+                    "committed_at": (
+                        (((details.get("commit") or {}).get("author") or {}).get("date"))
+                        if isinstance(details, dict)
+                        else ""
+                    ),
                     "repository": full_name,
                     "additions": additions,
                     "deletions": deletions,
@@ -302,6 +307,7 @@ def read_loc_cache(owner: str) -> tuple[list[dict], date | None]:
             {
                 "commit_id": commit_id,
                 "date": record_date,
+                "committed_at": record.get("committed_at", "") if isinstance(record.get("committed_at", ""), str) else "",
                 "repository": repository,
                 "additions": as_int(record.get("additions")),
                 "deletions": as_int(record.get("deletions")),
@@ -328,6 +334,7 @@ def write_loc_cache(owner: str, last_collected_day: date, records: list[dict]) -
             {
                 "commit_id": record["commit_id"],
                 "date": record["date"],
+                "committed_at": record.get("committed_at", ""),
                 "repository": record["repository"],
                 "additions": as_int(record.get("additions")),
                 "deletions": as_int(record.get("deletions")),

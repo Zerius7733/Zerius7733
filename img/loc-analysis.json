@@ -1,17 +1,17 @@
 {
   "owner": "Zerius7733",
-  "generated_at_sgt": "2026-09-03T12:16:14.582546+08:00",
+  "generated_at_sgt": "2026-09-03T17:06:59.293900+08:00",
   "repository_scope": "owner,collaborator,organization_member",
   "source": "GitHub REST commit file statistics",
   "windows": {
     "90": {
       "window_days": 90,
-      "commit_count": 681,
-      "active_days": 56,
-      "additions": 556668,
-      "deletions": 146937,
-      "lines_changed": 703605,
-      "lines_changed_per_day": 7818,
+      "commit_count": 683,
+      "active_days": 57,
+      "additions": 556815,
+      "deletions": 147084,
+      "lines_changed": 703899,
+      "lines_changed_per_day": 7821,
       "typical_commit_additions": 97,
       "typical_commit_deletions": 13,
       "languages": [
@@ -29,7 +29,7 @@
         },
         {
           "name": "Python",
-          "lines": 85585
+          "lines": 85789
         },
         {
           "name": "SQL",
@@ -51,7 +51,7 @@
         },
         {
           "name": "Zerius7733/Zerius7733",
-          "lines": 7949
+          "lines": 8243
         },
         {
           "name": "jeanetteong/dietbet",
@@ -61,12 +61,12 @@
     },
     "180": {
       "window_days": 180,
-      "commit_count": 993,
-      "active_days": 97,
-      "additions": 809215,
-      "deletions": 366787,
-      "lines_changed": 1176002,
-      "lines_changed_per_day": 6533,
+      "commit_count": 995,
+      "active_days": 98,
+      "additions": 809362,
+      "deletions": 366934,
+      "lines_changed": 1176296,
+      "lines_changed_per_day": 6535,
       "typical_commit_additions": 97,
       "typical_commit_deletions": 17,
       "languages": [
@@ -76,7 +76,7 @@
         },
         {
           "name": "JSON",
-          "lines": 237549
+          "lines": 237635
         },
         {
           "name": "JavaScript",
@@ -84,7 +84,7 @@
         },
         {
           "name": "Python",
-          "lines": 122876
+          "lines": 123080
         },
         {
           "name": "C",
@@ -110,18 +110,18 @@
         },
         {
           "name": "Zerius7733/Zerius7733",
-          "lines": 7983
+          "lines": 8277
         }
       ]
     },
     "365": {
       "window_days": 365,
-      "commit_count": 1321,
-      "active_days": 151,
-      "additions": 2223165,
-      "deletions": 430083,
-      "lines_changed": 2653248,
-      "lines_changed_per_day": 7269,
+      "commit_count": 1323,
+      "active_days": 152,
+      "additions": 2223312,
+      "deletions": 430230,
+      "lines_changed": 2653542,
+      "lines_changed_per_day": 7270,
       "typical_commit_additions": 77,
       "typical_commit_deletions": 14,
       "languages": [
@@ -131,7 +131,7 @@
         },
         {
           "name": "JSON",
-          "lines": 363413
+          "lines": 363499
         },
         {
           "name": "TypeScript",
@@ -139,7 +139,7 @@
         },
         {
           "name": "Python",
-          "lines": 182170
+          "lines": 182374
         },
         {
           "name": "JavaScript",
