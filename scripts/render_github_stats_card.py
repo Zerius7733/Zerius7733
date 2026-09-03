@@ -176,7 +176,12 @@ def build_svg(owner: str, rows: list[tuple[str, int]], metadata: dict, window_da
     cell_size = 13
     gap = 3
     calendar_grid_width = len(weeks) * (cell_size + gap) - gap if weeks else 0
-    grid_x = calendar_x+10 + (calendar_w - calendar_grid_width) / 2 if calendar_grid_width else calendar_x + 52
+    # Keep longer calendars visually close to the Active Days card. Shorter
+    # windows remain centered so they do not float awkwardly in the wide card.
+    if calendar_grid_width and calendar_grid_width > calendar_w * 0.75:
+        grid_x = calendar_x + calendar_w - calendar_grid_width - 14
+    else:
+        grid_x = calendar_x + 10 + (calendar_w - calendar_grid_width) / 2 if calendar_grid_width else calendar_x + 52
     footer_y = height - 12
 
     lines = [
