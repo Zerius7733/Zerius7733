@@ -151,6 +151,7 @@ def build_svg(owner: str, rows: list[tuple[str, int]], metadata: dict, window_da
         generated_at = "latest generated data"
 
     weeks, maximum = build_calendar(rows)
+    window_dates = {day_value for day_value, _ in daily_counts(rows)}
     period_label = "last year" if window_days == 365 else f"last {window_days} days"
     width = 1200
     height = 400
@@ -163,8 +164,8 @@ def build_svg(owner: str, rows: list[tuple[str, int]], metadata: dict, window_da
 
     content_left = 20
     content_right = 1180
-    bottom_card_w = 270
-    card_gap = (content_right - content_left - bottom_card_w * 4) / 3
+    card_gap = 10
+    bottom_card_w = (content_right - content_left - card_gap * 3) / 4
     active_card_w = 180
     active_card_x = content_right - active_card_w
 
@@ -217,9 +218,16 @@ def build_svg(owner: str, rows: list[tuple[str, int]], metadata: dict, window_da
             for row_index, (day_value, count) in enumerate(week):
                 x = grid_x + week_index * (cell_size + gap)
                 y = grid_y + row_index * (cell_size + gap)
-                tooltip = f"{day_value.isoformat()}: {count} contributions"
+                in_window = day_value in window_dates
+                fill = color_for_count(count, maximum) if in_window else "#0D1117"
+                opacity = '' if in_window else ' fill-opacity="0.72"'
+                tooltip = (
+                    f"{day_value.isoformat()}: {count} contributions"
+                    if in_window
+                    else f"{day_value.isoformat()}: outside selected period"
+                )
                 lines.append(
-                    f'<rect x="{x}" y="{y}" width="{cell_size}" height="{cell_size}" rx="2" fill="{color_for_count(count, maximum)}"><title>{escape(tooltip)}</title></rect>'
+                    f'<rect x="{x}" y="{y}" width="{cell_size}" height="{cell_size}" rx="2" fill="{fill}"{opacity}><title>{escape(tooltip)}</title></rect>'
                 )
     else:
         lines.append(

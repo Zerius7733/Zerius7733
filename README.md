@@ -109,6 +109,8 @@ Simple GPA estimation tool for NTU modules to help plan semester performance and
 <div align="left">
 <details>
 <summary><strong>Commit Times</strong></summary>
+<img src="img/commit-times-7d.svg" width="100%" alt="Commit times over the last 90 days" />
+<img src="img/commit-times-30d.svg" width="100%" alt="Commit times over the last 90 days" />
 <img src="img/commit-times-90d.svg" width="100%" alt="Commit times over the last 90 days" />
 <img src="img/commit-times-180d.svg" width="100%" alt="Commit times over the last 180 days" />
 </details>
@@ -117,6 +119,8 @@ Simple GPA estimation tool for NTU modules to help plan semester performance and
 
 <details>
 <summary><strong>GitHub Stats</strong></summary>
+<img src="img/github-stats-7d.svg" width="100%" alt="GitHub contributions over 90 days" />
+<img src="img/github-stats-30d.svg" width="100%" alt="GitHub contributions over 90 days" />
 <img src="img/github-stats-90d.svg" width="100%" alt="GitHub contributions over 90 days" />
 <img src="img/github-stats-180d.svg" width="100%" alt="GitHub contributions over 180 days" />
 </details>
@@ -125,6 +129,8 @@ Simple GPA estimation tool for NTU modules to help plan semester performance and
 
 <details>
 <summary><strong>Lines of Code Analysis</strong></summary>
+<img src="img/loc-analysis-7d.svg" width="100%" alt="LOC analysis over 90 days" />
+<img src="img/loc-analysis-30d.svg" width="100%" alt="LOC analysis over 90 days" />
 <img src="img/loc-analysis-90d.svg" width="100%" alt="LOC analysis over 90 days" />
 <img src="img/loc-analysis-180d.svg" width="100%" alt="LOC analysis over 180 days" />
 </details>

@@ -27,7 +27,7 @@ load_dotenv(REPO_ROOT / ".env")
 OWNER = os.environ.get("GITHUB_REPOSITORY_OWNER", "Zerius7733").strip() or "Zerius7733"
 TOKEN = os.environ.get("GH_TOKEN", "").strip()
 SGT = ZoneInfo("Asia/Singapore")
-SUPPORTED_WINDOWS = (90, 180, 365)
+SUPPORTED_WINDOWS = (7, 30, 90, 180, 365)
 
 # Shared GitHub API settings.
 GITHUB_API_BASE_URL = "https://api.github.com"
