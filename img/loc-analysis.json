@@ -1,19 +1,19 @@
 {
   "owner": "Zerius7733",
-  "generated_at_sgt": "2026-09-04T00:09:25.251743+08:00",
+  "generated_at_sgt": "2026-09-04T12:15:20.537805+08:00",
   "repository_scope": "owner,collaborator,organization_member",
   "source": "GitHub REST commit file statistics",
   "windows": {
     "7": {
       "window_days": 7,
-      "commit_count": 116,
-      "active_days": 7,
-      "additions": 280104,
-      "deletions": 21725,
-      "lines_changed": 301829,
-      "lines_changed_per_day": 43118,
-      "typical_commit_additions": 146,
-      "typical_commit_deletions": 13,
+      "commit_count": 111,
+      "active_days": 6,
+      "additions": 263654,
+      "deletions": 19565,
+      "lines_changed": 283219,
+      "lines_changed_per_day": 40460,
+      "typical_commit_additions": 142,
+      "typical_commit_deletions": 12,
       "languages": [
         {
           "name": "C",
@@ -29,21 +29,21 @@
         },
         {
           "name": "TypeScript",
-          "lines": 21639
+          "lines": 18513
         },
         {
-          "name": "Jupyter Notebook",
-          "lines": 13435
+          "name": "Markdown",
+          "lines": 11680
         }
       ],
       "repositories": [
         {
           "name": "Private repositories",
-          "lines": 249378
+          "lines": 239880
         },
         {
           "name": "Zerius7733/tictac-techjam",
-          "lines": 35545
+          "lines": 26433
         },
         {
           "name": "Zerius7733/Zerius7733",
@@ -171,14 +171,14 @@
     },
     "180": {
       "window_days": 180,
-      "commit_count": 1008,
-      "active_days": 98,
-      "additions": 816282,
-      "deletions": 369640,
-      "lines_changed": 1185922,
-      "lines_changed_per_day": 6588,
-      "typical_commit_additions": 96,
-      "typical_commit_deletions": 17,
+      "commit_count": 964,
+      "active_days": 97,
+      "additions": 749700,
+      "deletions": 329788,
+      "lines_changed": 1079488,
+      "lines_changed_per_day": 5997,
+      "typical_commit_additions": 92,
+      "typical_commit_deletions": 15,
       "languages": [
         {
           "name": "TypeScript",
@@ -186,19 +186,19 @@
         },
         {
           "name": "JSON",
-          "lines": 237901
+          "lines": 183333
         },
         {
           "name": "Python",
-          "lines": 131262
-        },
-        {
-          "name": "JavaScript",
-          "lines": 126173
+          "lines": 127535
         },
         {
           "name": "C",
           "lines": 104152
+        },
+        {
+          "name": "C/C++",
+          "lines": 99190
         }
       ],
       "repositories": [
@@ -208,7 +208,7 @@
         },
         {
           "name": "Zerius7733/FinTech",
-          "lines": 346387
+          "lines": 239953
         },
         {
           "name": "Zerius7733/tictac-techjam",
