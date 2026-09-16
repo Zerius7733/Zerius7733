@@ -1,27 +1,31 @@
 {
   "owner": "Zerius7733",
-  "generated_at_sgt": "2026-09-15T12:40:25.814362+08:00",
+  "generated_at_sgt": "2026-09-16T12:35:41.028653+08:00",
   "repository_scope": "owner,collaborator,organization_member",
   "source": "GitHub REST commit file statistics",
   "windows": {
     "7": {
       "window_days": 7,
-      "commit_count": 3,
-      "active_days": 2,
-      "additions": 227,
-      "deletions": 1,
-      "lines_changed": 228,
-      "lines_changed_per_day": 33,
-      "typical_commit_additions": 2,
-      "typical_commit_deletions": 0,
+      "commit_count": 23,
+      "active_days": 3,
+      "additions": 3210,
+      "deletions": 237,
+      "lines_changed": 3447,
+      "lines_changed_per_day": 492,
+      "typical_commit_additions": 14,
+      "typical_commit_deletions": 4,
       "languages": [
         {
-          "name": "Markdown",
-          "lines": 225
+          "name": "JavaScript",
+          "lines": 3042
         },
         {
-          "name": "JavaScript",
-          "lines": 3
+          "name": "Markdown",
+          "lines": 258
+        },
+        {
+          "name": "CSS",
+          "lines": 147
         },
         {
           "name": "C",
@@ -31,7 +35,7 @@
       "repositories": [
         {
           "name": "Private repositories",
-          "lines": 225
+          "lines": 3444
         },
         {
           "name": "Zerius7733/Email-Generator-Extension",
@@ -41,14 +45,14 @@
     },
     "30": {
       "window_days": 30,
-      "commit_count": 177,
-      "active_days": 22,
-      "additions": 314689,
-      "deletions": 23968,
-      "lines_changed": 338657,
-      "lines_changed_per_day": 11289,
-      "typical_commit_additions": 82,
-      "typical_commit_deletions": 7,
+      "commit_count": 197,
+      "active_days": 23,
+      "additions": 317672,
+      "deletions": 24204,
+      "lines_changed": 341876,
+      "lines_changed_per_day": 11396,
+      "typical_commit_additions": 65,
+      "typical_commit_deletions": 6,
       "languages": [
         {
           "name": "C",
@@ -68,13 +72,13 @@
         },
         {
           "name": "Markdown",
-          "lines": 18303
+          "lines": 18336
         }
       ],
       "repositories": [
         {
           "name": "Private repositories",
-          "lines": 285475
+          "lines": 288694
         },
         {
           "name": "Zerius7733/tictac-techjam",
@@ -96,18 +100,18 @@
     },
     "90": {
       "window_days": 90,
-      "commit_count": 573,
+      "commit_count": 585,
       "active_days": 55,
-      "additions": 505563,
-      "deletions": 95355,
-      "lines_changed": 600918,
-      "lines_changed_per_day": 6677,
-      "typical_commit_additions": 101,
-      "typical_commit_deletions": 14,
+      "additions": 500757,
+      "deletions": 94573,
+      "lines_changed": 595330,
+      "lines_changed_per_day": 6615,
+      "typical_commit_additions": 95,
+      "typical_commit_deletions": 12,
       "languages": [
         {
           "name": "TypeScript",
-          "lines": 183927
+          "lines": 177273
         },
         {
           "name": "C",
@@ -119,17 +123,17 @@
         },
         {
           "name": "Python",
-          "lines": 91671
+          "lines": 89676
         },
         {
           "name": "Markdown",
-          "lines": 39321
+          "lines": 39350
         }
       ],
       "repositories": [
         {
           "name": "Private repositories",
-          "lines": 526299
+          "lines": 520711
         },
         {
           "name": "Zerius7733/tictac-techjam",
@@ -151,14 +155,14 @@
     },
     "180": {
       "window_days": 180,
-      "commit_count": 970,
+      "commit_count": 988,
       "active_days": 98,
-      "additions": 737833,
-      "deletions": 246975,
-      "lines_changed": 984808,
-      "lines_changed_per_day": 5471,
-      "typical_commit_additions": 85,
-      "typical_commit_deletions": 14,
+      "additions": 740810,
+      "deletions": 247196,
+      "lines_changed": 988006,
+      "lines_changed_per_day": 5489,
+      "typical_commit_additions": 84,
+      "typical_commit_deletions": 13,
       "languages": [
         {
           "name": "TypeScript",
@@ -184,7 +188,7 @@
       "repositories": [
         {
           "name": "Private repositories",
-          "lines": 795937
+          "lines": 799156
         },
         {
           "name": "Zerius7733/FinTech",
@@ -196,7 +200,7 @@
         },
         {
           "name": "Zerius7733/Zerius7733",
-          "lines": 16764
+          "lines": 16743
         },
         {
           "name": "Zerius7733/AWS-CockroachDB-Hackathon",
@@ -206,13 +210,13 @@
     },
     "365": {
       "window_days": 365,
-      "commit_count": 1348,
-      "active_days": 155,
-      "additions": 2256294,
-      "deletions": 429196,
-      "lines_changed": 2685490,
-      "lines_changed_per_day": 7358,
-      "typical_commit_additions": 75,
+      "commit_count": 1368,
+      "active_days": 156,
+      "additions": 2259277,
+      "deletions": 429432,
+      "lines_changed": 2688709,
+      "lines_changed_per_day": 7366,
+      "typical_commit_additions": 73,
       "typical_commit_deletions": 12,
       "languages": [
         {
@@ -233,13 +237,13 @@
         },
         {
           "name": "JavaScript",
-          "lines": 165342
+          "lines": 168381
         }
       ],
       "repositories": [
         {
           "name": "Private repositories",
-          "lines": 1496150
+          "lines": 1499369
         },
         {
           "name": "Zerius7733/FinTech",
