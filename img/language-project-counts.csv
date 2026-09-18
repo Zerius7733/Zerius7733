@@ -7,13 +7,16 @@ Dockerfile,7
 TypeScript,7
 Jupyter Notebook,6
 Shell,4
+C,3
 PLpgSQL,3
-C,2
+Assembly,2
 Java,2
-Assembly,1
+Makefile,2
+Emacs Lisp,1
 HCL,1
-Makefile,1
+Linker Script,1
 Mako,1
 Other,1
+Perl,1
 PowerShell,1
 Procfile,1
