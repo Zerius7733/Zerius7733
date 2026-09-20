@@ -1,6 +1,6 @@
 {
   "owner": "Zerius7733",
-  "generated_at_sgt": "2026-09-19T12:23:05.125504+08:00",
+  "generated_at_sgt": "2026-09-20T12:41:28.711768+08:00",
   "repository_scope": "owner,collaborator,organization_member",
   "source": "GitHub REST commit file statistics",
   "windows": {
@@ -53,14 +53,14 @@
     },
     "30": {
       "window_days": 30,
-      "commit_count": 202,
-      "active_days": 24,
-      "additions": 317867,
-      "deletions": 24370,
-      "lines_changed": 342237,
+      "commit_count": 199,
+      "active_days": 23,
+      "additions": 317862,
+      "deletions": 24367,
+      "lines_changed": 342229,
       "lines_changed_per_day": 11408,
-      "typical_commit_additions": 62,
-      "typical_commit_deletions": 6,
+      "typical_commit_additions": 65,
+      "typical_commit_deletions": 7,
       "languages": [
         {
           "name": "C",
@@ -102,24 +102,24 @@
         },
         {
           "name": "Zerius7733/Email-Generator-Extension",
-          "lines": 139
+          "lines": 131
         }
       ]
     },
     "90": {
       "window_days": 90,
-      "commit_count": 576,
-      "active_days": 57,
-      "additions": 496146,
-      "deletions": 92797,
-      "lines_changed": 588943,
-      "lines_changed_per_day": 6544,
+      "commit_count": 565,
+      "active_days": 56,
+      "additions": 492815,
+      "deletions": 91399,
+      "lines_changed": 584214,
+      "lines_changed_per_day": 6491,
       "typical_commit_additions": 88,
-      "typical_commit_deletions": 12,
+      "typical_commit_deletions": 11,
       "languages": [
         {
           "name": "TypeScript",
-          "lines": 171028
+          "lines": 167931
         },
         {
           "name": "C",
@@ -131,17 +131,17 @@
         },
         {
           "name": "Python",
-          "lines": 89268
+          "lines": 87892
         },
         {
           "name": "Markdown",
-          "lines": 39393
+          "lines": 39323
         }
       ],
       "repositories": [
         {
           "name": "Private repositories",
-          "lines": 514206
+          "lines": 509477
         },
         {
           "name": "Zerius7733/tictac-techjam",
