@@ -1,65 +1,49 @@
 {
   "owner": "Zerius7733",
-  "generated_at_sgt": "2026-09-23T12:32:12.441010+08:00",
+  "generated_at_sgt": "2026-09-24T12:29:42.712937+08:00",
   "repository_scope": "owner,collaborator,organization_member",
   "source": "GitHub REST commit file statistics",
   "windows": {
     "7": {
       "window_days": 7,
-      "commit_count": 7,
-      "active_days": 3,
-      "additions": 198,
-      "deletions": 167,
-      "lines_changed": 365,
-      "lines_changed_per_day": 52,
-      "typical_commit_additions": 13,
-      "typical_commit_deletions": 13,
+      "commit_count": 3,
+      "active_days": 2,
+      "additions": 63,
+      "deletions": 58,
+      "lines_changed": 121,
+      "lines_changed_per_day": 17,
+      "typical_commit_additions": 5,
+      "typical_commit_deletions": 2,
       "languages": [
         {
           "name": "JavaScript",
-          "lines": 257
-        },
-        {
-          "name": "Python",
-          "lines": 52
-        },
-        {
-          "name": "Markdown",
-          "lines": 43
+          "lines": 114
         },
         {
           "name": "CSS",
-          "lines": 13
-        },
-        {
-          "name": "C",
-          "lines": 0
+          "lines": 7
         }
       ],
       "repositories": [
-        {
-          "name": "Private repositories",
-          "lines": 251
-        },
         {
           "name": "Zerius7733/Email-Generator-Extension",
           "lines": 114
         },
         {
-          "name": "Zerius7733/ntu-sc2005-xv6",
-          "lines": 0
+          "name": "Private repositories",
+          "lines": 7
         }
       ]
     },
     "30": {
       "window_days": 30,
-      "commit_count": 195,
-      "active_days": 22,
-      "additions": 317686,
-      "deletions": 24315,
-      "lines_changed": 342001,
-      "lines_changed_per_day": 11400,
-      "typical_commit_additions": 65,
+      "commit_count": 192,
+      "active_days": 21,
+      "additions": 317280,
+      "deletions": 24249,
+      "lines_changed": 341529,
+      "lines_changed_per_day": 11384,
+      "typical_commit_additions": 66,
       "typical_commit_deletions": 7,
       "languages": [
         {
@@ -80,7 +64,7 @@
         },
         {
           "name": "Markdown",
-          "lines": 18362
+          "lines": 18150
         }
       ],
       "repositories": [
@@ -97,29 +81,29 @@
           "lines": 16723
         },
         {
-          "name": "simplyziannn/PSA_SPRINTERNSHIP",
-          "lines": 472
-        },
-        {
           "name": "Zerius7733/Email-Generator-Extension",
           "lines": 129
+        },
+        {
+          "name": "Zerius7733/NTU-GPA-Estimator",
+          "lines": 97
         }
       ]
     },
     "90": {
       "window_days": 90,
-      "commit_count": 537,
-      "active_days": 54,
-      "additions": 479963,
-      "deletions": 89494,
-      "lines_changed": 569457,
-      "lines_changed_per_day": 6327,
-      "typical_commit_additions": 88,
+      "commit_count": 524,
+      "active_days": 53,
+      "additions": 477258,
+      "deletions": 88792,
+      "lines_changed": 566050,
+      "lines_changed_per_day": 6289,
+      "typical_commit_additions": 87,
       "typical_commit_deletions": 10,
       "languages": [
         {
           "name": "TypeScript",
-          "lines": 158015
+          "lines": 155368
         },
         {
           "name": "C",
@@ -131,17 +115,17 @@
         },
         {
           "name": "Python",
-          "lines": 83323
+          "lines": 82790
         },
         {
           "name": "Markdown",
-          "lines": 39323
+          "lines": 39096
         }
       ],
       "repositories": [
         {
           "name": "Private repositories",
-          "lines": 494719
+          "lines": 491312
         },
         {
           "name": "Zerius7733/tictac-techjam",
@@ -163,12 +147,12 @@
     },
     "180": {
       "window_days": 180,
-      "commit_count": 977,
-      "active_days": 99,
-      "additions": 721969,
-      "deletions": 189458,
-      "lines_changed": 911427,
-      "lines_changed_per_day": 5063,
+      "commit_count": 975,
+      "active_days": 98,
+      "additions": 721767,
+      "deletions": 189407,
+      "lines_changed": 911174,
+      "lines_changed_per_day": 5062,
       "typical_commit_additions": 82,
       "typical_commit_deletions": 13,
       "languages": [
@@ -178,7 +162,7 @@
         },
         {
           "name": "Python",
-          "lines": 121572
+          "lines": 121319
         },
         {
           "name": "C",
@@ -218,13 +202,13 @@
     },
     "365": {
       "window_days": 365,
-      "commit_count": 1375,
-      "active_days": 159,
-      "additions": 2259238,
-      "deletions": 429555,
-      "lines_changed": 2688793,
-      "lines_changed_per_day": 7367,
-      "typical_commit_additions": 71,
+      "commit_count": 1372,
+      "active_days": 158,
+      "additions": 2258935,
+      "deletions": 428753,
+      "lines_changed": 2687688,
+      "lines_changed_per_day": 7364,
+      "typical_commit_additions": 72,
       "typical_commit_deletions": 12,
       "languages": [
         {
@@ -241,7 +225,7 @@
         },
         {
           "name": "Python",
-          "lines": 200167
+          "lines": 199832
         },
         {
           "name": "JavaScript",
