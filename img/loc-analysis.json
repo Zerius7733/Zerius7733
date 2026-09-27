@@ -1,6 +1,6 @@
 {
   "owner": "Zerius7733",
-  "generated_at_sgt": "2026-09-26T12:43:40.986662+08:00",
+  "generated_at_sgt": "2026-09-27T13:05:38.322020+08:00",
   "repository_scope": "owner,collaborator,organization_member",
   "source": "GitHub REST commit file statistics",
   "windows": {
@@ -29,13 +29,13 @@
     },
     "30": {
       "window_days": 30,
-      "commit_count": 189,
-      "active_days": 19,
-      "additions": 317046,
-      "deletions": 24248,
-      "lines_changed": 341294,
-      "lines_changed_per_day": 11376,
-      "typical_commit_additions": 66,
+      "commit_count": 184,
+      "active_days": 18,
+      "additions": 300596,
+      "deletions": 22088,
+      "lines_changed": 322684,
+      "lines_changed_per_day": 10756,
+      "typical_commit_additions": 65,
       "typical_commit_deletions": 7,
       "languages": [
         {
@@ -52,21 +52,21 @@
         },
         {
           "name": "TypeScript",
-          "lines": 21639
+          "lines": 18513
         },
         {
           "name": "Markdown",
-          "lines": 17945
+          "lines": 16886
         }
       ],
       "repositories": [
         {
           "name": "Private repositories",
-          "lines": 288720
+          "lines": 279222
         },
         {
           "name": "Zerius7733/tictac-techjam",
-          "lines": 35545
+          "lines": 26433
         },
         {
           "name": "Zerius7733/Zerius7733",
@@ -84,18 +84,18 @@
     },
     "90": {
       "window_days": 90,
-      "commit_count": 522,
-      "active_days": 51,
-      "additions": 476889,
-      "deletions": 88792,
-      "lines_changed": 565681,
-      "lines_changed_per_day": 6285,
-      "typical_commit_additions": 87,
-      "typical_commit_deletions": 11,
+      "commit_count": 513,
+      "active_days": 50,
+      "additions": 474859,
+      "deletions": 86857,
+      "lines_changed": 561716,
+      "lines_changed_per_day": 6241,
+      "typical_commit_additions": 84,
+      "typical_commit_deletions": 10,
       "languages": [
         {
           "name": "TypeScript",
-          "lines": 155368
+          "lines": 153553
         },
         {
           "name": "C",
@@ -107,17 +107,17 @@
         },
         {
           "name": "Python",
-          "lines": 82790
+          "lines": 81796
         },
         {
           "name": "Markdown",
-          "lines": 38727
+          "lines": 37827
         }
       ],
       "repositories": [
         {
           "name": "Private repositories",
-          "lines": 490943
+          "lines": 486978
         },
         {
           "name": "Zerius7733/tictac-techjam",
@@ -139,13 +139,13 @@
     },
     "180": {
       "window_days": 180,
-      "commit_count": 964,
-      "active_days": 96,
-      "additions": 718052,
-      "deletions": 189135,
-      "lines_changed": 907187,
+      "commit_count": 962,
+      "active_days": 95,
+      "additions": 718048,
+      "deletions": 189131,
+      "lines_changed": 907179,
       "lines_changed_per_day": 5040,
-      "typical_commit_additions": 81,
+      "typical_commit_additions": 82,
       "typical_commit_deletions": 13,
       "languages": [
         {
@@ -184,7 +184,7 @@
         },
         {
           "name": "Zerius7733/Zerius7733",
-          "lines": 16738
+          "lines": 16730
         },
         {
           "name": "Zerius7733/AWS-CockroachDB-Hackathon",
