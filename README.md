@@ -22,6 +22,11 @@ I am a Computer Engineering student focused on building practical software with 
 </div>
 
 # Hackathons :computer:
+**<ins>SimplifyNext Agentic AI Hackathon 2026 (Top 10 Finalist)</ins>**<br>
+Scam-call protection prototype that detects social-engineering signals in real time and helps protect users before they share sensitive information.
+- Stack: React, Vite, Node.js, WebSockets, OpenAI API, WhisperLive
+- Repo: [simplifynext-hackathon](https://github.com/Zerius7733/simplifynext-hackathon)
+
 **<ins>TicTac TechJam - Volc Agent Launchpad</ins>**<br>
 Hackathon proof of concept for building and running AI agents, with a browser playground, persistent workspaces, multi-agent collaboration, and policy-scoped access to protected resources.
 - Stack: TypeScript, React, Vite, Fastify, SQLite, Docker/Podman, Volcengine Ark Responses API, Codex CLI
