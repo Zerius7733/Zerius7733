@@ -1,6 +1,6 @@
 {
   "owner": "Zerius7733",
-  "generated_at_sgt": "2026-10-02T13:21:25.568810+08:00",
+  "generated_at_sgt": "2026-10-03T13:04:22.835402+08:00",
   "repository_scope": "owner,collaborator,organization_member",
   "source": "GitHub REST commit file statistics",
   "windows": {
@@ -37,22 +37,22 @@
     },
     "30": {
       "window_days": 30,
-      "commit_count": 92,
-      "active_days": 16,
-      "additions": 46813,
-      "deletions": 5376,
-      "lines_changed": 52189,
-      "lines_changed_per_day": 1740,
-      "typical_commit_additions": 18,
-      "typical_commit_deletions": 5,
+      "commit_count": 77,
+      "active_days": 15,
+      "additions": 39746,
+      "deletions": 2523,
+      "lines_changed": 42269,
+      "lines_changed_per_day": 1409,
+      "typical_commit_additions": 14,
+      "typical_commit_deletions": 4,
       "languages": [
         {
-          "name": "Python",
-          "lines": 19293
+          "name": "JSON",
+          "lines": 13223
         },
         {
-          "name": "JSON",
-          "lines": 13575
+          "name": "Python",
+          "lines": 10907
         },
         {
           "name": "JavaScript",
@@ -60,7 +60,7 @@
         },
         {
           "name": "Markdown",
-          "lines": 5924
+          "lines": 5298
         },
         {
           "name": "Other",
@@ -70,15 +70,15 @@
       "repositories": [
         {
           "name": "Private repositories",
-          "lines": 43280
-        },
-        {
-          "name": "Zerius7733/Zerius7733",
-          "lines": 8786
+          "lines": 42141
         },
         {
           "name": "Zerius7733/Email-Generator-Extension",
           "lines": 123
+        },
+        {
+          "name": "Zerius7733/Zerius7733",
+          "lines": 5
         },
         {
           "name": "Zerius7733/ntu-sc2005-xv6",
@@ -198,12 +198,12 @@
     },
     "365": {
       "window_days": 365,
-      "commit_count": 1370,
-      "active_days": 159,
-      "additions": 2260233,
-      "deletions": 428241,
-      "lines_changed": 2688474,
-      "lines_changed_per_day": 7366,
+      "commit_count": 1367,
+      "active_days": 158,
+      "additions": 2259848,
+      "deletions": 428160,
+      "lines_changed": 2688008,
+      "lines_changed_per_day": 7364,
       "typical_commit_additions": 71,
       "typical_commit_deletions": 12,
       "languages": [
@@ -221,7 +221,7 @@
         },
         {
           "name": "Python",
-          "lines": 198742
+          "lines": 198581
         },
         {
           "name": "JavaScript",
