@@ -1,5 +1,5 @@
 language,count
-Python,20
+Python,21
 HTML,17
 JavaScript,14
 CSS,11
@@ -13,10 +13,10 @@ Assembly,2
 Java,2
 Makefile,2
 Other,2
+Procfile,2
 Emacs Lisp,1
 HCL,1
 Linker Script,1
 Mako,1
 Perl,1
 PowerShell,1
-Procfile,1
