@@ -1,6 +1,6 @@
 {
   "owner": "Zerius7733",
-  "generated_at_sgt": "2026-10-15T12:20:56.057663+08:00",
+  "generated_at_sgt": "2026-10-16T12:16:06.439860+08:00",
   "repository_scope": "owner,collaborator,organization_member",
   "source": "GitHub REST commit file statistics",
   "windows": {
@@ -45,13 +45,13 @@
     },
     "30": {
       "window_days": 30,
-      "commit_count": 40,
-      "active_days": 14,
-      "additions": 7065,
-      "deletions": 758,
-      "lines_changed": 7823,
+      "commit_count": 38,
+      "active_days": 13,
+      "additions": 7062,
+      "deletions": 756,
+      "lines_changed": 7818,
       "lines_changed_per_day": 261,
-      "typical_commit_additions": 18,
+      "typical_commit_additions": 25,
       "typical_commit_deletions": 0,
       "languages": [
         {
@@ -72,7 +72,7 @@
         },
         {
           "name": "JavaScript",
-          "lines": 418
+          "lines": 413
         }
       ],
       "repositories": [
@@ -82,7 +82,7 @@
         },
         {
           "name": "Zerius7733/Email-Generator-Extension",
-          "lines": 275
+          "lines": 270
         },
         {
           "name": "Zerius7733/Zerius7733",
@@ -206,22 +206,22 @@
     },
     "365": {
       "window_days": 365,
-      "commit_count": 1393,
-      "active_days": 164,
-      "additions": 2263908,
-      "deletions": 428749,
-      "lines_changed": 2692657,
-      "lines_changed_per_day": 7377,
+      "commit_count": 1388,
+      "active_days": 163,
+      "additions": 2067166,
+      "deletions": 428743,
+      "lines_changed": 2495909,
+      "lines_changed_per_day": 6838,
       "typical_commit_additions": 71,
       "typical_commit_deletions": 12,
       "languages": [
         {
           "name": "HTML",
-          "lines": 623265
+          "lines": 428994
         },
         {
           "name": "JSON",
-          "lines": 376992
+          "lines": 375742
         },
         {
           "name": "TypeScript",
@@ -229,7 +229,7 @@
         },
         {
           "name": "Python",
-          "lines": 199327
+          "lines": 198100
         },
         {
           "name": "JavaScript",
@@ -246,12 +246,12 @@
           "lines": 467144
         },
         {
-          "name": "Zerius7733/Network-Traffic-Data-Analysis",
-          "lines": 390383
-        },
-        {
           "name": "Zerius7733/TechFest-2026",
           "lines": 236140
+        },
+        {
+          "name": "Zerius7733/Network-Traffic-Data-Analysis",
+          "lines": 195239
         },
         {
           "name": "Zerius7733/tictac-techjam",
