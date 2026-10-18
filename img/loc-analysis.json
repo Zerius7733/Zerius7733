@@ -1,6 +1,6 @@
 {
   "owner": "Zerius7733",
-  "generated_at_sgt": "2026-10-17T12:06:54.778160+08:00",
+  "generated_at_sgt": "2026-10-18T12:14:35.390674+08:00",
   "repository_scope": "owner,collaborator,organization_member",
   "source": "GitHub REST commit file statistics",
   "windows": {
@@ -49,13 +49,13 @@
     },
     "30": {
       "window_days": 30,
-      "commit_count": 41,
-      "active_days": 14,
-      "additions": 244945,
-      "deletions": 118938,
-      "lines_changed": 363883,
-      "lines_changed_per_day": 12129,
-      "typical_commit_additions": 57,
+      "commit_count": 39,
+      "active_days": 13,
+      "additions": 244883,
+      "deletions": 118880,
+      "lines_changed": 363763,
+      "lines_changed_per_day": 12125,
+      "typical_commit_additions": 71,
       "typical_commit_deletions": 0,
       "languages": [
         {
@@ -76,17 +76,17 @@
         },
         {
           "name": "JavaScript",
-          "lines": 270
+          "lines": 157
         }
       ],
       "repositories": [
         {
           "name": "Private repositories",
-          "lines": 363608
+          "lines": 363601
         },
         {
           "name": "Zerius7733/Email-Generator-Extension",
-          "lines": 270
+          "lines": 157
         },
         {
           "name": "Zerius7733/Zerius7733",
@@ -206,18 +206,18 @@
     },
     "365": {
       "window_days": 365,
-      "commit_count": 1389,
-      "active_days": 164,
-      "additions": 2304058,
-      "deletions": 547034,
-      "lines_changed": 2851092,
-      "lines_changed_per_day": 7811,
+      "commit_count": 1373,
+      "active_days": 163,
+      "additions": 2290630,
+      "deletions": 540898,
+      "lines_changed": 2831528,
+      "lines_changed_per_day": 7758,
       "typical_commit_additions": 71,
       "typical_commit_deletions": 12,
       "languages": [
         {
           "name": "Python",
-          "lines": 553246
+          "lines": 546578
         },
         {
           "name": "HTML",
@@ -225,7 +225,7 @@
         },
         {
           "name": "JSON",
-          "lines": 375742
+          "lines": 362846
         },
         {
           "name": "TypeScript",
@@ -239,7 +239,7 @@
       "repositories": [
         {
           "name": "Private repositories",
-          "lines": 1862095
+          "lines": 1842531
         },
         {
           "name": "Zerius7733/FinTech",
