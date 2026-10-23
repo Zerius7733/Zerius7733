@@ -1,18 +1,18 @@
 {
   "owner": "Zerius7733",
-  "generated_at_sgt": "2026-10-22T12:25:10.642836+08:00",
+  "generated_at_sgt": "2026-10-23T12:30:26.146546+08:00",
   "repository_scope": "owner,collaborator,organization_member",
   "source": "GitHub REST commit file statistics",
   "windows": {
     "7": {
       "window_days": 7,
-      "commit_count": 28,
-      "active_days": 5,
-      "additions": 1484938,
+      "commit_count": 26,
+      "active_days": 4,
+      "additions": 1484017,
       "deletions": 118752,
-      "lines_changed": 1603690,
-      "lines_changed_per_day": 229099,
-      "typical_commit_additions": 128,
+      "lines_changed": 1602769,
+      "lines_changed_per_day": 228967,
+      "typical_commit_additions": 112,
       "typical_commit_deletions": 0,
       "languages": [
         {
@@ -25,7 +25,7 @@
         },
         {
           "name": "Markdown",
-          "lines": 2826
+          "lines": 1905
         },
         {
           "name": "C",
@@ -35,7 +35,7 @@
       "repositories": [
         {
           "name": "Private repositories",
-          "lines": 1603690
+          "lines": 1602769
         }
       ]
     },
@@ -198,11 +198,11 @@
     },
     "365": {
       "window_days": 365,
-      "commit_count": 1344,
-      "active_days": 162,
-      "additions": 2959063,
+      "commit_count": 1342,
+      "active_days": 161,
+      "additions": 2959051,
       "deletions": 534160,
-      "lines_changed": 3493223,
+      "lines_changed": 3493211,
       "lines_changed_per_day": 9570,
       "typical_commit_additions": 73,
       "typical_commit_deletions": 12,
