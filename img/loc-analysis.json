@@ -1,41 +1,41 @@
 {
   "owner": "Zerius7733",
-  "generated_at_sgt": "2026-10-24T12:20:40.360868+08:00",
+  "generated_at_sgt": "2026-10-25T12:24:35.560559+08:00",
   "repository_scope": "owner,collaborator,organization_member",
   "source": "GitHub REST commit file statistics",
   "windows": {
     "7": {
       "window_days": 7,
-      "commit_count": 21,
-      "active_days": 3,
-      "additions": 1246920,
-      "deletions": 461,
-      "lines_changed": 1247381,
-      "lines_changed_per_day": 178197,
-      "typical_commit_additions": 67,
-      "typical_commit_deletions": 0,
+      "commit_count": 15,
+      "active_days": 2,
+      "additions": 306270,
+      "deletions": 366,
+      "lines_changed": 306636,
+      "lines_changed_per_day": 43805,
+      "typical_commit_additions": 27,
+      "typical_commit_deletions": 1,
       "languages": [
         {
           "name": "JSON",
-          "lines": 1241048
+          "lines": 304506
         },
         {
           "name": "Python",
-          "lines": 4040
-        },
-        {
-          "name": "Markdown",
-          "lines": 1667
+          "lines": 1099
         },
         {
           "name": "C",
           "lines": 626
+        },
+        {
+          "name": "Markdown",
+          "lines": 405
         }
       ],
       "repositories": [
         {
           "name": "Private repositories",
-          "lines": 1247381
+          "lines": 306636
         }
       ]
     },
@@ -198,11 +198,11 @@
     },
     "365": {
       "window_days": 365,
-      "commit_count": 1342,
-      "active_days": 161,
-      "additions": 2959051,
-      "deletions": 534160,
-      "lines_changed": 3493211,
+      "commit_count": 1341,
+      "active_days": 160,
+      "additions": 2958980,
+      "deletions": 534120,
+      "lines_changed": 3493100,
       "lines_changed_per_day": 9570,
       "typical_commit_additions": 73,
       "typical_commit_deletions": 12,
@@ -213,7 +213,7 @@
         },
         {
           "name": "Python",
-          "lines": 535427
+          "lines": 535316
         },
         {
           "name": "TypeScript",
