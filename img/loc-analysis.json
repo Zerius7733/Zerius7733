@@ -1,41 +1,33 @@
 {
   "owner": "Zerius7733",
-  "generated_at_sgt": "2026-10-25T12:24:35.560559+08:00",
+  "generated_at_sgt": "2026-10-26T12:27:30.575328+08:00",
   "repository_scope": "owner,collaborator,organization_member",
   "source": "GitHub REST commit file statistics",
   "windows": {
     "7": {
       "window_days": 7,
-      "commit_count": 15,
-      "active_days": 2,
-      "additions": 306270,
-      "deletions": 366,
-      "lines_changed": 306636,
-      "lines_changed_per_day": 43805,
-      "typical_commit_additions": 27,
-      "typical_commit_deletions": 1,
+      "commit_count": 2,
+      "active_days": 1,
+      "additions": 158,
+      "deletions": 80,
+      "lines_changed": 238,
+      "lines_changed_per_day": 34,
+      "typical_commit_additions": 79,
+      "typical_commit_deletions": 40,
       "languages": [
         {
-          "name": "JSON",
-          "lines": 304506
-        },
-        {
           "name": "Python",
-          "lines": 1099
-        },
-        {
-          "name": "C",
-          "lines": 626
+          "lines": 197
         },
         {
           "name": "Markdown",
-          "lines": 405
+          "lines": 41
         }
       ],
       "repositories": [
         {
           "name": "Private repositories",
-          "lines": 306636
+          "lines": 238
         }
       ]
     },
