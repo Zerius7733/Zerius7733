@@ -12,11 +12,11 @@
 <text x="36" y="105" fill="#8B949E" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif" font-size="14">By LOC Changed</text>
 <text x="436" y="84" fill="#F0F6FC" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700">Most Active Repositories</text>
 <text x="436" y="105" fill="#8B949E" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif" font-size="14">By LOC Changed</text>
-<path d="M 215.00 106.00 A 84 84 0 1 1 143.48 234.05 L 176.68 213.60 A 45 45 0 1 0 215.00 145.00 Z" fill="#2F81F7" stroke="#161B22" stroke-width="2" />
-<path d="M 143.48 234.05 A 84 84 0 0 1 155.43 130.77 L 183.09 158.27 A 45 45 0 0 0 176.68 213.60 Z" fill="#F78166" stroke="#161B22" stroke-width="2" />
-<path d="M 155.43 130.77 A 84 84 0 0 1 179.79 113.74 L 196.14 149.14 A 45 45 0 0 0 183.09 158.27 Z" fill="#2EA043" stroke="#161B22" stroke-width="2" />
-<path d="M 179.79 113.74 A 84 84 0 0 1 206.16 106.47 L 210.26 145.25 A 45 45 0 0 0 196.14 149.14 Z" fill="#F85149" stroke="#161B22" stroke-width="2" />
-<path d="M 206.16 106.47 A 84 84 0 0 1 215.00 106.00 L 215.00 145.00 A 45 45 0 0 0 210.26 145.25 Z" fill="#A371F7" stroke="#161B22" stroke-width="2" />
+<path d="M 215.00 106.00 A 84 84 0 1 1 143.49 234.07 L 176.69 213.61 A 45 45 0 1 0 215.00 145.00 Z" fill="#2F81F7" stroke="#161B22" stroke-width="2" />
+<path d="M 143.49 234.07 A 84 84 0 0 1 155.41 130.80 L 183.08 158.28 A 45 45 0 0 0 176.69 213.61 Z" fill="#F78166" stroke="#161B22" stroke-width="2" />
+<path d="M 155.41 130.80 A 84 84 0 0 1 179.75 113.75 L 196.12 149.15 A 45 45 0 0 0 183.08 158.28 Z" fill="#2EA043" stroke="#161B22" stroke-width="2" />
+<path d="M 179.75 113.75 A 84 84 0 0 1 206.12 106.47 L 210.24 145.25 A 45 45 0 0 0 196.12 149.15 Z" fill="#F85149" stroke="#161B22" stroke-width="2" />
+<path d="M 206.12 106.47 A 84 84 0 0 1 215.00 106.00 L 215.00 145.00 A 45 45 0 0 0 210.24 145.25 Z" fill="#A371F7" stroke="#161B22" stroke-width="2" />
 <circle cx="215" cy="190" r="45" fill="#161B22" />
 <path d="M 615.00 106.00 A 84 84 0 1 1 595.47 108.30 L 604.54 146.23 A 45 45 0 1 0 615.00 145.00 Z" fill="#2F81F7" stroke="#161B22" stroke-width="2" />
 <path d="M 595.47 108.30 A 84 84 0 0 1 604.82 106.62 L 609.55 145.33 A 45 45 0 0 0 604.54 146.23 Z" fill="#F78166" stroke="#161B22" stroke-width="2" />
@@ -32,9 +32,9 @@
 <text x="52.0" y="315.0" fill="#C9D1D9" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif" font-size="11">C - 6%</text>
 <rect x="215.0" y="305.0" width="10" height="10" rx="2" fill="#F85149"><title>C/C++: 99,241 lines changed</title></rect>
 <text x="231.0" y="315.0" fill="#C9D1D9" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif" font-size="11">C++ - 5%</text>
-<rect x="36.0" y="320.0" width="10" height="10" rx="2" fill="#A371F7"><title>Markdown: 31,988 lines changed</title></rect>
+<rect x="36.0" y="320.0" width="10" height="10" rx="2" fill="#A371F7"><title>Markdown: 32,142 lines changed</title></rect>
 <text x="52.0" y="330.0" fill="#C9D1D9" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif" font-size="11">Markdown - 2%</text>
-<rect x="436.0" y="290.0" width="10" height="10" rx="2" fill="#2F81F7"><title>Private repositories: 1,899,927 lines changed</title></rect>
+<rect x="436.0" y="290.0" width="10" height="10" rx="2" fill="#2F81F7"><title>Private repositories: 1,900,081 lines changed</title></rect>
 <text x="452.0" y="300.0" fill="#C9D1D9" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif" font-size="11">Private repos - 96%</text>
 <rect x="615.0" y="290.0" width="10" height="10" rx="2" fill="#F78166"><title>Zerius7733/tictac-techjam: 35,545 lines changed</title></rect>
 <text x="631.0" y="300.0" fill="#C9D1D9" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif" font-size="11">tictac-techjam - 2%</text>
@@ -44,14 +44,14 @@
 <text x="631.0" y="315.0" fill="#C9D1D9" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif" font-size="11">AWS-Cockroach... - 1%</text>
 <rect x="436.0" y="320.0" width="10" height="10" rx="2" fill="#A371F7"><title>jeanetteong/dietbet: 4,711 lines changed</title></rect>
 <text x="452.0" y="330.0" fill="#C9D1D9" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif" font-size="11">dietbet - 0%</text>
-<text x="907" y="111" text-anchor="middle" fill="#2EA043" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700">+1,830,024</text>
+<text x="907" y="111" text-anchor="middle" fill="#2EA043" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700">+1,830,178</text>
 <text x="907" y="133" text-anchor="middle" fill="#2EA043" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif" font-size="14">LOC Additions</text>
 <text x="1092" y="111" text-anchor="middle" fill="#F85149" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700">-144,802</text>
 <text x="1092" y="133" text-anchor="middle" fill="#F85149" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif" font-size="14">LOC Deletions</text>
-<text x="907" y="257" text-anchor="middle" fill="#2EA043" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700">62 <tspan fill="#8B949E">/</tspan> <tspan fill="#F85149">4</tspan></text>
+<text x="907" y="257" text-anchor="middle" fill="#2EA043" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700">64 <tspan fill="#8B949E">/</tspan> <tspan fill="#F85149">4</tspan></text>
 <text x="907" y="280" text-anchor="middle" fill="#8B949E" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif" font-size="14">Typical Commit</text>
-<text x="1092" y="257" text-anchor="middle" fill="#F0F6FC" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700">21943</text>
+<text x="1092" y="257" text-anchor="middle" fill="#F0F6FC" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700">21944</text>
 <text x="1092" y="280" text-anchor="middle" fill="#8B949E" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif" font-size="14">Lines Changed / Day</text>
 <text x="28" y="373" fill="#8B949E" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif" font-size="12">Based on authenticated GitHub commit file statistics across accessible repositories</text>
-<text x="1170" y="373" text-anchor="end" fill="#8B949E" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif" font-size="12">288 commits | 49 active days</text>
+<text x="1170" y="373" text-anchor="end" fill="#8B949E" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif" font-size="12">289 commits | 50 active days</text>
 </svg>

@@ -12,10 +12,10 @@
 <text x="36" y="105" fill="#8B949E" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif" font-size="14">By LOC Changed</text>
 <text x="436" y="84" fill="#F0F6FC" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif" font-size="18" font-weight="700">Most Active Repositories</text>
 <text x="436" y="105" fill="#8B949E" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif" font-size="14">By LOC Changed</text>
-<path d="M 215.00 106.00 A 84 84 0 1 1 184.79 268.38 L 198.82 231.99 A 45 45 0 1 0 215.00 145.00 Z" fill="#2F81F7" stroke="#161B22" stroke-width="2" />
-<path d="M 184.79 268.38 A 84 84 0 0 1 131.00 190.66 L 170.00 190.35 A 45 45 0 0 0 198.82 231.99 Z" fill="#F78166" stroke="#161B22" stroke-width="2" />
-<path d="M 131.00 190.66 A 84 84 0 0 1 150.41 136.29 L 180.40 161.23 A 45 45 0 0 0 170.00 190.35 Z" fill="#2EA043" stroke="#161B22" stroke-width="2" />
-<path d="M 150.41 136.29 A 84 84 0 0 1 185.94 111.19 L 199.43 147.78 A 45 45 0 0 0 180.40 161.23 Z" fill="#F85149" stroke="#161B22" stroke-width="2" />
+<path d="M 215.00 106.00 A 84 84 0 1 1 184.78 268.37 L 198.81 231.99 A 45 45 0 1 0 215.00 145.00 Z" fill="#2F81F7" stroke="#161B22" stroke-width="2" />
+<path d="M 184.78 268.37 A 84 84 0 0 1 131.00 190.67 L 170.00 190.36 A 45 45 0 0 0 198.81 231.99 Z" fill="#F78166" stroke="#161B22" stroke-width="2" />
+<path d="M 131.00 190.67 A 84 84 0 0 1 150.41 136.30 L 180.40 161.23 A 45 45 0 0 0 170.00 190.36 Z" fill="#2EA043" stroke="#161B22" stroke-width="2" />
+<path d="M 150.41 136.30 A 84 84 0 0 1 185.94 111.19 L 199.43 147.78 A 45 45 0 0 0 180.40 161.23 Z" fill="#F85149" stroke="#161B22" stroke-width="2" />
 <path d="M 185.94 111.19 A 84 84 0 0 1 215.00 106.00 L 215.00 145.00 A 45 45 0 0 0 199.43 147.78 Z" fill="#A371F7" stroke="#161B22" stroke-width="2" />
 <circle cx="215" cy="190" r="45" fill="#161B22" />
 <path d="M 615.00 106.00 A 84 84 0 1 1 532.52 174.08 L 570.82 181.47 A 45 45 0 1 0 615.00 145.00 Z" fill="#2F81F7" stroke="#161B22" stroke-width="2" />
@@ -26,7 +26,7 @@
 <circle cx="615" cy="190" r="45" fill="#161B22" />
 <rect x="36.0" y="290.0" width="10" height="10" rx="2" fill="#2F81F7"><title>JSON: 1,572,028 lines changed</title></rect>
 <text x="52.0" y="300.0" fill="#C9D1D9" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif" font-size="11">JSON - 56%</text>
-<rect x="215.0" y="290.0" width="10" height="10" rx="2" fill="#F78166"><title>Python: 535,316 lines changed</title></rect>
+<rect x="215.0" y="290.0" width="10" height="10" rx="2" fill="#F78166"><title>Python: 535,180 lines changed</title></rect>
 <text x="231.0" y="300.0" fill="#C9D1D9" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif" font-size="11">Python - 19%</text>
 <rect x="36.0" y="305.0" width="10" height="10" rx="2" fill="#2EA043"><title>TypeScript: 314,243 lines changed</title></rect>
 <text x="52.0" y="315.0" fill="#C9D1D9" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif" font-size="11">TypeScript - 11%</text>
@@ -34,7 +34,7 @@
 <text x="231.0" y="315.0" fill="#C9D1D9" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif" font-size="11">HTML - 8%</text>
 <rect x="36.0" y="320.0" width="10" height="10" rx="2" fill="#A371F7"><title>JavaScript: 158,225 lines changed</title></rect>
 <text x="52.0" y="330.0" fill="#C9D1D9" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif" font-size="11">JavaScript - 6%</text>
-<rect x="436.0" y="290.0" width="10" height="10" rx="2" fill="#2F81F7"><title>Private repositories: 2,699,370 lines changed</title></rect>
+<rect x="436.0" y="290.0" width="10" height="10" rx="2" fill="#2F81F7"><title>Private repositories: 2,699,524 lines changed</title></rect>
 <text x="452.0" y="300.0" fill="#C9D1D9" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif" font-size="11">Private repos - 78%</text>
 <rect x="615.0" y="290.0" width="10" height="10" rx="2" fill="#F78166"><title>Zerius7733/FinTech: 467,144 lines changed</title></rect>
 <text x="631.0" y="300.0" fill="#C9D1D9" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif" font-size="11">FinTech - 14%</text>
@@ -44,9 +44,9 @@
 <text x="631.0" y="315.0" fill="#C9D1D9" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif" font-size="11">tictac-techjam - 1%</text>
 <rect x="436.0" y="320.0" width="10" height="10" rx="2" fill="#A371F7"><title>Zerius7733/Zerius7733: 21,004 lines changed</title></rect>
 <text x="452.0" y="330.0" fill="#C9D1D9" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif" font-size="11">Zerius7733 - 1%</text>
-<text x="907" y="111" text-anchor="middle" fill="#2EA043" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700">+2,958,980</text>
+<text x="907" y="111" text-anchor="middle" fill="#2EA043" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700">+2,958,885</text>
 <text x="907" y="133" text-anchor="middle" fill="#2EA043" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif" font-size="14">LOC Additions</text>
-<text x="1092" y="111" text-anchor="middle" fill="#F85149" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700">-534,120</text>
+<text x="1092" y="111" text-anchor="middle" fill="#F85149" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700">-534,096</text>
 <text x="1092" y="133" text-anchor="middle" fill="#F85149" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif" font-size="14">LOC Deletions</text>
 <text x="907" y="257" text-anchor="middle" fill="#2EA043" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700">73 <tspan fill="#8B949E">/</tspan> <tspan fill="#F85149">12</tspan></text>
 <text x="907" y="280" text-anchor="middle" fill="#8B949E" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif" font-size="14">Typical Commit</text>
