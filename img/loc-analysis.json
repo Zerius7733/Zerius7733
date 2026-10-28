@@ -1,45 +1,41 @@
 {
   "owner": "Zerius7733",
-  "generated_at_sgt": "2026-10-27T12:46:44.870476+08:00",
+  "generated_at_sgt": "2026-10-28T13:20:52.561534+08:00",
   "repository_scope": "owner,collaborator,organization_member",
   "source": "GitHub REST commit file statistics",
   "windows": {
     "7": {
       "window_days": 7,
-      "commit_count": 3,
-      "active_days": 2,
-      "additions": 312,
-      "deletions": 80,
-      "lines_changed": 392,
-      "lines_changed_per_day": 56,
-      "typical_commit_additions": 131,
-      "typical_commit_deletions": 14,
+      "commit_count": 1,
+      "active_days": 1,
+      "additions": 154,
+      "deletions": 0,
+      "lines_changed": 154,
+      "lines_changed_per_day": 22,
+      "typical_commit_additions": 154,
+      "typical_commit_deletions": 0,
       "languages": [
         {
-          "name": "Python",
-          "lines": 197
-        },
-        {
           "name": "Markdown",
-          "lines": 195
+          "lines": 154
         }
       ],
       "repositories": [
         {
           "name": "Private repositories",
-          "lines": 392
+          "lines": 154
         }
       ]
     },
     "30": {
       "window_days": 30,
-      "commit_count": 59,
-      "active_days": 15,
-      "additions": 1491951,
+      "commit_count": 58,
+      "active_days": 14,
+      "additions": 1491949,
       "deletions": 119341,
-      "lines_changed": 1611292,
+      "lines_changed": 1611290,
       "lines_changed_per_day": 53710,
-      "typical_commit_additions": 72,
+      "typical_commit_additions": 74,
       "typical_commit_deletions": 0,
       "languages": [
         {
@@ -60,13 +56,13 @@
         },
         {
           "name": "Other",
-          "lines": 2712
+          "lines": 2710
         }
       ],
       "repositories": [
         {
           "name": "Private repositories",
-          "lines": 1611136
+          "lines": 1611134
         },
         {
           "name": "Zerius7733/Email-Generator-Extension",
@@ -186,11 +182,11 @@
     },
     "365": {
       "window_days": 365,
-      "commit_count": 1341,
-      "active_days": 160,
-      "additions": 2958885,
-      "deletions": 534096,
-      "lines_changed": 3492981,
+      "commit_count": 1338,
+      "active_days": 159,
+      "additions": 2958791,
+      "deletions": 534095,
+      "lines_changed": 3492886,
       "lines_changed_per_day": 9570,
       "typical_commit_additions": 73,
       "typical_commit_deletions": 12,
