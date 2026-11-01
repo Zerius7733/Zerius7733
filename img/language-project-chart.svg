@@ -9,20 +9,20 @@
 <text x="1162" y="133" fill="#C9D1D9" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="14">24</text>
 <text x="20" y="178" fill="#C9D1D9" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="16">HTML</text>
 <rect x="170" y="162" width="980" height="18" rx="9" fill="#30363D" />
-<rect x="170" y="162" width="694" height="18" rx="9" fill="#58A6FF" />
-<text x="1162" y="177" fill="#C9D1D9" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="14">17</text>
+<rect x="170" y="162" width="735" height="18" rx="9" fill="#58A6FF" />
+<text x="1162" y="177" fill="#C9D1D9" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="14">18</text>
 <text x="20" y="222" fill="#C9D1D9" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="16">JavaScript</text>
 <rect x="170" y="206" width="980" height="18" rx="9" fill="#30363D" />
-<rect x="170" y="206" width="612" height="18" rx="9" fill="#58A6FF" />
-<text x="1162" y="221" fill="#C9D1D9" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="14">15</text>
+<rect x="170" y="206" width="653" height="18" rx="9" fill="#58A6FF" />
+<text x="1162" y="221" fill="#C9D1D9" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="14">16</text>
 <text x="20" y="266" fill="#C9D1D9" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="16">CSS</text>
 <rect x="170" y="250" width="980" height="18" rx="9" fill="#30363D" />
 <rect x="170" y="250" width="449" height="18" rx="9" fill="#58A6FF" />
 <text x="1162" y="265" fill="#C9D1D9" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="14">11</text>
 <text x="20" y="310" fill="#C9D1D9" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="16">Dockerfile</text>
 <rect x="170" y="294" width="980" height="18" rx="9" fill="#30363D" />
-<rect x="170" y="294" width="326" height="18" rx="9" fill="#58A6FF" />
-<text x="1162" y="309" fill="#C9D1D9" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="14">8</text>
+<rect x="170" y="294" width="367" height="18" rx="9" fill="#58A6FF" />
+<text x="1162" y="309" fill="#C9D1D9" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="14">9</text>
 <text x="20" y="354" fill="#C9D1D9" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="16">Jupyter Notebook</text>
 <rect x="170" y="338" width="980" height="18" rx="9" fill="#30363D" />
 <rect x="170" y="338" width="285" height="18" rx="9" fill="#58A6FF" />
@@ -87,5 +87,5 @@
 <rect x="170" y="998" width="980" height="18" rx="9" fill="#30363D" />
 <rect x="170" y="998" width="40" height="18" rx="9" fill="#58A6FF" />
 <text x="1162" y="1013" fill="#C9D1D9" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="14">1</text>
-<text x="20" y="1066" fill="#8B949E" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12">Updated: 2026-10-31 13:16:43.032718 SGT</text>
+<text x="20" y="1066" fill="#8B949E" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12">Updated: 2026-11-01 13:45:34.753607 SGT</text>
 </svg>
