@@ -1,6 +1,6 @@
 {
   "owner": "Zerius7733",
-  "generated_at_sgt": "2026-11-02T13:44:33.087022+08:00",
+  "generated_at_sgt": "2026-11-03T14:25:23.198706+08:00",
   "repository_scope": "owner,collaborator,organization_member",
   "source": "GitHub REST commit file statistics",
   "windows": {
@@ -41,12 +41,12 @@
     },
     "30": {
       "window_days": 30,
-      "commit_count": 70,
-      "active_days": 14,
-      "additions": 1495927,
+      "commit_count": 68,
+      "active_days": 13,
+      "additions": 1495694,
       "deletions": 119985,
-      "lines_changed": 1615912,
-      "lines_changed_per_day": 53864,
+      "lines_changed": 1615679,
+      "lines_changed_per_day": 53856,
       "typical_commit_additions": 74,
       "typical_commit_deletions": 1,
       "languages": [
@@ -64,7 +64,7 @@
         },
         {
           "name": "Markdown",
-          "lines": 4483
+          "lines": 4250
         },
         {
           "name": "C",
@@ -74,7 +74,7 @@
       "repositories": [
         {
           "name": "Private repositories",
-          "lines": 1615756
+          "lines": 1615523
         },
         {
           "name": "Zerius7733/Email-Generator-Extension",
@@ -194,11 +194,11 @@
     },
     "365": {
       "window_days": 365,
-      "commit_count": 1350,
-      "active_days": 159,
-      "additions": 2965349,
-      "deletions": 534736,
-      "lines_changed": 3500085,
+      "commit_count": 1349,
+      "active_days": 158,
+      "additions": 2965277,
+      "deletions": 534677,
+      "lines_changed": 3499954,
       "lines_changed_per_day": 9589,
       "typical_commit_additions": 73,
       "typical_commit_deletions": 12,
