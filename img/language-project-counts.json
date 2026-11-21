@@ -1,8 +1,8 @@
 {
   "owner": "Zerius7733",
-  "generated_at_sgt": "2026-11-05T14:22:53.878434+08:00",
+  "generated_at_sgt": "2026-11-21T14:51:36.658501+08:00",
   "counting_mode": "repo_presence_owner_plus_contributor_repos",
   "repository_scope": "owner,collaborator,organization_member",
-  "total_counted_repos": 119,
+  "total_counted_repos": 121,
   "csv_file": "language-project-counts.csv"
 }
