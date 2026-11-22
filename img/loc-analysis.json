@@ -1,6 +1,6 @@
 {
   "owner": "Zerius7733",
-  "generated_at_sgt": "2026-11-21T14:59:41.626618+08:00",
+  "generated_at_sgt": "2026-11-22T14:25:28.836211+08:00",
   "repository_scope": "owner,collaborator,organization_member",
   "source": "GitHub REST commit file statistics",
   "windows": {
@@ -58,13 +58,13 @@
     },
     "90": {
       "window_days": 90,
-      "commit_count": 296,
-      "active_days": 45,
-      "additions": 1858943,
+      "commit_count": 294,
+      "active_days": 44,
+      "additions": 1858940,
       "deletions": 156473,
-      "lines_changed": 2015416,
-      "lines_changed_per_day": 22394,
-      "typical_commit_additions": 78,
+      "lines_changed": 2015413,
+      "lines_changed_per_day": 22393,
+      "typical_commit_additions": 81,
       "typical_commit_deletions": 6,
       "languages": [
         {
@@ -107,20 +107,20 @@
         },
         {
           "name": "Zerius7733/Email-Generator-Extension",
-          "lines": 286
+          "lines": 285
         }
       ]
     },
     "180": {
       "window_days": 180,
-      "commit_count": 949,
-      "active_days": 98,
-      "additions": 2182546,
-      "deletions": 297080,
-      "lines_changed": 2479626,
-      "lines_changed_per_day": 13776,
-      "typical_commit_additions": 86,
-      "typical_commit_deletions": 13,
+      "commit_count": 927,
+      "active_days": 97,
+      "additions": 2178246,
+      "deletions": 296098,
+      "lines_changed": 2474344,
+      "lines_changed_per_day": 13746,
+      "typical_commit_additions": 88,
+      "typical_commit_deletions": 12,
       "languages": [
         {
           "name": "JSON",
@@ -128,11 +128,11 @@
         },
         {
           "name": "Python",
-          "lines": 476875
+          "lines": 476446
         },
         {
           "name": "TypeScript",
-          "lines": 281597
+          "lines": 277705
         },
         {
           "name": "C",
@@ -146,7 +146,7 @@
       "repositories": [
         {
           "name": "Private repositories",
-          "lines": 2404727
+          "lines": 2399445
         },
         {
           "name": "Zerius7733/tictac-techjam",
