@@ -1,6 +1,6 @@
 {
   "owner": "Zerius7733",
-  "generated_at_sgt": "2026-11-22T14:25:28.836211+08:00",
+  "generated_at_sgt": "2026-11-23T15:15:50.960939+08:00",
   "repository_scope": "owner,collaborator,organization_member",
   "source": "GitHub REST commit file statistics",
   "windows": {
@@ -58,18 +58,18 @@
     },
     "90": {
       "window_days": 90,
-      "commit_count": 294,
-      "active_days": 44,
-      "additions": 1858940,
-      "deletions": 156473,
-      "lines_changed": 2015413,
-      "lines_changed_per_day": 22393,
+      "commit_count": 291,
+      "active_days": 43,
+      "additions": 1858534,
+      "deletions": 156407,
+      "lines_changed": 2014941,
+      "lines_changed_per_day": 22388,
       "typical_commit_additions": 81,
       "typical_commit_deletions": 6,
       "languages": [
         {
           "name": "JSON",
-          "lines": 1258705
+          "lines": 1258704
         },
         {
           "name": "Python",
@@ -102,12 +102,12 @@
           "lines": 16728
         },
         {
-          "name": "simplyziannn/PSA_SPRINTERNSHIP",
-          "lines": 472
-        },
-        {
           "name": "Zerius7733/Email-Generator-Extension",
           "lines": 285
+        },
+        {
+          "name": "Zerius7733/NTU-GPA-Estimator",
+          "lines": 97
         }
       ]
     },
@@ -168,8 +168,8 @@
     },
     "365": {
       "window_days": 365,
-      "commit_count": 1335,
-      "active_days": 159,
+      "commit_count": 1333,
+      "active_days": 158,
       "additions": 2718594,
       "deletions": 545862,
       "lines_changed": 3264456,
