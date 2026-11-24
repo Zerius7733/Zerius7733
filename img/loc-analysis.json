@@ -1,6 +1,6 @@
 {
   "owner": "Zerius7733",
-  "generated_at_sgt": "2026-11-23T15:15:50.960939+08:00",
+  "generated_at_sgt": "2026-11-24T17:39:27.406700+08:00",
   "repository_scope": "owner,collaborator,organization_member",
   "source": "GitHub REST commit file statistics",
   "windows": {
@@ -19,13 +19,13 @@
     },
     "30": {
       "window_days": 30,
-      "commit_count": 37,
-      "active_days": 7,
-      "additions": 39613,
+      "commit_count": 36,
+      "active_days": 6,
+      "additions": 39611,
       "deletions": 12776,
-      "lines_changed": 52389,
+      "lines_changed": 52387,
       "lines_changed_per_day": 1746,
-      "typical_commit_additions": 169,
+      "typical_commit_additions": 186,
       "typical_commit_deletions": 36,
       "languages": [
         {
@@ -34,7 +34,7 @@
         },
         {
           "name": "Jupyter Notebook",
-          "lines": 18843
+          "lines": 18841
         },
         {
           "name": "JavaScript",
@@ -52,19 +52,19 @@
       "repositories": [
         {
           "name": "Private repositories",
-          "lines": 52389
+          "lines": 52387
         }
       ]
     },
     "90": {
       "window_days": 90,
-      "commit_count": 291,
-      "active_days": 43,
-      "additions": 1858534,
-      "deletions": 156407,
-      "lines_changed": 2014941,
+      "commit_count": 289,
+      "active_days": 42,
+      "additions": 1858525,
+      "deletions": 156406,
+      "lines_changed": 2014931,
       "lines_changed_per_day": 22388,
-      "typical_commit_additions": 81,
+      "typical_commit_additions": 82,
       "typical_commit_deletions": 6,
       "languages": [
         {
@@ -103,7 +103,7 @@
         },
         {
           "name": "Zerius7733/Email-Generator-Extension",
-          "lines": 285
+          "lines": 281
         },
         {
           "name": "Zerius7733/NTU-GPA-Estimator",
@@ -113,13 +113,13 @@
     },
     "180": {
       "window_days": 180,
-      "commit_count": 927,
-      "active_days": 97,
-      "additions": 2178246,
-      "deletions": 296098,
-      "lines_changed": 2474344,
-      "lines_changed_per_day": 13746,
-      "typical_commit_additions": 88,
+      "commit_count": 917,
+      "active_days": 96,
+      "additions": 2173463,
+      "deletions": 294653,
+      "lines_changed": 2468116,
+      "lines_changed_per_day": 13712,
+      "typical_commit_additions": 86,
       "typical_commit_deletions": 12,
       "languages": [
         {
@@ -128,11 +128,11 @@
         },
         {
           "name": "Python",
-          "lines": 476446
+          "lines": 474887
         },
         {
           "name": "TypeScript",
-          "lines": 277705
+          "lines": 273625
         },
         {
           "name": "C",
@@ -146,7 +146,7 @@
       "repositories": [
         {
           "name": "Private repositories",
-          "lines": 2399445
+          "lines": 2393217
         },
         {
           "name": "Zerius7733/tictac-techjam",
