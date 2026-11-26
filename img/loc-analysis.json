@@ -1,6 +1,6 @@
 {
   "owner": "Zerius7733",
-  "generated_at_sgt": "2026-11-25T16:10:33.591705+08:00",
+  "generated_at_sgt": "2026-11-26T15:58:41.985273+08:00",
   "repository_scope": "owner,collaborator,organization_member",
   "source": "GitHub REST commit file statistics",
   "windows": {
@@ -58,18 +58,18 @@
     },
     "90": {
       "window_days": 90,
-      "commit_count": 288,
-      "active_days": 41,
-      "additions": 1858300,
-      "deletions": 156406,
-      "lines_changed": 2014706,
-      "lines_changed_per_day": 22386,
-      "typical_commit_additions": 82,
+      "commit_count": 283,
+      "active_days": 40,
+      "additions": 1841850,
+      "deletions": 154246,
+      "lines_changed": 1996096,
+      "lines_changed_per_day": 22179,
+      "typical_commit_additions": 81,
       "typical_commit_deletions": 6,
       "languages": [
         {
           "name": "JSON",
-          "lines": 1258704
+          "lines": 1255191
         },
         {
           "name": "Python",
@@ -84,18 +84,18 @@
           "lines": 99241
         },
         {
-          "name": "Jupyter Notebook",
-          "lines": 32278
+          "name": "HTML",
+          "lines": 30324
         }
       ],
       "repositories": [
         {
           "name": "Private repositories",
-          "lines": 1961971
+          "lines": 1952473
         },
         {
           "name": "Zerius7733/tictac-techjam",
-          "lines": 35545
+          "lines": 26433
         },
         {
           "name": "Zerius7733/Zerius7733",
