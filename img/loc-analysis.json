@@ -1,6 +1,6 @@
 {
   "owner": "Zerius7733",
-  "generated_at_sgt": "2026-11-26T15:58:41.985273+08:00",
+  "generated_at_sgt": "2026-11-27T16:00:36.561907+08:00",
   "repository_scope": "owner,collaborator,organization_member",
   "source": "GitHub REST commit file statistics",
   "windows": {
@@ -58,13 +58,13 @@
     },
     "90": {
       "window_days": 90,
-      "commit_count": 283,
-      "active_days": 40,
-      "additions": 1841850,
-      "deletions": 154246,
-      "lines_changed": 1996096,
-      "lines_changed_per_day": 22179,
-      "typical_commit_additions": 81,
+      "commit_count": 276,
+      "active_days": 39,
+      "additions": 1827824,
+      "deletions": 153987,
+      "lines_changed": 1981811,
+      "lines_changed_per_day": 22020,
+      "typical_commit_additions": 72,
       "typical_commit_deletions": 6,
       "languages": [
         {
@@ -73,7 +73,7 @@
         },
         {
           "name": "Python",
-          "lines": 409417
+          "lines": 408449
         },
         {
           "name": "C",
@@ -91,23 +91,23 @@
       "repositories": [
         {
           "name": "Private repositories",
-          "lines": 1952473
-        },
-        {
-          "name": "Zerius7733/tictac-techjam",
-          "lines": 26433
+          "lines": 1951213
         },
         {
           "name": "Zerius7733/Zerius7733",
           "lines": 16728
         },
         {
+          "name": "Zerius7733/tictac-techjam",
+          "lines": 13505
+        },
+        {
           "name": "Zerius7733/Email-Generator-Extension",
           "lines": 281
         },
         {
-          "name": "Zerius7733/NTU-GPA-Estimator",
-          "lines": 97
+          "name": "Zerius7733/Fake-News-Detection",
+          "lines": 84
         }
       ]
     },
